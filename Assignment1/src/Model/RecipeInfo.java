@@ -4,8 +4,6 @@
  */
 package Model;
 
-import java.io.File;
-
 /**
  *
  * @author mrunalipawar
@@ -19,9 +17,7 @@ public class RecipeInfo {
     int noOfIngredients;
     String category;
     String description;
-    File recipePicture;
-    String filePath;
-    
+
     public RecipeInfo() {
         this.recipeTitle = "";
         this.noOfServings = 0;
@@ -30,9 +26,62 @@ public class RecipeInfo {
         this.noOfIngredients = 0;
         this.category = "";
         this.description = "";
-        this.recipePicture = new File(filePath); 
     }
-    
-    
+
+    public String getRecipeTitle() {
+        return recipeTitle;
+    }
+
+    public void setRecipeTitle(String recipeTitle) {
+        this.recipeTitle = recipeTitle;
+    }
+
+    public int getNoOfServings() {
+        return noOfServings;
+    }
+
+    public void setNoOfServings(int noOfServings) {
+        this.noOfServings = noOfServings;
+    }
+
+    public boolean isGlutenFreeChoice() {
+        return glutenFreeChoice;
+    }
+
+    public void setGlutenFreeChoice(boolean glutenFreeChoice) {
+        this.glutenFreeChoice = glutenFreeChoice;
+    }
+
+    public double getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(double difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
+    public int getNoOfIngredients() {
+        return noOfIngredients;
+    }
+
+    public void setNoOfIngredients(int noOfIngredients) {
+        this.noOfIngredients = noOfIngredients;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
 }

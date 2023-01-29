@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Model.ChefDetails;
+
 /**
  *
  * @author mrunalipawar
@@ -13,8 +15,11 @@ public class MyJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MyJFrame
      */
+    
+    private ChefDetails chefDetails;
     public MyJFrame() {
         initComponents();
+        this.chefDetails = new ChefDetails();
     }
 
     /**
@@ -27,70 +32,105 @@ public class MyJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        createButton = new javax.swing.JButton();
-        readButton = new javax.swing.JButton();
-        updateButton = new javax.swing.JButton();
+        DisplayJPanel = new javax.swing.JPanel();
+        ControlJPanel = new javax.swing.JPanel();
+        createMainButton = new javax.swing.JButton();
+        readMainButton = new javax.swing.JButton();
+        updateMainButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        DisplayJPanel.setBackground(new java.awt.Color(204, 204, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout DisplayJPanelLayout = new javax.swing.GroupLayout(DisplayJPanel);
+        DisplayJPanel.setLayout(DisplayJPanelLayout);
+        DisplayJPanelLayout.setHorizontalGroup(
+            DisplayJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 308, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        DisplayJPanelLayout.setVerticalGroup(
+            DisplayJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(jPanel2);
+        jSplitPane1.setRightComponent(DisplayJPanel);
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        ControlJPanel.setBackground(new java.awt.Color(204, 204, 255));
 
-        createButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        createButton.setText("Create");
+        createMainButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        createMainButton.setText("Create");
+        createMainButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createMainButtonActionPerformed(evt);
+            }
+        });
 
-        readButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        readButton.setText("Read");
+        readMainButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        readMainButton.setText("Read");
+        readMainButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                readMainButtonActionPerformed(evt);
+            }
+        });
 
-        updateButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        updateButton.setText("Update");
+        updateMainButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        updateMainButton.setText("Update");
+        updateMainButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMainButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout ControlJPanelLayout = new javax.swing.GroupLayout(ControlJPanel);
+        ControlJPanel.setLayout(ControlJPanelLayout);
+        ControlJPanelLayout.setHorizontalGroup(
+            ControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ControlJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(createButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(readButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(updateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+                .addGroup(ControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(createMainButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(readMainButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(updateMainButton, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        ControlJPanelLayout.setVerticalGroup(
+            ControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ControlJPanelLayout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addComponent(createButton)
+                .addComponent(createMainButton)
                 .addGap(26, 26, 26)
-                .addComponent(readButton)
+                .addComponent(readMainButton)
                 .addGap(31, 31, 31)
-                .addComponent(updateButton)
+                .addComponent(updateMainButton)
                 .addContainerGap(113, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setLeftComponent(jPanel1);
+        jSplitPane1.setLeftComponent(ControlJPanel);
 
         getContentPane().add(jSplitPane1, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createMainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMainButtonActionPerformed
+        // TODO add your handling code here:
+        
+        CreateJPanelForm createJPanelForm = new CreateJPanelForm(chefDetails);
+        jSplitPane1.setRightComponent(createJPanelForm);
+    }//GEN-LAST:event_createMainButtonActionPerformed
+
+    private void readMainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readMainButtonActionPerformed
+        // TODO add your handling code here:
+        
+        ReadJPanelForm readJPanelForm = new ReadJPanelForm(chefDetails);
+        jSplitPane1.setRightComponent(readJPanelForm);
+    }//GEN-LAST:event_readMainButtonActionPerformed
+
+    private void updateMainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMainButtonActionPerformed
+        // TODO add your handling code here:
+        UpdateJPanelForm updateJPanelForm = new UpdateJPanelForm(chefDetails);
+        jSplitPane1.setRightComponent(updateJPanelForm);
+    }//GEN-LAST:event_updateMainButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,11 +168,11 @@ public class MyJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton createButton;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel ControlJPanel;
+    private javax.swing.JPanel DisplayJPanel;
+    private javax.swing.JButton createMainButton;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JButton readButton;
-    private javax.swing.JButton updateButton;
+    private javax.swing.JButton readMainButton;
+    private javax.swing.JButton updateMainButton;
     // End of variables declaration//GEN-END:variables
 }
