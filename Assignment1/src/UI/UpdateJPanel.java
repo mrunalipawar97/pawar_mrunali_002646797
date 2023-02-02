@@ -6,8 +6,10 @@ package UI;
 
 import Model.ChefDetails;
 import Model.Contact;
+import Model.FormFieldsValidation;
 import Model.RecipeInfo;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -26,6 +28,8 @@ public class UpdateJPanel extends javax.swing.JPanel {
      
     private ChefDetails chefDetails;
     
+    FormFieldsValidation formFieldsValidation;
+    
     public UpdateJPanel() {
         initComponents();
     }
@@ -33,6 +37,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
     UpdateJPanel(ChefDetails chefDetails) {
         initComponents();
         this.chefDetails = chefDetails;
+        formFieldsValidation = new FormFieldsValidation();
         displayPackageDetails();
     }
     
@@ -148,7 +153,19 @@ public class UpdateJPanel extends javax.swing.JPanel {
 
         phoneLabel.setText("Phone");
         add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 650, -1, 20));
+
+        emailIdTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailIdTextFieldFocusGained(evt);
+            }
+        });
         add(emailIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 180, 30));
+
+        phoneTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                phoneTextFieldKeyPressed(evt);
+            }
+        });
         add(phoneTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 180, 30));
 
         updateButton.setText("Update");
@@ -198,6 +215,44 @@ public class UpdateJPanel extends javax.swing.JPanel {
         con.setEmailId(emailIdTextField.getText());
         con.setPhoneNo(Long.valueOf(phoneTextField.getText()));
     }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void phoneTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneTextFieldKeyPressed
+        // TODO add your handling code here:
+        
+        String phoneNo = phoneTextField.getText();
+        int len = phoneNo.length();
+        
+        char c = evt.getKeyChar();
+        
+        if(c >='0' && c<='9'){
+            if(len<10){
+                phoneTextField.setEditable(true);
+            }
+            else{
+                phoneTextField.setEditable(false);
+                JOptionPane.showMessageDialog(this, "Enter valid phone no");
+            }
+        }
+        else{
+            if(evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE){
+                phoneTextField.setEditable(true);
+            }
+            else{
+                phoneTextField.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_phoneTextFieldKeyPressed
+
+    private void emailIdTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailIdTextFieldFocusGained
+        // TODO add your handling code here:
+          // TODO add your handling code here:
+        boolean validate = formFieldsValidation.isValidEmail(emailIdTextField.getText());
+         if(validate) {
+            JOptionPane.showMessageDialog(null, "Please Enter valid email");
+        } else {
+            System.out.println("Email Validated successfully");
+        }
+    }//GEN-LAST:event_emailIdTextFieldFocusGained
 
      public void displayPackageDetails() {
         

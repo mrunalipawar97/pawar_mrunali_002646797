@@ -29,7 +29,7 @@ public class CreateJPanel extends javax.swing.JPanel {
      */
     
     private ChefDetails chefDetails;
-    private Boolean emailValidate = false;
+    private Boolean validate = false;
     private FormFieldsValidation formFieldVal;
     
     public CreateJPanel() {
@@ -39,6 +39,7 @@ public class CreateJPanel extends javax.swing.JPanel {
     CreateJPanel(ChefDetails chefDetails) {
         initComponents();
         this.chefDetails = chefDetails;
+        formFieldVal = new FormFieldsValidation();
     }
 
     /**
@@ -182,9 +183,9 @@ public class CreateJPanel extends javax.swing.JPanel {
         phoneLabel.setText("Phone");
         add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 650, -1, 20));
 
-        emailIdTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailIdTextFieldActionPerformed(evt);
+        emailIdTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailIdTextFieldFocusGained(evt);
             }
         });
         add(emailIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 180, 30));
@@ -259,7 +260,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         RecipeInfo recipeInfo = this.chefDetails.getRecipeInfo();
         recipeInfo.setRecipeTitle(recipeTitle);
         recipeInfo.setNoOfServings(Integer.parseInt(noOfservingsTextField.getText()));
-        recipeInfo.setGlutenFreeChoice(Boolean.valueOf(this.glutenChoiceResponse()));
+        recipeInfo.setGlutenFreeChoice(this.glutenChoiceResponse());
         //(Boolean.valueOf(glutenChoiceComboBox.getSelectedItem().toString()));
         recipeInfo.setDifficultyLevel(Double.valueOf(difficultyLevelTextField.getText()));
         recipeInfo.setNoOfIngredients(Integer.parseInt(noOfIngreTextField.getText()));
@@ -270,7 +271,13 @@ public class CreateJPanel extends javax.swing.JPanel {
         contact.setEmailId(emailId);
         contact.setPhoneNo(phoneNum);
        
-        JOptionPane.showMessageDialog(null, "CREATED SUCCESSFULLY!");
+        JOptionPane.showMessageDialog(null, "RECIPE CREATED SUCCESSFULLY!");
+        
+        if(validate) {
+            JOptionPane.showMessageDialog(null, "Please fill all form fields");
+        } else {
+            JOptionPane.showMessageDialog(null, "Details Saved!");
+        }
     }//GEN-LAST:event_createButtonActionPerformed
 
     private void ChefFNameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ChefFNameTextFieldKeyPressed
@@ -339,30 +346,30 @@ public class CreateJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_phoneTextFieldKeyPressed
 
-    private void emailIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailIdTextFieldActionPerformed
+    private void emailIdTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailIdTextFieldFocusGained
         // TODO add your handling code here:
-        emailValidate = formFieldVal.isValidEmail(emailIdTextField.getText());
-         if(!emailValidate) {
+        validate = formFieldVal.isValidEmail(emailIdTextField.getText());
+         if(validate) {
             JOptionPane.showMessageDialog(null, "Please Enter valid email");
         } else {
             System.out.println("Email Validated successfully");
         }
-    }//GEN-LAST:event_emailIdTextFieldActionPerformed
+    }//GEN-LAST:event_emailIdTextFieldFocusGained
 
     
     
-    public String glutenChoiceResponse() {
+    public boolean glutenChoiceResponse() {
         
-         String choice = (String) glutenChoiceComboBox.getSelectedItem();
+         int choice = (int) glutenChoiceComboBox.getSelectedItem();
          
-            if(choice.equalsIgnoreCase("Yes")) {
+            if(choice == 0) {
                 //display the product content
                 System.out.println("Selected yes in response -----"+choice);
                 
-                return choice;
+                return true;
             }
             else{
-                return "No";
+                return false;
             }
     }
 
