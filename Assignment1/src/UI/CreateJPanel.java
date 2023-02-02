@@ -6,12 +6,16 @@ package UI;
 
 import Model.ChefDetails;
 import Model.Contact;
+import Model.FormFieldsValidation;
 import Model.RecipeInfo;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -25,6 +29,8 @@ public class CreateJPanel extends javax.swing.JPanel {
      */
     
     private ChefDetails chefDetails;
+    private Boolean emailValidate = false;
+    private FormFieldsValidation formFieldVal;
     
     public CreateJPanel() {
         initComponents();
@@ -120,9 +126,27 @@ public class CreateJPanel extends javax.swing.JPanel {
         recipePictureLabel.setText("Recipe Picture");
         add(recipePictureLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, -1, -1));
         add(imageJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, 150, 80));
-        add(ChefFNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 160, -1));
-        add(chefLNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 160, -1));
-        add(userNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 160, -1));
+
+        ChefFNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ChefFNameTextFieldKeyPressed(evt);
+            }
+        });
+        add(ChefFNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 63, 160, 30));
+
+        chefLNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                chefLNameTextFieldKeyPressed(evt);
+            }
+        });
+        add(chefLNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 103, 160, 30));
+
+        userNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userNameTextFieldKeyPressed(evt);
+            }
+        });
+        add(userNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 143, 160, 30));
         add(recipeTitleTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 223, 160, 30));
         add(noOfservingsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 160, 30));
 
@@ -157,7 +181,19 @@ public class CreateJPanel extends javax.swing.JPanel {
 
         phoneLabel.setText("Phone");
         add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 650, -1, 20));
+
+        emailIdTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailIdTextFieldActionPerformed(evt);
+            }
+        });
         add(emailIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 180, 30));
+
+        phoneTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                phoneTextFieldKeyPressed(evt);
+            }
+        });
         add(phoneTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 180, 30));
 
         createButton.setText("Create");
@@ -236,7 +272,85 @@ public class CreateJPanel extends javax.swing.JPanel {
        
         JOptionPane.showMessageDialog(null, "CREATED SUCCESSFULLY!");
     }//GEN-LAST:event_createButtonActionPerformed
- 
+
+    private void ChefFNameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ChefFNameTextFieldKeyPressed
+        // TODO add your handling code here:
+        //Field only accepting alphabets whitespace and backspace key delete
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch) || Character.isWhitespace(ch) || Character.isISOControl(ch)) {
+            ChefFNameTextField.setEditable(true);
+        }
+        else{
+            ChefFNameTextField.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Enter valid Name");
+        }
+        
+    }//GEN-LAST:event_ChefFNameTextFieldKeyPressed
+
+    private void chefLNameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_chefLNameTextFieldKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch) || Character.isWhitespace(ch) || Character.isISOControl(ch)) {
+            chefLNameTextField.setEditable(true);
+        }
+        else{
+            chefLNameTextField.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Enter valid Name");
+        }
+        
+    }//GEN-LAST:event_chefLNameTextFieldKeyPressed
+
+    private void userNameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameTextFieldKeyPressed
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(Character.isLetter(ch) || Character.isWhitespace(ch) || Character.isISOControl(ch)) {
+            userNameTextField.setEditable(true);
+        }
+        else{
+            userNameTextField.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Enter valid Username");
+        }
+        
+    }//GEN-LAST:event_userNameTextFieldKeyPressed
+
+    private void phoneTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneTextFieldKeyPressed
+        // TODO add your handling code here:
+        String phoneNo = phoneTextField.getText();
+        int len = phoneNo.length();
+        
+        char c = evt.getKeyChar();
+        
+        if(c >='0' && c<='9'){
+            if(len<10){
+                phoneTextField.setEditable(true);
+            }
+            else{
+                phoneTextField.setEditable(false);
+                JOptionPane.showMessageDialog(this, "Enter valid phone no");
+            }
+        }
+        else{
+            if(evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE){
+                phoneTextField.setEditable(true);
+            }
+            else{
+                phoneTextField.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_phoneTextFieldKeyPressed
+
+    private void emailIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailIdTextFieldActionPerformed
+        // TODO add your handling code here:
+        emailValidate = formFieldVal.isValidEmail(emailIdTextField.getText());
+         if(!emailValidate) {
+            JOptionPane.showMessageDialog(null, "Please Enter valid email");
+        } else {
+            System.out.println("Email Validated successfully");
+        }
+    }//GEN-LAST:event_emailIdTextFieldActionPerformed
+
+    
+    
     public String glutenChoiceResponse() {
         
          String choice = (String) glutenChoiceComboBox.getSelectedItem();

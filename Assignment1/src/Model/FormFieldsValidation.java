@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
  */
 public class FormFieldsValidation {
     
-    int phone;
     Pattern p;
     
     public boolean validateName(String chefName){
@@ -29,17 +28,16 @@ public class FormFieldsValidation {
         return false;
     }
     
-    public boolean validateEmail(String email) {
-        String emailValidate = "[a-z0-9!-_.&#*]{2,10} [@][a-z][3,100][.][a-z][3]";
-        
-        p = Pattern.compile(emailValidate);
-        
-        if(!p.matcher(email).matches()){
-            JOptionPane.showMessageDialog(null,"Email Format : someone@email.com", "warning", JOptionPane.WARNING_MESSAGE);
-            return true;
+    public static boolean isValidEmail(String email) {
+
+        String emailFormat = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\."
+                + "[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
+
+        Pattern p = Pattern.compile(emailFormat);
+        if (email == null) {
+            return false;
         }
-        return false;
+        return p.matcher(email).matches();
     }
-    
-    
+
 }
