@@ -17,11 +17,11 @@ public class ChefDetails {
     Contact contactDetails;
     RecipeInfo recipeInfo;
     
-    private void ChefDetails(){
+    public ChefDetails() {
         this.firstName = "";
         this.lastName = "";
-        this.userName="";
-        this.contactDetails= new Contact();
+        this.userName = "";
+        this.contactDetails = new Contact();
         this.recipeInfo = new RecipeInfo();
     }
 

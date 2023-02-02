@@ -17,9 +17,15 @@ public class MyJFrame extends javax.swing.JFrame {
      */
     
     private ChefDetails chefDetails;
+    
     public MyJFrame() {
         initComponents();
         this.chefDetails = new ChefDetails();
+    }
+    
+    MyJFrame(ChefDetails chefDet){
+        initComponents();
+        this.chefDetails = chefDet;
     }
 
     /**
@@ -46,16 +52,16 @@ public class MyJFrame extends javax.swing.JFrame {
         DisplayJPanel.setLayout(DisplayJPanelLayout);
         DisplayJPanelLayout.setHorizontalGroup(
             DisplayJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
+            .addGap(0, 452, Short.MAX_VALUE)
         );
         DisplayJPanelLayout.setVerticalGroup(
             DisplayJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+            .addGap(0, 608, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(DisplayJPanel);
 
-        ControlJPanel.setBackground(new java.awt.Color(204, 204, 255));
+        ControlJPanel.setBackground(new java.awt.Color(204, 255, 204));
 
         createMainButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         createMainButton.setText("Create");
@@ -86,23 +92,23 @@ public class MyJFrame extends javax.swing.JFrame {
         ControlJPanelLayout.setHorizontalGroup(
             ControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ControlJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(createMainButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(readMainButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(updateMainButton, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addGroup(ControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(updateMainButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(readMainButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(createMainButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ControlJPanelLayout.setVerticalGroup(
             ControlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ControlJPanelLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(79, 79, 79)
                 .addComponent(createMainButton)
-                .addGap(26, 26, 26)
-                .addComponent(readMainButton)
                 .addGap(31, 31, 31)
+                .addComponent(readMainButton)
+                .addGap(39, 39, 39)
                 .addComponent(updateMainButton)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(390, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(ControlJPanel);
@@ -115,21 +121,19 @@ public class MyJFrame extends javax.swing.JFrame {
     private void createMainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMainButtonActionPerformed
         // TODO add your handling code here:
         
-        CreateJPanelForm createJPanelForm = new CreateJPanelForm(chefDetails);
-        jSplitPane1.setRightComponent(createJPanelForm);
+        jSplitPane1.setRightComponent(new CreateJPanel(this.chefDetails));
     }//GEN-LAST:event_createMainButtonActionPerformed
 
     private void readMainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readMainButtonActionPerformed
         // TODO add your handling code here:
-        
-        ReadJPanelForm readJPanelForm = new ReadJPanelForm(chefDetails);
-        jSplitPane1.setRightComponent(readJPanelForm);
+  
+        jSplitPane1.setRightComponent(new ReadJPanel(this.chefDetails));
     }//GEN-LAST:event_readMainButtonActionPerformed
 
     private void updateMainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMainButtonActionPerformed
         // TODO add your handling code here:
-        UpdateJPanelForm updateJPanelForm = new UpdateJPanelForm(chefDetails);
-        jSplitPane1.setRightComponent(updateJPanelForm);
+        
+        jSplitPane1.setRightComponent(new UpdateJPanel(this.chefDetails));
     }//GEN-LAST:event_updateMainButtonActionPerformed
 
     /**
