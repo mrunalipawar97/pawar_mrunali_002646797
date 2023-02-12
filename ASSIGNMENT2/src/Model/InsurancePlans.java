@@ -33,6 +33,7 @@ public class InsurancePlans {
         insurancePlanDetails.setPlanId(planId);
         insurancePlanDetails.setPlanName(name);
         insurancePlanDetails.setCostperMonth(costPerMonth);
+        
         insurancePlanDetails.setCostPerAnnum(costPerAnnum);
         
         this.insurancePlanList.add(insurancePlanDetails);
@@ -49,6 +50,17 @@ public class InsurancePlans {
             }
         }
         return true;
+    }
+    
+    //remove Insurance plan records
+    public void removeInsurancePlan (int planId){
+        
+        for(PlanDetails plan: this.insurancePlanList){
+            if(plan.getPlanId() ==  planId){
+                this.insurancePlanList.remove(plan);
+                break;
+            }
+        }
     }
 
 }

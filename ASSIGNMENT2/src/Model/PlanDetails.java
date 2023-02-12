@@ -62,4 +62,8 @@ public class PlanDetails {
         this.petDetails = petDetails;
     }
     
+    @Override
+    public String toString(){
+        return String.valueOf(this.planId);
+    }
 }
