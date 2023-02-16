@@ -35,7 +35,7 @@ public class NewJFrame extends javax.swing.JFrame {
         registerOwnerButton = new javax.swing.JButton();
         viewOwnerButton = new javax.swing.JButton();
         insurancePlanCatelogButton = new javax.swing.JButton();
-        applicantsDirectoryButton = new javax.swing.JButton();
+        petVaccineButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,7 +50,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 registerOwnerButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(registerOwnerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 40));
+        jPanel1.add(registerOwnerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 130, 40));
 
         viewOwnerButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         viewOwnerButton.setText("View Owner");
@@ -59,7 +59,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 viewOwnerButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(viewOwnerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 130, 40));
+        jPanel1.add(viewOwnerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 130, 40));
 
         insurancePlanCatelogButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         insurancePlanCatelogButton.setText("Insurance Plan");
@@ -68,16 +68,16 @@ public class NewJFrame extends javax.swing.JFrame {
                 insurancePlanCatelogButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(insurancePlanCatelogButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 130, 40));
+        jPanel1.add(insurancePlanCatelogButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 130, 40));
 
-        applicantsDirectoryButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        applicantsDirectoryButton.setText("Applicants Directory");
-        applicantsDirectoryButton.addActionListener(new java.awt.event.ActionListener() {
+        petVaccineButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        petVaccineButton.setText("Pet Vaccine");
+        petVaccineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                applicantsDirectoryButtonActionPerformed(evt);
+                petVaccineButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(applicantsDirectoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, 40));
+        jPanel1.add(petVaccineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 130, 40));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -85,11 +85,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 295, Short.MAX_VALUE)
+            .addGap(0, 260, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 329, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -114,10 +114,10 @@ public class NewJFrame extends javax.swing.JFrame {
         jSplitPane1.setRightComponent(new InsurancePlanJPanel(this.business));
     }//GEN-LAST:event_insurancePlanCatelogButtonActionPerformed
 
-    private void applicantsDirectoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applicantsDirectoryButtonActionPerformed
+    private void petVaccineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_petVaccineButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new ApplicantsCatelogJPanel(this.business));
-    }//GEN-LAST:event_applicantsDirectoryButtonActionPerformed
+        jSplitPane1.setRightComponent(new PetVaccineJPanel(this.business));
+    }//GEN-LAST:event_petVaccineButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,11 +155,11 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton applicantsDirectoryButton;
     private javax.swing.JButton insurancePlanCatelogButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton petVaccineButton;
     private javax.swing.JButton registerOwnerButton;
     private javax.swing.JButton viewOwnerButton;
     // End of variables declaration//GEN-END:variables

@@ -12,10 +12,12 @@ public class Business {
     
     ApplicantsDirectory appDirectory;
     InsurancePlans insurancePlans;
+    VaccineDirectory vaccineDirectory;
     
     public Business() {
         this.appDirectory = new ApplicantsDirectory();
         this.insurancePlans = new InsurancePlans();
+        this.vaccineDirectory = new VaccineDirectory();
     }
 
     public ApplicantsDirectory getAppDirectory() {
@@ -32,6 +34,14 @@ public class Business {
 
     public void setInsurancePlans(InsurancePlans insurancePlans) {
         this.insurancePlans = insurancePlans;
+    }
+
+    public VaccineDirectory getVaccineDirectory() {
+        return vaccineDirectory;
+    }
+
+    public void setVaccineDirectory(VaccineDirectory vaccineDirectory) {
+        this.vaccineDirectory = vaccineDirectory;
     }
    
 }

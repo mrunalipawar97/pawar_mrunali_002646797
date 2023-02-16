@@ -16,10 +16,10 @@ public class PetDetails {
     String petType;
     String breed;
     
-    VaccineDetails vaccineDet;
+    Vaccine vaccineDet;
     
     public PetDetails() {
-        this.vaccineDet = new VaccineDetails();
+        this.vaccineDet = new Vaccine();
     }
 
     public String getPetName() {
@@ -62,11 +62,11 @@ public class PetDetails {
         this.breed = breed;
     }
 
-    public VaccineDetails getVaccineDet() {
+    public Vaccine getVaccineDet() {
         return vaccineDet;
     }
 
-    public void setVaccineDet(VaccineDetails vaccineDet) {
+    public void setVaccineDet(Vaccine vaccineDet) {
         this.vaccineDet = vaccineDet;
     }
 }

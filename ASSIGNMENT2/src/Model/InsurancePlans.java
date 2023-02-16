@@ -53,7 +53,7 @@ public class InsurancePlans {
     }
     
     //remove Insurance plan records
-    public void removeInsurancePlan (int planId){
+    public void removeInsurancePlan(int planId){
         
         for(PlanDetails plan: this.insurancePlanList){
             if(plan.getPlanId() ==  planId){

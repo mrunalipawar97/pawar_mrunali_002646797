@@ -4,6 +4,7 @@
  */
 package UI;
 
+
 import Model.Business;
 import Model.InsurancePlans;
 import Model.PlanDetails;
@@ -22,6 +23,7 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
      */
     private Business business;
     DefaultTableModel insurancePlanTableModel;
+    private PlanDetails selectedInsurancePlan;
     public InsurancePlanJPanel() {
         initComponents();
     }
@@ -51,7 +53,8 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
         addPlanButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         insurancePlanTable = new javax.swing.JTable();
-        deletePlanButton = new javax.swing.JButton();
+        updatePlanButton = new javax.swing.JButton();
+        viewPlanButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 204, 255));
 
@@ -70,6 +73,7 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
             }
         });
 
+        addPlanButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         addPlanButton.setText("ADD PLAN");
         addPlanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,10 +99,19 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(insurancePlanTable);
 
-        deletePlanButton.setText("DELETE");
-        deletePlanButton.addActionListener(new java.awt.event.ActionListener() {
+        updatePlanButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        updatePlanButton.setText("UPDATE");
+        updatePlanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletePlanButtonActionPerformed(evt);
+                updatePlanButtonActionPerformed(evt);
+            }
+        });
+
+        viewPlanButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        viewPlanButton.setText("VIEW PLAN");
+        viewPlanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPlanButtonActionPerformed(evt);
             }
         });
 
@@ -131,11 +144,13 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
                         .addComponent(insuranceplanHeaderLabel)))
                 .addContainerGap(89, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(78, 78, 78)
                 .addComponent(addPlanButton)
+                .addGap(28, 28, 28)
+                .addComponent(updatePlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(deletePlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(239, 239, 239))
+                .addComponent(viewPlanButton)
+                .addGap(198, 198, 198))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +177,8 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addPlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deletePlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updatePlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewPlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -196,20 +212,35 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_planIdTextFieldFocusLost
 
-    private void deletePlanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePlanButtonActionPerformed
+    private void updatePlanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePlanButtonActionPerformed
         // TODO add your handling code here:
-         int selectedRow = insurancePlanTable.getSelectedRow();
-                
-         if(selectedRow >=0) {
-             //we will delete teh object
-             PlanDetails plan  = (PlanDetails) insurancePlanTable.getValueAt(selectedRow, 0);
-             this.business.getInsurancePlans().removeInsurancePlan(plan.getPlanId());
-             displayInsurancePlansCatelog();
-         }  
-         else {
-             
-         }
-    }//GEN-LAST:event_deletePlanButtonActionPerformed
+        planIdTextField.setEnabled(false);
+
+        if (!planIdTextField.getText().isEmpty()) {
+            this.selectedInsurancePlan.setPlanName(planNameTextField.getText());
+            this.selectedInsurancePlan.setCostperMonth(Double.valueOf(costPerMonthTextField.getText()));
+            displayInsurancePlansCatelog();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please make a selection");
+        }
+    }//GEN-LAST:event_updatePlanButtonActionPerformed
+
+    private void viewPlanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPlanButtonActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = insurancePlanTable.getSelectedRow();
+        if(selectedRow >=0) {
+            //we can directly fetch the applicant object from the 0th position
+            selectedInsurancePlan = (PlanDetails)insurancePlanTable.getValueAt(selectedRow, 0);
+            planIdTextField.setText(String.valueOf(selectedInsurancePlan.getPlanId()));
+            planNameTextField.setText(selectedInsurancePlan.getPlanName());
+            costPerMonthTextField.setText(String.valueOf(selectedInsurancePlan.getCostperMonth()));
+
+        }
+        else{
+            //No selection made by the user
+            JOptionPane.showMessageDialog(null, "Please select a row!");
+        }
+    }//GEN-LAST:event_viewPlanButtonActionPerformed
 
     public void displayInsurancePlansCatelog(){
         ArrayList<PlanDetails> planDetails = this.business.getInsurancePlans().getInsurancePlanList();
@@ -222,6 +253,7 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
                 row[0] = plan;
                 row[1] = plan.getPlanName();
                 row[2] = plan.getCostperMonth();
+                
                 row[3] = plan.getCostPerAnnum();
                 insurancePlanTableModel.addRow(row);
                 
@@ -233,7 +265,6 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
     private javax.swing.JButton addPlanButton;
     private javax.swing.JLabel costPerMonthLabel;
     private javax.swing.JTextField costPerMonthTextField;
-    private javax.swing.JButton deletePlanButton;
     private javax.swing.JTable insurancePlanTable;
     private javax.swing.JLabel insuranceplanHeaderLabel;
     private javax.swing.JScrollPane jScrollPane1;
@@ -241,5 +272,7 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField planIdTextField;
     private javax.swing.JLabel planNameLabel;
     private javax.swing.JTextField planNameTextField;
+    private javax.swing.JButton updatePlanButton;
+    private javax.swing.JButton viewPlanButton;
     // End of variables declaration//GEN-END:variables
 }

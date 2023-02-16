@@ -4,33 +4,39 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mrunalipawar
  */
-public class VaccineDetails {
+public class Vaccine {
     
     String vaccineName;
-    boolean vaccineCompleted;
+    String vaccineCompleted;
     
-    public VaccineDetails(){
-        
+    public Vaccine(){
+       
     }
 
-    public String getVaccinename() {
+    public String getVaccineName() {
         return vaccineName;
     }
 
-    public void setVaccinename(String vaccinename) {
-        this.vaccineName = vaccinename;
+    public void setVaccineName(String vaccineName) {
+        this.vaccineName = vaccineName;
     }
 
-    public boolean isVaccineCompleted() {
+    public String getVaccineCompleted() {
         return vaccineCompleted;
     }
 
-    public void setVaccineCompleted(boolean vaccineCompleted) {
+    public void setVaccineCompleted(String vaccineCompleted) {
         this.vaccineCompleted = vaccineCompleted;
     }
-
+    
+    @Override
+    public String toString(){
+        return vaccineName;
+    }
 }

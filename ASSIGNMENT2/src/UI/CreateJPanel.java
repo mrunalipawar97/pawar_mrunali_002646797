@@ -20,7 +20,7 @@ public class CreateJPanel extends javax.swing.JPanel {
      * Creates new form CreateJPanel
      */
     private Business business;
-    
+    String date;
     public CreateJPanel() {
         initComponents();
     }
@@ -59,14 +59,10 @@ public class CreateJPanel extends javax.swing.JPanel {
         jDateChooser = new com.toedter.calendar.JDateChooser();
         breedLabel = new javax.swing.JLabel();
         breedTextField = new javax.swing.JTextField();
-        vaccinNameLabel = new javax.swing.JLabel();
         vaccineDetHeaderLabel = new javax.swing.JLabel();
-        courseCompletedLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        vaccineNameTextField = new javax.swing.JTextField();
-        courseCompltedTextField = new javax.swing.JTextField();
         addApplicantButton = new javax.swing.JButton();
+        petSelectionComboBox = new javax.swing.JComboBox();
+        assignVaccineButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 204));
 
@@ -93,15 +89,7 @@ public class CreateJPanel extends javax.swing.JPanel {
 
         breedLabel.setText("Breed");
 
-        vaccinNameLabel.setText("Vaccination Name");
-
-        vaccineDetHeaderLabel.setText("Vaccin Details");
-
-        courseCompletedLabel.setText("Course Completed ");
-
-        jLabel1.setText("Insurance Opted");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        vaccineDetHeaderLabel.setText("Vaccine Details");
 
         addApplicantButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         addApplicantButton.setText("ADD APPLICANT");
@@ -111,65 +99,73 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
+        petSelectionComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                petSelectionComboBoxActionPerformed(evt);
+            }
+        });
+
+        assignVaccineButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        assignVaccineButton.setText("ASSIGN VACCINE");
+        assignVaccineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignVaccineButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(petHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(applicationIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ownerFNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ownerLNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(applicationDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(petNameLabel)
-                            .addComponent(GenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(petTypeLabel)
-                            .addComponent(breedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vaccineDetHeaderLabel))))
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addComponent(petHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(breedTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                                .addComponent(petTypeTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(genderTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ageTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(petNameTextField, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                                .addComponent(ownerLNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ownerFNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(applicationIdTextField, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(130, 130, 130)
+                                .addComponent(CreatePageHeaderLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(breedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(petTypeTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(genderTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ageTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(petNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                                        .addComponent(ownerLNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ownerFNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(applicationIdTextField, javax.swing.GroupLayout.Alignment.LEADING))))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(applicationIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ownerFNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ownerLNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(applicationDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CreatePageHeaderLabel)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(vaccinNameLabel)
-                            .addComponent(courseCompletedLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(vaccineNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(courseCompltedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(addApplicantButton)))
-                .addContainerGap(282, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(petNameLabel)
+                                        .addComponent(GenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(petTypeLabel)
+                                        .addComponent(breedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(vaccineDetHeaderLabel)
+                                        .addGap(5, 5, 5)))
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(113, 113, 113)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(addApplicantButton)
+                                    .addComponent(petSelectionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(17, 17, 17)))
+                        .addComponent(assignVaccineButton)))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,66 +173,54 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(67, 67, 67)
-                        .addComponent(applicationIdLabel))
+                        .addComponent(applicationIdLabel)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ownerFNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ownerFNameLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ownerLNameLabel)
+                            .addComponent(ownerLNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(applicationDateLabel)
+                            .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addComponent(petHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(petNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(petNameLabel))
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ageLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(genderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(GenderLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(petTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(petTypeLabel)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(CreatePageHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(applicationIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ownerFNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ownerFNameLabel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ownerLNameLabel)
-                    .addComponent(ownerLNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(applicationDateLabel)
-                    .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(petHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(petNameLabel)
-                    .addComponent(petNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ageLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GenderLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(petTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(petTypeLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(breedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(breedLabel))
-                .addGap(27, 27, 27)
-                .addComponent(vaccineDetHeaderLabel)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vaccinNameLabel)
-                            .addComponent(vaccineNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(courseCompltedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(courseCompletedLabel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(43, 43, 43)
-                .addComponent(addApplicantButton)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vaccineDetHeaderLabel)
+                    .addComponent(petSelectionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignVaccineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(addApplicantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,14 +233,36 @@ public class CreateJPanel extends javax.swing.JPanel {
         String fName = ownerFNameTextField.getText();
         String lName = ownerLNameTextField.getText();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-        String date = sdf.format(jDateChooser.getDate());
         
-        System.out.println("date : " + date);     
-        appDirectory.createApplicant(Integer.valueOf(id), fName, lName, date);
-     
-        JOptionPane.showMessageDialog(null, "Added Applicant");
+        String petName = petNameTextField.getText();
+        String petAge =  ageTextField.getText();
+        String petGender = genderTextField.getText();
+        String petType =  petTypeTextField.getText();
+        String petBreed = breedTextField.getText();
+                
+        ApplicantsDirectory ad = this.business.getAppDirectory();
+        if(!applicationIdTextField.getText().isEmpty() || !ownerFNameTextField.getText().isEmpty() || !ownerLNameTextField.getText().isEmpty() || jDateChooser.getDate() != null ||
+                !petNameTextField.getText().isEmpty()|| !ageTextField.getText().isEmpty() || 
+                !genderTextField.getText().isEmpty() || !petTypeTextField.getText().isEmpty() ||
+                !breedTextField.getText().isEmpty()) {
+            date = sdf.format(jDateChooser.getDate());
+            System.out.println("date : " + date);  
+            appDirectory.createApplicant(Integer.valueOf(id), fName, lName, date, petName,Integer.valueOf(petAge), petGender, petType, petBreed);
+            JOptionPane.showMessageDialog(null, "Added Applicant");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Please fill form fields");
+        }
         
     }//GEN-LAST:event_addApplicantButtonActionPerformed
+
+    private void petSelectionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_petSelectionComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_petSelectionComboBoxActionPerformed
+
+    private void assignVaccineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignVaccineButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_assignVaccineButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -268,14 +274,11 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel applicationDateLabel;
     private javax.swing.JLabel applicationIdLabel;
     private javax.swing.JTextField applicationIdTextField;
+    private javax.swing.JButton assignVaccineButton;
     private javax.swing.JLabel breedLabel;
     private javax.swing.JTextField breedTextField;
-    private javax.swing.JLabel courseCompletedLabel;
-    private javax.swing.JTextField courseCompltedTextField;
     private javax.swing.JTextField genderTextField;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel ownerFNameLabel;
     private javax.swing.JTextField ownerFNameTextField;
     private javax.swing.JLabel ownerLNameLabel;
@@ -283,10 +286,9 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel petHeaderLabel;
     private javax.swing.JLabel petNameLabel;
     private javax.swing.JTextField petNameTextField;
+    private javax.swing.JComboBox petSelectionComboBox;
     private javax.swing.JLabel petTypeLabel;
     private javax.swing.JTextField petTypeTextField;
-    private javax.swing.JLabel vaccinNameLabel;
     private javax.swing.JLabel vaccineDetHeaderLabel;
-    private javax.swing.JTextField vaccineNameTextField;
     // End of variables declaration//GEN-END:variables
 }

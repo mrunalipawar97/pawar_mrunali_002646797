@@ -27,7 +27,7 @@ public class ApplicantsDirectory {
         this.applicantsDirectory = applicantsDirectory;
     }
     
-    public Applicant createApplicant(int appID, String fName, String lName, String date){
+    public Applicant createApplicant(int appID, String fName, String lName, String date, String petName, int petAge, String gender, String petType, String breed){
         
         Applicant applicant = new Applicant();
         
@@ -37,6 +37,11 @@ public class ApplicantsDirectory {
         applicant.setFirstName(fName);
         applicant.setLastName(lName);
         applicant.setDate(date);
+        applicant.petDetails.setPetName(petName);
+        applicant.petDetails.setAge(petAge);
+        applicant.petDetails.setGender(gender);
+        applicant.petDetails.setPetType(petType);
+        applicant.petDetails.setBreed(breed);
         
         //add the observation object into array list
         this.applicantsDirectory.add(applicant);
@@ -54,13 +59,45 @@ public class ApplicantsDirectory {
         return true;
     }
 
-    public void removeApplicant (String name){
+    public void removeApplicant(int appId){
         
         for (Applicant ap : this.applicantsDirectory) {
-            if (ap.getFirstName().equals(name)) {
+            if (ap.getApplicationId() == appId) {
                 this.applicantsDirectory.remove(ap);
                 break;
             }
         }
+    }
+    
+    //find applicant by ID
+    public Applicant findApplicantbyId(int id) {
+        for(Applicant a: this.applicantsDirectory) {
+            if(a.getApplicationId() == id ) {
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    //find applicant by First name
+    public Applicant findApplicantbyName(String name) {
+        for(Applicant a: this.applicantsDirectory) {
+            if(a.getFirstName().equals(name) ) {
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    
+    //check if the applicant already exists
+    public Boolean applicantExists(int appId, String firstName, String lastName) {
+        
+        for (Applicant a : this.applicantsDirectory) {
+            if(a.getApplicationId() == appId && a.getFirstName().equals(firstName) && a.getLastName().equals(lastName)){
+                return true;
+            }
+        }
+        return false;
     }
 }
