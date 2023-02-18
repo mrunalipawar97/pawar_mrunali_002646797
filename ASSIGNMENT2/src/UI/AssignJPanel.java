@@ -4,6 +4,11 @@
  */
 package UI;
 
+import Model.Applicant;
+import Model.Business;
+import Model.PlanDetails;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mrunalipawar
@@ -13,10 +18,44 @@ public class AssignJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AssignJPanel
      */
+    private Business business;
+    DefaultTableModel tableModel;
     public AssignJPanel() {
         initComponents();
     }
 
+    AssignJPanel(Business business) {
+        initComponents();
+        this.business = business;
+        this.tableModel = (DefaultTableModel)insuranceAssignTable.getModel();
+        populateInsuranceDetails();
+        populateData();
+    }
+
+    public void populateInsuranceDetails () {
+        insuranceSelectionComboBox.removeAllItems();
+        
+        for(PlanDetails p: this.business.getInsurancePlans().getInsurancePlanList()){
+            insuranceSelectionComboBox.addItem(p);
+        }
+    }
+    
+    public void populateData() {
+        
+        tableModel.setRowCount(0);
+        for (Applicant a: this.business.getAppDirectory().getApplicantsDirectory()){
+            Object[] row = new Object[7];
+            row[0] = a;
+            row[1] = a.getPetDetails().getPetName();
+            row[2] = a.getPetDetails().getAge();
+            row[3] = a.getPetDetails().getGender();
+            row[4] = a.getPetDetails().getPetType();
+            row[5] = a.getPlanDetails().getPlanId();
+            row[6] = a.getPlanDetails().getPlanName();
+            
+            tableModel.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,24 +68,26 @@ public class AssignJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         insuranceAssignTable = new javax.swing.JTable();
         assignInsuranceButton = new javax.swing.JButton();
-        insuranceSelectionComboBox1 = new javax.swing.JComboBox();
+        insuranceSelectionComboBox = new javax.swing.JComboBox();
+        assignPlanHeaderLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 153, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         insuranceAssignTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "APPLICANT ID", "PET NAME", "PLAN NAME"
+                "APPLICANT ID", "PET NAME", "PET AGE", "PET GENDER", "PET TYPE", "PLAN ID", "PLAN NAME"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -55,7 +96,7 @@ public class AssignJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(insuranceAssignTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 360, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 660, 200));
 
         assignInsuranceButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         assignInsuranceButton.setText("ASSIGN PLAN");
@@ -64,20 +105,40 @@ public class AssignJPanel extends javax.swing.JPanel {
                 assignInsuranceButtonActionPerformed(evt);
             }
         });
-        add(assignInsuranceButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 130, 40));
+        add(assignInsuranceButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 130, 40));
 
-        add(insuranceSelectionComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 130, 40));
+        add(insuranceSelectionComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 160, 40));
+
+        assignPlanHeaderLabel.setFont(new java.awt.Font("Kannada MN", 1, 20)); // NOI18N
+        assignPlanHeaderLabel.setText("ASSIGN INSURANCE PLAN");
+        add(assignPlanHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 330, 40));
+
+        jLabel1.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
+        jLabel1.setText("Select Insurance Plan");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignInsuranceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignInsuranceButtonActionPerformed
         // TODO add your handling code here:
+        
+        PlanDetails planDetails = (PlanDetails) insuranceSelectionComboBox.getSelectedItem();
+
+        int selectedRow = insuranceAssignTable.getSelectedRow();
+
+        Applicant applicant = (Applicant) insuranceAssignTable.getValueAt(selectedRow, 0);
+
+        applicant.setPlanDetails(planDetails);
+
+        populateData();
     }//GEN-LAST:event_assignInsuranceButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignInsuranceButton;
+    private javax.swing.JLabel assignPlanHeaderLabel;
     private javax.swing.JTable insuranceAssignTable;
-    private javax.swing.JComboBox insuranceSelectionComboBox1;
+    private javax.swing.JComboBox insuranceSelectionComboBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

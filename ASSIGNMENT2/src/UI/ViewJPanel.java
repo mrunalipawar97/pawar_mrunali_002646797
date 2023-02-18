@@ -7,6 +7,7 @@ package UI;
 import Model.Applicant;
 import Model.ApplicantsDirectory;
 import Model.Business;
+import Model.PetDetails;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +23,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private Business business;
     DefaultTableModel applicantTableModel;
     public Applicant selectedApplicant;
+    public PetDetails pet;
     public ViewJPanel() {
         initComponents();
     }
@@ -298,6 +300,25 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void updatePetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePetButtonActionPerformed
         // TODO add your handling code here:
+        
+        applicationIdTextField.setEnabled(false);
+        ownerFNameTextField.setEnabled(false);
+        ownerLNameTextField.setEnabled(false);
+        dateTextField.setEnabled(false);
+      
+        pet = new PetDetails();
+        if (!applicationIdTextField.getText().isEmpty()){
+            
+            this.pet.setPetName(petNameTextField.getText());
+            this.pet.setAge(Integer.valueOf(ageTextField.getText()));
+            this.pet.setGender(genderTextField.getText());
+            this.pet.setPetType(petTypeTextField.getText());
+            this.pet.setBreed(breedTextField.getText());
+            displayApplicantDetails();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Please make a selection");
+        }
         
     }//GEN-LAST:event_updatePetButtonActionPerformed
 

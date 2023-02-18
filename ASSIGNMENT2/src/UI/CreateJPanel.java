@@ -27,6 +27,7 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     CreateJPanel(Business business) {
         initComponents();
+        this.setVisible(true);
         this.business = business;
     }
 

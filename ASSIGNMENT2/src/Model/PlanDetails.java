@@ -4,7 +4,6 @@
  */
 package Model;
 
-
 /**
  *
  * @author mrunalipawar
@@ -66,4 +65,5 @@ public class PlanDetails {
     public String toString(){
         return String.valueOf(this.planId);
     }
+    
 }

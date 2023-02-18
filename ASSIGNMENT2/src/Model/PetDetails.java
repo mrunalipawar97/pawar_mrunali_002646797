@@ -69,4 +69,5 @@ public class PetDetails {
     public void setVaccineDet(Vaccine vaccineDet) {
         this.vaccineDet = vaccineDet;
     }
+    
 }

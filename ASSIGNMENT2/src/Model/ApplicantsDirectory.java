@@ -32,7 +32,6 @@ public class ApplicantsDirectory {
         Applicant applicant = new Applicant();
         
         //call the unique id method
-        
         applicant.setApplicationId(appID);
         applicant.setFirstName(fName);
         applicant.setLastName(lName);
@@ -43,7 +42,7 @@ public class ApplicantsDirectory {
         applicant.petDetails.setPetType(petType);
         applicant.petDetails.setBreed(breed);
         
-        //add the observation object into array list
+        //add the applicant object into array list
         this.applicantsDirectory.add(applicant);
         
         return applicant;
@@ -100,4 +99,9 @@ public class ApplicantsDirectory {
         }
         return false;
     }
+    
+    //public PetDetails assignOrder(PetDetails p, InsurancePlans ip) {
+        //;
+       // return p;
+    //}
 }

@@ -16,9 +16,11 @@ public class Applicant {
     String date;
     
     PetDetails petDetails;
+    PlanDetails planDetails;
     
     public Applicant() {
         this.petDetails = new PetDetails();
+        this.planDetails = new PlanDetails();
     }
 
     public int getApplicationId() {
@@ -59,6 +61,14 @@ public class Applicant {
 
     public void setPetDetails(PetDetails petDetails) {
         this.petDetails = petDetails;
+    }
+
+    public PlanDetails getPlanDetails() {
+        return planDetails;
+    }
+
+    public void setPlanDetails(PlanDetails planDetails) {
+        this.planDetails = planDetails;
     }
    
     @Override
