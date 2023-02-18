@@ -241,7 +241,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         String petType =  petTypeTextField.getText();
         String petBreed = breedTextField.getText();
                 
-        ApplicantsDirectory ad = this.business.getAppDirectory();
+        //ApplicantsDirectory ad = this.business.getAppDirectory();
         if(!applicationIdTextField.getText().isEmpty() || !ownerFNameTextField.getText().isEmpty() || !ownerLNameTextField.getText().isEmpty() || jDateChooser.getDate() != null ||
                 !petNameTextField.getText().isEmpty()|| !ageTextField.getText().isEmpty() || 
                 !genderTextField.getText().isEmpty() || !petTypeTextField.getText().isEmpty() ||

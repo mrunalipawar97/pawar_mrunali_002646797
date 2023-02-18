@@ -35,16 +35,14 @@
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="breedTextField" pref="127" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="petTypeTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="genderTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="ageTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="petNameTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jDateChooser" alignment="0" pref="127" max="32767" attributes="0"/>
-                                      <Component id="ownerLNameTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="ownerFNameTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="applicationIdTextField" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="petTypeTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="genderTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="ageTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="petNameTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jDateChooser" alignment="0" pref="127" max="32767" attributes="0"/>
+                                  <Component id="ownerLNameTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="ownerFNameTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="applicationIdTextField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

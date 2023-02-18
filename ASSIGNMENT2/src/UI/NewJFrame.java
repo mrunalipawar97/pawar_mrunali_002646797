@@ -37,6 +37,7 @@ public class NewJFrame extends javax.swing.JFrame {
         insurancePlanCatelogButton = new javax.swing.JButton();
         petVaccineButton = new javax.swing.JButton();
         assignPlanButton = new javax.swing.JButton();
+        searchApplicantButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,17 +90,27 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(assignPlanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 140, 40));
 
+        searchApplicantButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
+        searchApplicantButton.setText("Search Applicant");
+        searchApplicantButton.setToolTipText("");
+        searchApplicantButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchApplicantButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(searchApplicantButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 140, 40));
+
         jSplitPane1.setLeftComponent(jPanel1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
+            .addGap(0, 496, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -133,6 +144,11 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         jSplitPane1.setRightComponent(new AssignJPanel(this.business));
     }//GEN-LAST:event_assignPlanButtonActionPerformed
+
+    private void searchApplicantButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchApplicantButtonActionPerformed
+        // TODO add your handling code here:
+         jSplitPane1.setRightComponent(new SearchApplicantJPanel(this.business));
+    }//GEN-LAST:event_searchApplicantButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +193,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton petVaccineButton;
     private javax.swing.JButton registerOwnerButton;
+    private javax.swing.JButton searchApplicantButton;
     private javax.swing.JButton viewOwnerButton;
     // End of variables declaration//GEN-END:variables
 }

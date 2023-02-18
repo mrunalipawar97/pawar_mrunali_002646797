@@ -191,11 +191,14 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
         double costPerAnnum = Double.valueOf(costPerMonth)*12;
         System.out.println("Annual Cost = "+ costPerAnnum);
         InsurancePlans insurancePlan = this.business.getInsurancePlans();
-        insurancePlan.createInsurancePlan(Integer.valueOf(planId), planName, Double.valueOf(costPerMonth), costPerAnnum);
-        
-        JOptionPane.showMessageDialog(null, "Plan Created");
-        //display insurance plans catelog
-        displayInsurancePlansCatelog();
+        if (!planIdTextField.getText().isEmpty() || !planNameTextField.getText().isEmpty() || costPerMonthTextField.getText().isEmpty()) {
+            insurancePlan.createInsurancePlan(Integer.valueOf(planId), planName, Double.valueOf(costPerMonth), costPerAnnum);
+            JOptionPane.showMessageDialog(null, "Plan Created");
+            //display insurance plans catelog
+            displayInsurancePlansCatelog();
+        }else {
+            JOptionPane.showMessageDialog(null, "Please fill all form fields!");
+        }
     }//GEN-LAST:event_addPlanButtonActionPerformed
 
     private void planIdTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_planIdTextFieldFocusLost
@@ -253,8 +256,8 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
                 row[0] = plan;
                 row[1] = plan.getPlanName();
                 row[2] = plan.getCostperMonth();
-                
-                row[3] = plan.getCostPerAnnum();
+                double costPerAnnum = Double.valueOf(plan.getCostperMonth())*12;
+                row[3] = costPerAnnum;
                 insurancePlanTableModel.addRow(row);
                 
             }

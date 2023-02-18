@@ -169,7 +169,13 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
         String courseCompleted = courseCompltedTextField.getText();
         VaccineDirectory vaccineDirectory = this.business.getVaccineDirectory();
         vaccineDirectory.createVaccine(name, courseCompleted);
-        displayVaccineCatelog();
+        if (!vaccineNameTextField.getText().isEmpty() || courseCompltedTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vaccine Details added");
+            displayVaccineCatelog();
+        }else {
+            
+        }
+        
     }//GEN-LAST:event_addVaccineButtonActionPerformed
 
     private void updateVaccineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateVaccineButtonActionPerformed
@@ -178,7 +184,7 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
         if (!vaccineNameTextField.getText().isEmpty()) {
             this.selectedVaccine.setVaccineName(vaccineNameTextField.getText());
             this.selectedVaccine.setVaccineCompleted(courseCompltedTextField.getText());
-            JOptionPane.showMessageDialog(null, "PVaccine Details Updated");
+            JOptionPane.showMessageDialog(null, "Pet Vaccine Details Updated");
             displayVaccineCatelog();
         } else {
             JOptionPane.showMessageDialog(null, "Please make a selection");
