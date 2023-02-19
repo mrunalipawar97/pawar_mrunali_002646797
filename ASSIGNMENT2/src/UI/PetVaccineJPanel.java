@@ -4,8 +4,9 @@
  */
 package UI;
 
+import Model.Applicant;
+import Model.ApplicantsDirectory;
 import Model.Business;
-import Model.PlanDetails;
 import Model.Vaccine;
 import Model.VaccineDirectory;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 255, 255));
 
-        petVaccinHeaderLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        petVaccinHeaderLabel.setFont(new java.awt.Font("Kannada MN", 3, 24)); // NOI18N
         petVaccinHeaderLabel.setText("PET VACCINE DETAILS");
 
         courseCompletedLabel.setText("Course Completed ");
@@ -84,7 +85,7 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(vaccineDetailsTable);
 
-        addVaccineButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        addVaccineButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         addVaccineButton.setText("ADD VACCINE");
         addVaccineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +93,7 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
             }
         });
 
-        updateVaccineButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        updateVaccineButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         updateVaccineButton.setText("UPDATE VACCINE");
         updateVaccineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +101,7 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
             }
         });
 
-        viewVaccineButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        viewVaccineButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         viewVaccineButton.setText("VIEW VACCINE");
         viewVaccineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,29 +114,30 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(vaccinNameLabel)
-                    .addComponent(courseCompletedLabel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(courseCompltedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vaccineNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(addVaccineButton)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(vaccinNameLabel)
+                                .addComponent(courseCompletedLabel)))
+                        .addGap(18, 18, 18)
+                        .addComponent(updateVaccineButton)
+                        .addGap(120, 120, 120)
+                        .addComponent(viewVaccineButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(courseCompltedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(vaccineNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(94, 94, 94)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(93, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addComponent(petVaccinHeaderLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(addVaccineButton)
-                .addGap(18, 18, 18)
-                .addComponent(updateVaccineButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(viewVaccineButton)
-                .addGap(75, 75, 75))
+                .addGap(180, 180, 180)
+                .addComponent(petVaccinHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +160,7 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
                             .addComponent(addVaccineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(viewVaccineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 341, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -206,13 +208,15 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_viewVaccineButtonActionPerformed
 
+    
+    
     public void displayVaccineCatelog() {
         ArrayList<Vaccine> vaccine = this.business.getVaccineDirectory().getVaccinelists();
               
         if(vaccine.size() >0 ) {
             vaccineTableModel.setRowCount(0);
             for(Vaccine vac: vaccine) {
-                Object row[] = new Object[4];
+                Object row[] = new Object[2];
                 row[0] = vac;
                 row[1] = vac.getVaccineCompleted();
                 vaccineTableModel.addRow(row);

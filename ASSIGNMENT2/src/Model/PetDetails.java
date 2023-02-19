@@ -70,4 +70,8 @@ public class PetDetails {
         this.vaccineDet = vaccineDet;
     }
     
+    @Override
+    public String toString(){
+        return petName;
+    }
 }

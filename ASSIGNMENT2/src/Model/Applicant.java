@@ -17,10 +17,12 @@ public class Applicant {
     
     PetDetails petDetails;
     PlanDetails planDetails;
+    Vaccine vaccine;
     
     public Applicant() {
         this.petDetails = new PetDetails();
         this.planDetails = new PlanDetails();
+        this.vaccine = new Vaccine();
     }
 
     public int getApplicationId() {
@@ -70,7 +72,15 @@ public class Applicant {
     public void setPlanDetails(PlanDetails planDetails) {
         this.planDetails = planDetails;
     }
-   
+
+    public Vaccine getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
+    }
+    
     @Override
     public String toString(){
         return String.valueOf(this.applicationId);

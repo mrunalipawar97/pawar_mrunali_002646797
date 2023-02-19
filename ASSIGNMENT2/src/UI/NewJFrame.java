@@ -38,6 +38,7 @@ public class NewJFrame extends javax.swing.JFrame {
         petVaccineButton = new javax.swing.JButton();
         assignPlanButton = new javax.swing.JButton();
         searchApplicantButton = new javax.swing.JButton();
+        assignVaccineButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,7 +99,16 @@ public class NewJFrame extends javax.swing.JFrame {
                 searchApplicantButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(searchApplicantButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 140, 40));
+        jPanel1.add(searchApplicantButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 140, 40));
+
+        assignVaccineButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
+        assignVaccineButton.setText("Assign Vaccines");
+        assignVaccineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignVaccineButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(assignVaccineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 140, 40));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -150,6 +160,11 @@ public class NewJFrame extends javax.swing.JFrame {
          jSplitPane1.setRightComponent(new SearchApplicantJPanel(this.business));
     }//GEN-LAST:event_searchApplicantButtonActionPerformed
 
+    private void assignVaccineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignVaccineButtonActionPerformed
+        // TODO add your handling code here:
+         jSplitPane1.setRightComponent(new AssignVaccineJPanel(this.business));
+    }//GEN-LAST:event_assignVaccineButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,6 +202,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignPlanButton;
+    private javax.swing.JButton assignVaccineButton;
     private javax.swing.JButton insurancePlanCatelogButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -4,7 +4,6 @@
  */
 package UI;
 
-
 import Model.Applicant;
 import Model.ApplicantsDirectory;
 import Model.Business;
