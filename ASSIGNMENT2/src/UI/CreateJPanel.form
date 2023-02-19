@@ -69,11 +69,11 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                       <Component id="addApplicantButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="306" max="32767" attributes="0"/>
+              <EmptySpace pref="210" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -134,8 +134,8 @@
                   <Component id="breedTextField" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="breedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-              <Component id="addApplicantButton" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="addApplicantButton" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -145,28 +145,40 @@
     <Component class="javax.swing.JLabel" name="CreatePageHeaderLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="18" style="1"/>
+          <Font name="Kannada MN" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Create Owners Details  "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="applicationIdLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Applicantion ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ownerFNameLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Owner&apos;s First Name"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ownerLNameLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Owner&apos;s Last Name"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="applicationDateLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Application Date"/>
       </Properties>
     </Component>
@@ -178,26 +190,41 @@
     </Component>
     <Component class="javax.swing.JLabel" name="petHeaderLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Pet"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="petNameLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Pet Name"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ageLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Age"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="GenderLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Gender"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="petTypeLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Pet Type"/>
       </Properties>
     </Component>
@@ -213,6 +240,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="breedLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Breed"/>
       </Properties>
     </Component>
@@ -221,7 +251,7 @@
     <Component class="javax.swing.JButton" name="addApplicantButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="14" style="1"/>
+          <Font name="Kannada MN" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ADD APPLICANT"/>
       </Properties>

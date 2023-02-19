@@ -66,30 +66,40 @@ public class CreateJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 255, 204));
 
-        CreatePageHeaderLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        CreatePageHeaderLabel.setFont(new java.awt.Font("Kannada MN", 1, 24)); // NOI18N
         CreatePageHeaderLabel.setText("Create Owners Details  ");
 
+        applicationIdLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         applicationIdLabel.setText("Applicantion ID");
 
+        ownerFNameLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         ownerFNameLabel.setText("Owner's First Name");
 
+        ownerLNameLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         ownerLNameLabel.setText("Owner's Last Name");
 
+        applicationDateLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         applicationDateLabel.setText("Application Date");
 
+        petHeaderLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         petHeaderLabel.setText("Pet");
 
+        petNameLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         petNameLabel.setText("Pet Name");
 
+        ageLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         ageLabel.setText("Age");
 
+        GenderLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         GenderLabel.setText("Gender");
 
+        petTypeLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         petTypeLabel.setText("Pet Type");
 
+        breedLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         breedLabel.setText("Breed");
 
-        addApplicantButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        addApplicantButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         addApplicantButton.setText("ADD APPLICANT");
         addApplicantButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,9 +149,9 @@ public class CreateJPanel extends javax.swing.JPanel {
                                     .addComponent(breedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
+                        .addGap(86, 86, 86)
                         .addComponent(addApplicantButton)))
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,8 +199,8 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(breedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(breedLabel))
-                .addGap(122, 122, 122)
-                .addComponent(addApplicantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(addApplicantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

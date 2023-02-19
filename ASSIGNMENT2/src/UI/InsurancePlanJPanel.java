@@ -58,13 +58,16 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(153, 204, 255));
 
-        insuranceplanHeaderLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        insuranceplanHeaderLabel.setFont(new java.awt.Font("Kannada MN", 1, 24)); // NOI18N
         insuranceplanHeaderLabel.setText("Insurance Plan Catelog");
 
+        planIdLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         planIdLabel.setText("Plan ID");
 
+        planNameLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         planNameLabel.setText("Plan Name");
 
+        costPerMonthLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         costPerMonthLabel.setText("Cost Per Month");
 
         planIdTextField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -73,7 +76,7 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
             }
         });
 
-        addPlanButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        addPlanButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         addPlanButton.setText("ADD PLAN");
         addPlanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +102,7 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(insurancePlanTable);
 
-        updatePlanButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        updatePlanButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         updatePlanButton.setText("UPDATE");
         updatePlanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +110,7 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
             }
         });
 
-        viewPlanButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        viewPlanButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         viewPlanButton.setText("VIEW PLAN");
         viewPlanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +182,7 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
                     .addComponent(addPlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updatePlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewPlanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

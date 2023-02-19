@@ -76,7 +76,7 @@ public class AssignVaccineJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 660, 200));
 
-        assignVaccineButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        assignVaccineButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         assignVaccineButton.setText("ASSIGN VACCINE");
         assignVaccineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

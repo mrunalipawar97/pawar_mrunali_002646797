@@ -8,10 +8,7 @@ import Model.Applicant;
 import Model.ApplicantsDirectory;
 import Model.Business;
 import Model.PetDetails;
-import Model.Vaccine;
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,7 +24,6 @@ public class ViewJPanel extends javax.swing.JPanel {
     DefaultTableModel applicantTableModel;
     public Applicant selectedApplicant;
     private PetDetails selectedPet;
-    private List<String> selectedVaccines;
     public ViewJPanel() {
         initComponents();
     }
@@ -77,30 +73,40 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 255, 204));
 
-        CreatePageHeaderLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        CreatePageHeaderLabel.setFont(new java.awt.Font("Kannada MN", 1, 24)); // NOI18N
         CreatePageHeaderLabel.setText("View Owners Details  ");
 
+        applicationIdLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         applicationIdLabel.setText("Applicantion ID");
 
+        ownerFNameLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         ownerFNameLabel.setText("Owner's First Name");
 
+        ownerLNameLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         ownerLNameLabel.setText("Owner's Last Name");
 
+        applicationDateLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         applicationDateLabel.setText("Application Date");
 
+        petHeaderLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         petHeaderLabel.setText("Pet");
 
+        petNameLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         petNameLabel.setText("Pet Name");
 
+        ageLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         ageLabel.setText("Age");
 
+        GenderLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         GenderLabel.setText("Gender");
 
+        petTypeLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         petTypeLabel.setText("Pet Type");
 
+        breedLabel.setFont(new java.awt.Font("Kannada MN", 1, 13)); // NOI18N
         breedLabel.setText("Breed");
 
-        ViewButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        ViewButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         ViewButton.setText("VIEW APPLICANT");
         ViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +114,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
-        updatePetButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        updatePetButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         updatePetButton.setText("UPDATE PET");
         updatePetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +140,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(applicantTable);
 
-        deleteApplicantButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        deleteApplicantButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         deleteApplicantButton.setText("DELETE APPLICANT");
         deleteApplicantButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,32 +174,30 @@ public class ViewJPanel extends javax.swing.JPanel {
                             .addComponent(ownerLNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(applicationDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(petHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(ownerLNameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                    .addComponent(ownerFNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(applicationIdTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateTextField))
-                                .addGap(36, 36, 36)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(breedTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                                .addComponent(petTypeTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(genderTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ageTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(petNameTextField, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(ownerLNameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(ownerFNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(applicationIdTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateTextField))
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addComponent(updatePetButton)
-                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(breedTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addComponent(petTypeTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(genderTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ageTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(petNameTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(134, 134, 134)
                         .addComponent(ViewButton)
-                        .addGap(18, 18, 18)
+                        .addGap(43, 43, 43)
+                        .addComponent(updatePetButton)
+                        .addGap(37, 37, 37)
                         .addComponent(deleteApplicantButton)))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,16 +228,20 @@ public class ViewJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(petHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteApplicantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updatePetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(petNameLabel)
-                    .addComponent(petNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(petHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(petNameLabel)
+                            .addComponent(petNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(updatePetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteApplicantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,11 +313,11 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         if (!applicationIdTextField.getText().isEmpty()){
             
-            this.selectedPet.setPetName(petNameTextField.getText());
-            this.selectedPet.setAge(Integer.valueOf(ageTextField.getText()));
-            this.selectedPet.setGender(genderTextField.getText());
-            this.selectedPet.setPetType(petTypeTextField.getText());
-            this.selectedPet.setBreed(breedTextField.getText());
+            this.selectedApplicant.getPetDetails().setPetName(petNameTextField.getText());
+            this.selectedApplicant.getPetDetails().setAge(Integer.valueOf(ageTextField.getText()));
+            this.selectedApplicant.getPetDetails().setGender(genderTextField.getText());
+            this.selectedApplicant.getPetDetails().setPetType(petTypeTextField.getText());
+            this.selectedApplicant.getPetDetails().setBreed(breedTextField.getText());
             displayApplicantDetails();
         }
         else {

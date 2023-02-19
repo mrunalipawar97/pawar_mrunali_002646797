@@ -111,6 +111,7 @@ public class SearchApplicantJPanel extends javax.swing.JPanel {
             if (matchingRows.size() > 0) {
                 String message = "Matching applicants:\n";
                 for (Integer row : matchingRows) {
+                    applicantTable.setRowSelectionInterval(row, row);
                     message += "\n" + " ( " + applicantTableModel.getValueAt(row, 0) + "," + applicantTableModel.getValueAt(row, 1) + ", " + applicantTableModel.getValueAt(row, 2)+ ") ";
                 }
                 JOptionPane.showMessageDialog(this, message);
@@ -137,21 +138,14 @@ public class SearchApplicantJPanel extends javax.swing.JPanel {
             if (matchingRows.size() > 0) {
                 String message = "Matching applicants with IDs :\n";
                 for (Integer row : matchingRows) {
+                    applicantTable.setRowSelectionInterval(row, row);
                     message += "\n" + " ( " + applicantTableModel.getValueAt(row, 0) + "," + applicantTableModel.getValueAt(row, 1) + ", " + applicantTableModel.getValueAt(row, 2)+ ") ";
                 }
+                
                 JOptionPane.showMessageDialog(this, message);
             } else {
                 JOptionPane.showMessageDialog(this, "No matching applicants found.");
             }
-            
-            /*for (int row = 0; row < applicantTableModel.getRowCount(); row++) {
-                    int idInRow = (int) applicantTableModel.getValueAt(row, 0);
-                    if (idInRow == idToFind) {
-                        applicantTable.setRowSelectionInterval(row, row);
-                        JOptionPane.showMessageDialog(null, "Record Found in a Table");
-                        break;
-                    }
-            }*/
         }else {
             JOptionPane.showMessageDialog(this, "Please enter the ID to search");
         }

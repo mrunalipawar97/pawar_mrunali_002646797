@@ -124,7 +124,7 @@ public class PetVaccineJPanel extends javax.swing.JPanel {
                                 .addComponent(courseCompletedLabel)))
                         .addGap(18, 18, 18)
                         .addComponent(updateVaccineButton)
-                        .addGap(120, 120, 120)
+                        .addGap(98, 98, 98)
                         .addComponent(viewVaccineButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(151, 151, 151)

@@ -99,7 +99,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 searchApplicantButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(searchApplicantButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 140, 40));
+        jPanel1.add(searchApplicantButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 140, 40));
 
         assignVaccineButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         assignVaccineButton.setText("Assign Vaccines");
@@ -108,7 +108,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 assignVaccineButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(assignVaccineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 140, 40));
+        jPanel1.add(assignVaccineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 140, 40));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -116,11 +116,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 413, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(jPanel2);

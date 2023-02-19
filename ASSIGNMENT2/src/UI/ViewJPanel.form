@@ -49,39 +49,35 @@
                       <Component id="petHeaderLabel" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="ownerLNameTextField" alignment="0" pref="131" max="32767" attributes="0"/>
-                                  <Component id="ownerFNameTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="applicationIdTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="dateTextField" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="645" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="breedTextField" alignment="0" pref="144" max="32767" attributes="0"/>
-                              <Component id="petTypeTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="genderTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="ageTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="petNameTextField" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="ownerLNameTextField" alignment="0" pref="131" max="32767" attributes="0"/>
+                          <Component id="ownerFNameTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="applicationIdTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dateTextField" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="645" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
-                      <Component id="updatePetButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="breedTextField" alignment="0" pref="144" max="32767" attributes="0"/>
+                          <Component id="petTypeTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="genderTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ageTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="petNameTextField" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                       <Component id="ViewButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="updatePetButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="deleteApplicantButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="147" max="32767" attributes="0"/>
+              <EmptySpace pref="126" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -124,17 +120,24 @@
                       <Component id="jScrollPane1" min="-2" pref="163" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="petHeaderLabel" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="deleteApplicantButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="ViewButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="updatePetButton" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="petNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="petNameTextField" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <Component id="petHeaderLabel" min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="petNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="petNameTextField" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="updatePetButton" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="deleteApplicantButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="ViewButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -165,28 +168,40 @@
     <Component class="javax.swing.JLabel" name="CreatePageHeaderLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="18" style="1"/>
+          <Font name="Kannada MN" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="View Owners Details  "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="applicationIdLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Applicantion ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ownerFNameLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Owner&apos;s First Name"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ownerLNameLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Owner&apos;s Last Name"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="applicationDateLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Application Date"/>
       </Properties>
     </Component>
@@ -198,26 +213,41 @@
     </Component>
     <Component class="javax.swing.JLabel" name="petHeaderLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Pet"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="petNameLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Pet Name"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ageLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Age"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="GenderLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Gender"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="petTypeLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Pet Type"/>
       </Properties>
     </Component>
@@ -231,6 +261,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="breedLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Kannada MN" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Breed"/>
       </Properties>
     </Component>
@@ -239,7 +272,7 @@
     <Component class="javax.swing.JButton" name="ViewButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="14" style="1"/>
+          <Font name="Kannada MN" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="VIEW APPLICANT"/>
       </Properties>
@@ -250,7 +283,7 @@
     <Component class="javax.swing.JButton" name="updatePetButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="14" style="1"/>
+          <Font name="Kannada MN" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="UPDATE PET"/>
       </Properties>
@@ -341,7 +374,7 @@
     <Component class="javax.swing.JButton" name="deleteApplicantButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="14" style="1"/>
+          <Font name="Kannada MN" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="DELETE APPLICANT"/>
       </Properties>

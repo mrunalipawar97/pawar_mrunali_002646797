@@ -98,7 +98,7 @@ public class AssignJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 660, 200));
 
-        assignInsuranceButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        assignInsuranceButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         assignInsuranceButton.setText("ASSIGN PLAN");
         assignInsuranceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
