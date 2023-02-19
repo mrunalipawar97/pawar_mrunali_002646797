@@ -70,12 +70,6 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
         costPerMonthLabel.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         costPerMonthLabel.setText("Cost Per Month");
 
-        planIdTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                planIdTextFieldFocusLost(evt);
-            }
-        });
-
         addPlanButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
         addPlanButton.setText("ADD PLAN");
         addPlanButton.addActionListener(new java.awt.event.ActionListener() {
@@ -195,28 +189,18 @@ public class InsurancePlanJPanel extends javax.swing.JPanel {
         System.out.println("Annual Cost = "+ costPerAnnum);
         InsurancePlans insurancePlan = this.business.getInsurancePlans();
         if (!planIdTextField.getText().isEmpty() || !planNameTextField.getText().isEmpty() || costPerMonthTextField.getText().isEmpty()) {
-            insurancePlan.createInsurancePlan(Integer.valueOf(planId), planName, Double.valueOf(costPerMonth), costPerAnnum);
-            JOptionPane.showMessageDialog(null, "Plan Created");
-            //display insurance plans catelog
-            displayInsurancePlansCatelog();
+            if(insurancePlan.insurancePlanExists(Integer.valueOf(planId), planName)){
+               JOptionPane.showMessageDialog(null, "Plan already exists");
+            }else {
+                insurancePlan.createInsurancePlan(Integer.valueOf(planId), planName, Double.valueOf(costPerMonth), costPerAnnum);
+                JOptionPane.showMessageDialog(null, "Plan Created");
+                 //display insurance plans catelog
+                displayInsurancePlansCatelog();
+            }
         }else {
             JOptionPane.showMessageDialog(null, "Please fill all form fields!");
         }
     }//GEN-LAST:event_addPlanButtonActionPerformed
-
-    private void planIdTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_planIdTextFieldFocusLost
-        // TODO add your handling code here:
-        int planId = Integer.valueOf(planIdTextField.getText());
-        Boolean isUnique = this.business.getInsurancePlans().checkIfInsurancePlanUnique(planId);
-                //getCatelog().checkIfMedicineUnique(name);
-        if(isUnique){
-        
-        }
-        else {
-            planIdTextField.setText("");
-            JOptionPane.showMessageDialog(null,"Plan already exists");
-        }
-    }//GEN-LAST:event_planIdTextFieldFocusLost
 
     private void updatePlanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePlanButtonActionPerformed
         // TODO add your handling code here:

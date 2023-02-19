@@ -62,4 +62,15 @@ public class InsurancePlans {
             }
         }
     }
+    
+    //check if the Insurance plan already exists
+    public Boolean insurancePlanExists(int planID, String planName) {
+        
+        for (PlanDetails p : this.insurancePlanList) {
+            if(p.getPlanId() == planID && p.getPlanName().equals(planName)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

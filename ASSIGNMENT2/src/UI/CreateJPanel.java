@@ -220,20 +220,24 @@ public class CreateJPanel extends javax.swing.JPanel {
         String petGender = genderTextField.getText();
         String petType =  petTypeTextField.getText();
         String petBreed = breedTextField.getText();
-                
-        //ApplicantsDirectory ad = this.business.getAppDirectory();
+
         if(!applicationIdTextField.getText().isEmpty() || !ownerFNameTextField.getText().isEmpty() || !ownerLNameTextField.getText().isEmpty() || jDateChooser.getDate() != null ||
                 !petNameTextField.getText().isEmpty()|| !ageTextField.getText().isEmpty() || 
                 !genderTextField.getText().isEmpty() || !petTypeTextField.getText().isEmpty() ||
                 !breedTextField.getText().isEmpty()) {
             date = sdf.format(jDateChooser.getDate());
-            System.out.println("date : " + date);  
-            appDirectory.createApplicant(Integer.valueOf(id), fName, lName, date, petName,Integer.valueOf(petAge), petGender, petType, petBreed);
-            JOptionPane.showMessageDialog(null, "Added Applicant");
+            System.out.println("date : " + date);
+            if (appDirectory.applicantExists(Integer.valueOf(id), fName, lName)) {
+                JOptionPane.showMessageDialog(null, "Account with this name already exists");
+            } else {
+                appDirectory.createApplicant(Integer.valueOf(id), fName, lName, date, petName,Integer.valueOf(petAge), petGender, petType, petBreed);
+                JOptionPane.showMessageDialog(null, "Added Applicant");
+            }
         }
         else {
             JOptionPane.showMessageDialog(null, "Please fill form fields");
         }
+        
         
     }//GEN-LAST:event_addApplicantButtonActionPerformed
 

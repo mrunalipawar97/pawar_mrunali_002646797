@@ -138,9 +138,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="planIdTextField">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="planIdTextFieldFocusLost"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="planNameTextField">
     </Component>
