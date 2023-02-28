@@ -30,7 +30,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
-        jLabel1.setText(userAccount.getUsername());
+        custNameJLabel.setText(userAccount.getUsername());
     }
 
     /**
@@ -45,10 +45,13 @@ public class CustomerJFrame extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         logoutButton = new javax.swing.JButton();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        orderButton = new javax.swing.JButton();
+        welcomejLabel = new javax.swing.JLabel();
+        custNameJLabel = new javax.swing.JLabel();
+        bookOrderButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,47 +69,44 @@ public class CustomerJFrame extends javax.swing.JFrame {
         });
         jPanel2.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - CUSTOMER");
+        jPanel2.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+
         jSplitPane1.setTopComponent(jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("jLabel1");
+        welcomejLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        welcomejLabel.setText("Welcome ");
+        jPanel3.add(welcomejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 19, 101, 33));
 
-        jLabel2.setText("jLabel2");
+        custNameJLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        jPanel3.add(custNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 19, 127, 33));
 
-        orderButton.setText("ORDER");
-        orderButton.addActionListener(new java.awt.event.ActionListener() {
+        bookOrderButton.setText("Book Request");
+        bookOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderButtonActionPerformed(evt);
+                bookOrderButtonActionPerformed(evt);
             }
         });
+        jPanel3.add(bookOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 457, 135, 33));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(176, 176, 176))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addComponent(orderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(orderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(235, Short.MAX_VALUE))
-        );
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 225, 471, 220));
 
         jSplitPane1.setRightComponent(jPanel3);
 
@@ -121,12 +121,12 @@ public class CustomerJFrame extends javax.swing.JFrame {
         new NewJFrame(this.applicationSystem, this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
-    private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
+    private void bookOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookOrderButtonActionPerformed
         // TODO add your handling code here:
         Customer c = this.applicationSystem.getCustomerDirectory().findById(userAccount.getAccountId());
         RentalRequest o = this.applicationSystem.getRentalRequestDirectory().requestOrder(c);
         c.addCustomerRequest(o);
-    }//GEN-LAST:event_orderButtonActionPerformed
+    }//GEN-LAST:event_bookOrderButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,12 +165,15 @@ public class CustomerJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel AuthorHeaderjLabel;
+    private javax.swing.JButton bookOrderButton;
+    private javax.swing.JLabel custNameJLabel;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JButton orderButton;
+    private javax.swing.JLabel welcomejLabel;
     // End of variables declaration//GEN-END:variables
 }

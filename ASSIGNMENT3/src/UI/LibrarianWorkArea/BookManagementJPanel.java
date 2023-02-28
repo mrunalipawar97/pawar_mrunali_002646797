@@ -34,7 +34,7 @@ public class BookManagementJPanel extends javax.swing.JPanel {
         initComponents();
         this.applicationSystem = applicationSystem;
         this.userAccount= userAccount;
-        this.tableModel = (DefaultTableModel)Jtable.getModel();
+        this.tableModel = (DefaultTableModel)bookCatelogJtable.getModel();
         populateAuthorDetails();
         populateGenreDetails();
     }
@@ -66,29 +66,47 @@ public class BookManagementJPanel extends javax.swing.JPanel {
 
         booknameTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Jtable = new javax.swing.JTable();
+        bookCatelogJtable = new javax.swing.JTable();
         addBookButton = new javax.swing.JButton();
         authorComboBox = new javax.swing.JComboBox<>();
         genreComboBox = new javax.swing.JComboBox<>();
+        booknameTextField1 = new javax.swing.JTextField();
+        booknameTextField2 = new javax.swing.JTextField();
+        bookNamejLabel = new javax.swing.JLabel();
+        noOfPagesjLabel = new javax.swing.JLabel();
+        languagejLabel = new javax.swing.JLabel();
+        authorNamejLabel = new javax.swing.JLabel();
+        genreNameLabel = new javax.swing.JLabel();
+        typeOfBindingjLabel = new javax.swing.JLabel();
+        booknameTextField3 = new javax.swing.JTextField();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(booknameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 110, 40));
+        add(booknameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 170, 30));
 
-        Jtable.setModel(new javax.swing.table.DefaultTableModel(
+        bookCatelogJtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "BookName", "Book Author", "Book Genre"
+                "Book Name", "No of Pages", "Language", "Type Of Binding", "Author Name", "Genre Name"
             }
-        ));
-        jScrollPane1.setViewportView(Jtable);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 250, 210));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(bookCatelogJtable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 650, 210));
 
         addBookButton.setText("ADD BOOK");
         addBookButton.addActionListener(new java.awt.event.ActionListener() {
@@ -96,11 +114,36 @@ public class BookManagementJPanel extends javax.swing.JPanel {
                 addBookButtonActionPerformed(evt);
             }
         });
-        add(addBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 30));
+        add(addBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, -1, 30));
 
-        add(authorComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 140, 110, 40));
+        add(authorComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 170, 30));
 
-        add(genreComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 200, 110, 40));
+        add(genreComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 170, 30));
+        add(booknameTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 170, 30));
+        add(booknameTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 170, 30));
+
+        bookNamejLabel.setText("Book Name");
+        add(bookNamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 127, -1, 30));
+
+        noOfPagesjLabel.setText("No Of Pages");
+        add(noOfPagesjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 187, -1, 20));
+
+        languagejLabel.setText("Language");
+        add(languagejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+
+        authorNamejLabel.setText("Author Name");
+        add(authorNamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+
+        genreNameLabel.setText("Genre Name");
+        add(genreNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, 20));
+
+        typeOfBindingjLabel.setText("Type Of Binding");
+        add(typeOfBindingjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, 30));
+        add(booknameTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 170, 30));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - BOOK CATELOG ");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
@@ -126,11 +169,21 @@ public class BookManagementJPanel extends javax.swing.JPanel {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Jtable;
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JButton addBookButton;
     private javax.swing.JComboBox<String> authorComboBox;
+    private javax.swing.JLabel authorNamejLabel;
+    private javax.swing.JTable bookCatelogJtable;
+    private javax.swing.JLabel bookNamejLabel;
     private javax.swing.JTextField booknameTextField;
+    private javax.swing.JTextField booknameTextField1;
+    private javax.swing.JTextField booknameTextField2;
+    private javax.swing.JTextField booknameTextField3;
     private javax.swing.JComboBox<String> genreComboBox;
+    private javax.swing.JLabel genreNameLabel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel languagejLabel;
+    private javax.swing.JLabel noOfPagesjLabel;
+    private javax.swing.JLabel typeOfBindingjLabel;
     // End of variables declaration//GEN-END:variables
 }

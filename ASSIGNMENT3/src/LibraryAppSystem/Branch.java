@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Librarian;
+package LibraryAppSystem;
 
-import LibraryAppSystem.UserAccount;
-import LibraryAppSystem.UserAccountDirectory;
+import Librarian.Librarian;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,11 +14,13 @@ import LibraryAppSystem.UserAccountDirectory;
 public class Branch {
     
     String branchName;
+    ArrayList<Branch> branchLists;
     Librarian library;
     UserAccountDirectory userAccountDirectory;
 
     public Branch()  {
         library = new Librarian();
+        branchLists = new ArrayList<Branch>();
         userAccountDirectory = new UserAccountDirectory();
     }
 
@@ -36,6 +38,14 @@ public class Branch {
         this.branchName = branchName;
     }
 
+    public ArrayList<Branch> getBranchLists() {
+        return branchLists;
+    }
+
+    public void setBranchLists(ArrayList<Branch> branchLists) {
+        this.branchLists = branchLists;
+    }
+    
     public Librarian getLibrary() {
         return library;
     }
@@ -57,4 +67,12 @@ public class Branch {
         return branchName;
     }
     
+     public Branch findbyBranchName(String name) {
+        for(Branch b: this.branchLists) {
+            if(b.getBranchName().equals(name)) {
+                return b;
+            }
+        }
+        return null;
+    }
 }

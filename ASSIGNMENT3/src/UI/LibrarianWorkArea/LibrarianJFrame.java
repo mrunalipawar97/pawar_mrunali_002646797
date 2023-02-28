@@ -49,6 +49,8 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         bookButton = new javax.swing.JButton();
         genreButton = new javax.swing.JButton();
         OrderButton = new javax.swing.JButton();
+        magazineButton = new javax.swing.JButton();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,7 +75,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 AuthorButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(AuthorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, 30));
+        jPanel2.add(AuthorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, 40));
 
         bookButton.setText("BOOK");
         bookButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +83,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 bookButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(bookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, 30));
+        jPanel2.add(bookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 90, 40));
 
         genreButton.setText("GENRE");
         genreButton.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +91,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 genreButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(genreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, 30));
+        jPanel2.add(genreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 20, -1, 40));
 
         OrderButton.setText("ORDER");
         OrderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +99,19 @@ public class LibrarianJFrame extends javax.swing.JFrame {
                 OrderButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(OrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, 30));
+        jPanel2.add(OrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 20, -1, 40));
+
+        magazineButton.setText("MAGAZINE");
+        magazineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                magazineButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(magazineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 100, 40));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - LIBRARIAN ");
+        jPanel2.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
         jSplitPane1.setTopComponent(jPanel2);
 
@@ -135,6 +149,11 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         jSplitPane1.setRightComponent(new OrderManagementJPanel(applicationSystem, userAccount));
     }//GEN-LAST:event_OrderButtonActionPerformed
+
+    private void magazineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_magazineButtonActionPerformed
+        // TODO add your handling code here:
+         jSplitPane1.setRightComponent(new MagazineManagementJPanel(applicationSystem, userAccount));
+    }//GEN-LAST:event_magazineButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +195,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AuthorButton;
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JButton OrderButton;
     private javax.swing.JButton bookButton;
     private javax.swing.JButton genreButton;
@@ -183,5 +203,6 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JButton magazineButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -47,10 +47,12 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         Jtable = new javax.swing.JTable();
         addGenreButton = new javax.swing.JButton();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 100, 30));
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 120, 30));
 
         Jtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,7 +75,7 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(Jtable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 230, 210));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 230, 210));
 
         addGenreButton.setText("ADD GENRE");
         addGenreButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +83,14 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
                 addGenreButtonActionPerformed(evt);
             }
         });
-        add(addGenreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, 30));
+        add(addGenreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, 30));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - ADD GENRE ");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jLabel1.setText("Genre");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 40, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addGenreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGenreButtonActionPerformed
@@ -104,8 +113,10 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JTable Jtable;
     private javax.swing.JButton addGenreButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameTextField;
     // End of variables declaration//GEN-END:variables

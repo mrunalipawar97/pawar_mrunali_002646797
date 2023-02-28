@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UI.AdminWorkArea;
+package UI.BranchWorkArea;
 
+import UI.LibrarianWorkArea.*;
+import UI.AdminWorkArea.*;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import UI.NewJFrame;
@@ -12,7 +14,7 @@ import UI.NewJFrame;
  *
  * @author mrunalipawar
  */
-public class AdminJFrame extends javax.swing.JFrame {
+public class BranchManagerJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form ManagerJFrame
@@ -20,11 +22,11 @@ public class AdminJFrame extends javax.swing.JFrame {
     
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
-    public AdminJFrame() {
+    public BranchManagerJFrame() {
         initComponents();
     }
     
-     public AdminJFrame(ApplicationSystem applicationSystem, UserAccount userAccount) {
+     public BranchManagerJFrame(ApplicationSystem applicationSystem, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
@@ -44,16 +46,15 @@ public class AdminJFrame extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         logoutButton = new javax.swing.JButton();
-        customerButton = new javax.swing.JButton();
-        branchButton = new javax.swing.JButton();
+        libraryButton = new javax.swing.JButton();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logoutButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -65,29 +66,26 @@ public class AdminJFrame extends javax.swing.JFrame {
         });
         jPanel2.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
-        customerButton.setText("CUSTOMER");
-        customerButton.addActionListener(new java.awt.event.ActionListener() {
+        libraryButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
+        libraryButton.setText("ADD LIBRARIAN");
+        libraryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerButtonActionPerformed(evt);
+                libraryButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(customerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 30));
+        jPanel2.add(libraryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, -1, 30));
 
-        branchButton.setText("BRANCH");
-        branchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                branchButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(branchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, 30));
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - BRANCH MANAGER");
+        jPanel2.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         jSplitPane1.setTopComponent(jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jSplitPane1.setRightComponent(jPanel3);
 
-        getContentPane().add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 662, 484));
+        getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -98,15 +96,10 @@ public class AdminJFrame extends javax.swing.JFrame {
         new NewJFrame(this.applicationSystem, this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
-    private void customerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerButtonActionPerformed
+    private void libraryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new CustomerManagemnetJPanel(applicationSystem, userAccount));
-    }//GEN-LAST:event_customerButtonActionPerformed
-
-    private void branchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchButtonActionPerformed
-        // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new BranchManagementJPanel(applicationSystem, userAccount));
-    }//GEN-LAST:event_branchButtonActionPerformed
+        jSplitPane1.setRightComponent(new LibrarianManagementJPanel(applicationSystem, userAccount));
+    }//GEN-LAST:event_libraryButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,31 +118,37 @@ public class AdminJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BranchManagerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BranchManagerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BranchManagerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BranchManagerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminJFrame().setVisible(true);
+                new BranchManagerJFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton branchButton;
-    private javax.swing.JButton customerButton;
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton libraryButton;
     private javax.swing.JButton logoutButton;
     // End of variables declaration//GEN-END:variables
 }

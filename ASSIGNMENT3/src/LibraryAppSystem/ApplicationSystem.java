@@ -8,6 +8,7 @@ import BookAuthor.AuthorDirectory;
 import BookGenre.GenreDirectory;
 import Books.BooksDirectory;
 import Customer.CustomerDirectory;
+import Employees.EmployeeDirectory;
 import Librarian.Librarian;
 import Services.RentalRequestDirectory;
 
@@ -24,6 +25,8 @@ public class ApplicationSystem {
      private RentalRequestDirectory rentalRequestDirectory;
      private AuthorDirectory authorDirectory;
      private GenreDirectory genreDirectory;
+     private Branch branchCatelog;
+     private EmployeeDirectory employeeDirectory;
     
     public ApplicationSystem () {
          
@@ -34,6 +37,8 @@ public class ApplicationSystem {
         this.bookDirectory = new BooksDirectory();
         this.authorDirectory = new AuthorDirectory();
         this.genreDirectory = new GenreDirectory();
+        this.branchCatelog = new Branch();
+        this.employeeDirectory = new EmployeeDirectory();
      // create a restaurant manager here
         UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", "SYSAdmin");
     }
@@ -99,5 +104,22 @@ public class ApplicationSystem {
         this.genreDirectory = genreDirectory;
     }
 
+    public Branch getBranchCatelog() {
+        return branchCatelog;
+    }
+
+    public void setBranchCatelog(Branch branchCatelog) {
+        this.branchCatelog = branchCatelog;
+    }
+
+    public EmployeeDirectory getEmployeeDirectory() {
+        return employeeDirectory;
+    }
+
+    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
+        this.employeeDirectory = employeeDirectory;
+    }
     
+    
+
 }

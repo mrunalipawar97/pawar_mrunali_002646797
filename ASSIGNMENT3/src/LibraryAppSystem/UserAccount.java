@@ -5,6 +5,7 @@
 package LibraryAppSystem;
 
 import Role.AdminRole;
+import Role.BranchManagerRole;
 import Role.CustomerRole;
 import Role.LibrarianRole;
 import javax.swing.JFrame;
@@ -87,6 +88,9 @@ public class UserAccount {
         }
         if (role.equals("Librarian")) {
             return new LibrarianRole().getWorkArea(applicationSystem, useraccount);
+        }
+        if (role.equals("BranchManager")) {
+            return new BranchManagerRole().getWorkArea(applicationSystem, useraccount);
         }
         return null;
     }

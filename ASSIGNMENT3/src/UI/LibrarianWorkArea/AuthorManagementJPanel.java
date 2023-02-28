@@ -44,28 +44,32 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nameTextField = new javax.swing.JTextField();
+        authorBioTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Jtable = new javax.swing.JTable();
         addAuthorButton = new javax.swing.JButton();
+        authorNameTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 100, -1));
+        add(authorBioTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 130, 30));
 
         Jtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Author Name"
+                "Author Name", "Author Bio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -74,7 +78,7 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(Jtable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 170, 200));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 240, 200));
 
         addAuthorButton.setText("ADD AUTHOR");
         addAuthorButton.addActionListener(new java.awt.event.ActionListener() {
@@ -82,12 +86,23 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
                 addAuthorButtonActionPerformed(evt);
             }
         });
-        add(addAuthorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        add(addAuthorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, 40));
+        add(authorNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 130, 30));
+
+        jLabel1.setText("Author Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 30));
+
+        jLabel2.setText("Author Bio");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 70, 30));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - ADD AUTHORS ");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAuthorButtonActionPerformed
         // TODO add your handling code here:
-        Author g = this.applicationSystem.getAuthorDirectory().createAuthor(nameTextField.getText());
+        Author g = this.applicationSystem.getAuthorDirectory().createAuthor(authorBioTextField.getText());
         populate();
     }//GEN-LAST:event_addAuthorButtonActionPerformed
 
@@ -102,9 +117,13 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JTable Jtable;
     private javax.swing.JButton addAuthorButton;
+    private javax.swing.JTextField authorBioTextField;
+    private javax.swing.JTextField authorNameTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nameTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,7 +32,7 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
         initComponents();
         this.applicationSystem = applicationSystem;
         this.userAccount= userAccount;
-        this.tableModel = (DefaultTableModel)Jtable.getModel();
+        this.tableModel = (DefaultTableModel)customerRecordsJtable.getModel();
         populate();
     }
     
@@ -67,14 +67,18 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
         passTextField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Jtable = new javax.swing.JTable();
+        customerRecordsJtable = new javax.swing.JTable();
+        nameJLabel = new javax.swing.JLabel();
+        ageJLabel = new javax.swing.JLabel();
+        usernamejLabel = new javax.swing.JLabel();
+        passwordJLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 60, 100, -1));
-        add(ageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 110, 100, -1));
-        add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 170, 100, -1));
-        add(passTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 230, 100, -1));
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 110, 30));
+        add(ageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 110, 30));
+        add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 203, 110, 30));
+        add(passTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 263, 110, 30));
 
         addButton.setText("ADD CUSTOMER");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -82,9 +86,9 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
                 addButtonActionPerformed(evt);
             }
         });
-        add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, 30));
 
-        Jtable.setModel(new javax.swing.table.DefaultTableModel(
+        customerRecordsJtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -103,9 +107,21 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(Jtable);
+        jScrollPane1.setViewportView(customerRecordsJtable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 370, 270));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 370, 270));
+
+        nameJLabel.setText("Name");
+        add(nameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 80, 40, 30));
+
+        ageJLabel.setText("Age");
+        add(ageJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 60, 30));
+
+        usernamejLabel.setText("Username");
+        add(usernamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 20));
+
+        passwordJLabel.setText("Password");
+        add(passwordJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
@@ -124,12 +140,16 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Jtable;
     private javax.swing.JButton addButton;
+    private javax.swing.JLabel ageJLabel;
     private javax.swing.JTextField ageTextField;
+    private javax.swing.JTable customerRecordsJtable;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nameJLabel;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JTextField passTextField;
+    private javax.swing.JLabel passwordJLabel;
     private javax.swing.JTextField usernameTextField;
+    private javax.swing.JLabel usernamejLabel;
     // End of variables declaration//GEN-END:variables
 }

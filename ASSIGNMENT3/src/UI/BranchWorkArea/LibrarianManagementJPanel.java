@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UI.AdminWorkArea;
+package UI.BranchWorkArea;
 
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
@@ -64,20 +64,22 @@ public class LibrarianManagementJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nameTextField = new javax.swing.JTextField();
-        ageTextField = new javax.swing.JTextField();
-        usernameTextField = new javax.swing.JTextField();
-        passTextField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Jtable = new javax.swing.JTable();
+        employeeIdTextField = new javax.swing.JTextField();
+        designationTextField = new javax.swing.JTextField();
+        experienceTextField = new javax.swing.JTextField();
+        passwordTextField = new javax.swing.JTextField();
+        usernameTextField = new javax.swing.JTextField();
+        empIdjLabel = new javax.swing.JLabel();
+        experiencejLabel = new javax.swing.JLabel();
+        designationJLabel = new javax.swing.JLabel();
+        usernameJLabel = new javax.swing.JLabel();
+        passwordJLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 60, 100, -1));
-        add(ageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 110, 100, -1));
-        add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 170, 100, -1));
-        add(passTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 230, 100, -1));
 
         addButton.setText("ADD LIBRARIAN");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +87,7 @@ public class LibrarianManagementJPanel extends javax.swing.JPanel {
                 addButtonActionPerformed(evt);
             }
         });
-        add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
 
         Jtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,18 +110,38 @@ public class LibrarianManagementJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(Jtable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 370, 270));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 370, 270));
+        add(employeeIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 120, 30));
+        add(designationTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 120, 30));
+        add(experienceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 120, 30));
+        add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 120, 30));
+        add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 120, 30));
+
+        empIdjLabel.setText("Employee ID");
+        add(empIdjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 30));
+
+        experiencejLabel.setText("Experience");
+        add(experiencejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
+
+        designationJLabel.setText("Designation");
+        add(designationJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 30));
+
+        usernameJLabel.setText("Username");
+        add(usernameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, 30));
+
+        passwordJLabel.setText("Password");
+        add(passwordJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
 
         UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
-        if(ua.accountExists(usernameTextField.getText(), passTextField.getText(), "Librarian")) {
+        if(ua.accountExists(usernameTextField.getText(), passwordTextField.getText(), "Librarian")) {
             JOptionPane.showMessageDialog(null, "Sorry  credentials are taken");
 
         }else {
-            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passTextField.getText(), "Librarian");
+            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), "Librarian");
            // this.applicationSystem.getLibrarian().createLibrarian(user.getAccountId(), ageTextField.getText(), ageTextField.getText());
             populate();
         }
@@ -129,10 +151,16 @@ public class LibrarianManagementJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Jtable;
     private javax.swing.JButton addButton;
-    private javax.swing.JTextField ageTextField;
+    private javax.swing.JLabel designationJLabel;
+    private javax.swing.JTextField designationTextField;
+    private javax.swing.JLabel empIdjLabel;
+    private javax.swing.JTextField employeeIdTextField;
+    private javax.swing.JTextField experienceTextField;
+    private javax.swing.JLabel experiencejLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField passTextField;
+    private javax.swing.JLabel passwordJLabel;
+    private javax.swing.JTextField passwordTextField;
+    private javax.swing.JLabel usernameJLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
