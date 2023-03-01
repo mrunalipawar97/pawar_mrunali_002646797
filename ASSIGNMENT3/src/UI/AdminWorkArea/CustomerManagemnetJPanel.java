@@ -72,6 +72,7 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
         ageJLabel = new javax.swing.JLabel();
         usernamejLabel = new javax.swing.JLabel();
         passwordJLabel = new javax.swing.JLabel();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,6 +123,10 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
 
         passwordJLabel.setText("Password");
         add(passwordJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("CUSTOMERS CATELOG");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
@@ -140,6 +145,7 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JButton addButton;
     private javax.swing.JLabel ageJLabel;
     private javax.swing.JTextField ageTextField;

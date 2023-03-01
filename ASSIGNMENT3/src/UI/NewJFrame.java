@@ -71,6 +71,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
         usernameTextField.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jPanel1.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 189, 180, 40));
+
+        passwordTextField.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jPanel1.add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 266, 180, 40));
 
         loginButton.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N

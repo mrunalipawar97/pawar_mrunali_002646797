@@ -82,6 +82,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         branchManagerJtable = new javax.swing.JTable();
         deleteBranchButton = new javax.swing.JButton();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,8 +95,8 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
                 addBranchManagerButtonActionPerformed(evt);
             }
         });
-        add(addBranchManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, -1, 30));
-        add(branchNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 120, 40));
+        add(addBranchManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, 30));
+        add(branchNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 120, 40));
 
         addBranchNameButton.setText("ADD BRANCH");
         addBranchNameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +104,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
                 addBranchNameButtonActionPerformed(evt);
             }
         });
-        add(addBranchNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, 30));
+        add(addBranchNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, 30));
         add(experienceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 120, 30));
         add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 120, 30));
         add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 120, 30));
@@ -124,7 +125,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         add(passwordJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 407, -1, 20));
 
         branchNameJLabel.setText("Branch Name");
-        add(branchNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 30));
+        add(branchNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 30));
 
         branchManagerJtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,7 +148,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(branchManagerJtable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 570, 270));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 570, 230));
 
         deleteBranchButton.setText("Delete Branch");
         deleteBranchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +156,11 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
                 deleteBranchButtonActionPerformed(evt);
             }
         });
-        add(deleteBranchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, -1, 30));
+        add(deleteBranchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, -1, 30));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("ADD BRANCH MANAGER");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteBranchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBranchButtonActionPerformed
@@ -182,6 +187,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JButton addBranchManagerButton;
     private javax.swing.JButton addBranchNameButton;
     private javax.swing.JTable branchManagerJtable;

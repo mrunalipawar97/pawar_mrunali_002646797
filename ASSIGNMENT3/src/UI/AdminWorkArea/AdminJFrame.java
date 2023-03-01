@@ -46,10 +46,10 @@ public class AdminJFrame extends javax.swing.JFrame {
         logoutButton = new javax.swing.JButton();
         customerButton = new javax.swing.JButton();
         branchButton = new javax.swing.JButton();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
@@ -63,23 +63,29 @@ public class AdminJFrame extends javax.swing.JFrame {
                 logoutButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
+        jPanel2.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 40));
 
-        customerButton.setText("CUSTOMER");
+        customerButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
+        customerButton.setText("ADD CUSTOMER");
         customerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customerButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(customerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 30));
+        jPanel2.add(customerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, -1, 40));
 
-        branchButton.setText("BRANCH");
+        branchButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
+        branchButton.setText("ADD BRANCH");
         branchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 branchButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(branchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, 30));
+        jPanel2.add(branchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, 40));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - ADMIN");
+        jPanel2.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
 
         jSplitPane1.setTopComponent(jPanel2);
 
@@ -87,7 +93,7 @@ public class AdminJFrame extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jSplitPane1.setRightComponent(jPanel3);
 
-        getContentPane().add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 662, 484));
+        getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,6 +151,7 @@ public class AdminJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JButton branchButton;
     private javax.swing.JButton customerButton;
     private javax.swing.JPanel jPanel2;
