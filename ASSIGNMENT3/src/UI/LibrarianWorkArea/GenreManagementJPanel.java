@@ -8,6 +8,7 @@ import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import BookGenre.Genre;
 import BookGenre.GenreDirectory;
+import LibraryAppSystem.Branch;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,16 +23,19 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
     
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
+    private Branch branch;
     DefaultTableModel tableModel;
     public GenreManagementJPanel() {
         initComponents();
     }
 
-    GenreManagementJPanel(ApplicationSystem applicationSystem, UserAccount userAccount) {
-          initComponents();
+    GenreManagementJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+        initComponents();
         this.applicationSystem = applicationSystem;
+        this.branch = branch;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)Jtable.getModel();
+        populateGenrecatelog();
     }
 
     /**
@@ -86,7 +90,7 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
         add(addGenreButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, 30));
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - ADD GENRE ");
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - GENRE CATELOG ");
         add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jLabel1.setText("Genre");
@@ -98,12 +102,12 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
         //GenreDirectory ua = this.applicationSystem.getGenreDirectory().getGenreDirectory();
         
         Genre g = this.applicationSystem.getGenreDirectory().createGenre(nameTextField.getText());
-        populate();
+        populateGenrecatelog();
     }//GEN-LAST:event_addGenreButtonActionPerformed
 
-    public void populate() {
+    public void populateGenrecatelog() {
         tableModel.setRowCount(0);
-        for (Genre b : this.applicationSystem.getGenreDirectory().getGenreDirectory()) {
+        for (Genre b : this.applicationSystem.getGenreDirectory().getGenreLists()) {
             //UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(b.getBookName());
             Object[] row = new Object[1];
             row[0] = b.getName();

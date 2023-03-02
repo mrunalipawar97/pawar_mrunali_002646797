@@ -50,7 +50,7 @@ public class BooksDirectory {
         return null;
     }
     
-    public Book createBook(int serialNo, String name, String date, boolean isAvaialable, int noOfPages, String language, String typeOfBind, Author author, Genre genre) {
+   /* public Book createBook(int serialNo, String name, String date, boolean isAvaialable, int noOfPages, String language, String typeOfBind, Author author, Genre genre) {
         Book b = new Book();
         b.setSerialNumber(serialNo);
         b.setName(name);
@@ -64,6 +64,21 @@ public class BooksDirectory {
                 
         this.booklists.add(b);
         return b;       
-    }
+    }*/
    
+    public Book createBook(String name, int noOfPages, String language, String typeOfBind, String author, String genre) {
+        Book b = new Book();
+       
+        b.setName(name);
+        b.setNoOfPages(noOfPages);
+        b.setLanguage(language);
+        b.setTypeOfBinding(typeOfBind);
+        b.setAuthorname(author);
+        b.setGenreName(genre);
+                
+        this.booklists.add(b);
+        return b;
+    
+     }
+                
 }

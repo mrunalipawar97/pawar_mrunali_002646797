@@ -7,6 +7,7 @@ package UI.CustomerWorkArea;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import Customer.Customer;
+import LibraryAppSystem.Branch;
 import Services.RentalRequest;
 import UI.NewJFrame;
 
@@ -21,14 +22,16 @@ public class CustomerJFrame extends javax.swing.JFrame {
      */
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
+    private Branch branch;
     public CustomerJFrame() {
         initComponents();
     }
     
-    public CustomerJFrame(ApplicationSystem applicationSystem, UserAccount userAccount) {
+    public CustomerJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
+        this.branch = branch;
         this.userAccount = userAccount;
         custNameJLabel.setText(userAccount.getUsername());
     }
@@ -52,6 +55,10 @@ public class CustomerJFrame extends javax.swing.JFrame {
         bookOrderButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        pastRequestHistoryButton = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        addRequestButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,9 +98,35 @@ public class CustomerJFrame extends javax.swing.JFrame {
                 bookOrderButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(bookOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 457, 135, 33));
+        jPanel3.add(bookOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 135, 33));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Item ID", "Item Name", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 310, 220));
+
+        pastRequestHistoryButton.setText("PAST REQUEST HISTORY");
+        jPanel3.add(pastRequestHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, 30));
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -101,12 +134,26 @@ public class CustomerJFrame extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Item ID", "Item Name", "Price", "Availability"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+            };
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 225, 471, 220));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(3).setHeaderValue("Type of Material");
+        }
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 310, 220));
+
+        addRequestButton.setText("ADD ITEM");
+        jPanel3.add(addRequestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, 30));
 
         jSplitPane1.setRightComponent(jPanel3);
 
@@ -118,7 +165,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.userAccount);
+        new NewJFrame(this.applicationSystem, this.branch,this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void bookOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookOrderButtonActionPerformed
@@ -166,14 +213,18 @@ public class CustomerJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AuthorHeaderjLabel;
+    private javax.swing.JButton addRequestButton;
     private javax.swing.JButton bookOrderButton;
     private javax.swing.JLabel custNameJLabel;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable3;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JButton pastRequestHistoryButton;
     private javax.swing.JLabel welcomejLabel;
     // End of variables declaration//GEN-END:variables
 }

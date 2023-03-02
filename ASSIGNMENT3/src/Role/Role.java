@@ -3,6 +3,7 @@ package Role;
 
 
 import LibraryAppSystem.ApplicationSystem;
+import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import javax.swing.JFrame;
 
@@ -24,6 +25,6 @@ public abstract class Role {
     }
     
     
-    public abstract JFrame getWorkArea(ApplicationSystem applicationSystem, UserAccount useraccount);
+    public abstract JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount useraccount);
     
 }

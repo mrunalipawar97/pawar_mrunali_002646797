@@ -5,6 +5,7 @@
 package UI;
 
 import LibraryAppSystem.ApplicationSystem;
+import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import LibraryAppSystem.UserAccountDirectory;
 import javax.swing.JOptionPane;
@@ -22,6 +23,9 @@ public class NewJFrame extends javax.swing.JFrame {
     
     private UserAccountDirectory userAccountDirectory;
     
+    private UserAccount userAccount;
+    private Branch branch;
+    
     public NewJFrame() {
         initComponents();
         this.applicationSystem = ApplicationSystem.getBusinessInstance();
@@ -29,12 +33,13 @@ public class NewJFrame extends javax.swing.JFrame {
         populateDropdown();
     }
 
-    public NewJFrame(ApplicationSystem applicationSystem, UserAccount useraccount) {
+    public NewJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
 
         this.applicationSystem = applicationSystem;
-        this.userAccountDirectory = applicationSystem.getUserAccountDirectory();
+        this.userAccount = userAccount;
+        this.branch = branch;
         populateDropdown();
     }
     
@@ -69,10 +74,10 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        usernameTextField.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        usernameTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jPanel1.add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 189, 180, 40));
 
-        passwordTextField.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        passwordTextField.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jPanel1.add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 266, 180, 40));
 
         loginButton.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
@@ -110,11 +115,25 @@ public class NewJFrame extends javax.swing.JFrame {
         String password = passwordTextField.getText();
         String role = (String) roleComboBox.getSelectedItem();
         
-        if(this.userAccountDirectory.accountExists(username, password, role)) {
-            UserAccount user = this.userAccountDirectory.getUserAccount(username, password, role);
+         Boolean foundUser = false;
+        
+        if(this.applicationSystem.getUserAccountDirectory().authenticateUser(username, password) != null) {
+            UserAccount user = this.applicationSystem.getUserAccountDirectory().authenticateUser(username, password);
+            foundUser = true;
+            user.getRole().getWorkArea(applicationSystem, branch, userAccount);
             this.setVisible(false);
-            user.getWorkArea(role, applicationSystem, user);
-        }else {
+        } else {
+            for(Branch branch: this.applicationSystem.getBranchLists()) {
+                if(branch.getBranchuseraccountDirectory().authenticateUser(username, password) != null) {
+                    UserAccount branchUser = branch.getBranchuseraccountDirectory().authenticateUser(username, password);
+                    foundUser = true;
+                    branchUser.getRole().getWorkArea(applicationSystem, branch, userAccount);
+                    this.setVisible(false);
+                }
+            }
+        }
+        // if user not found
+        if(!foundUser) {
             JOptionPane.showMessageDialog(null, "Invalid Credentials");
         }
     }//GEN-LAST:event_loginButtonActionPerformed

@@ -8,6 +8,7 @@ import Role.AdminRole;
 import Role.BranchManagerRole;
 import Role.CustomerRole;
 import Role.LibrarianRole;
+import Role.Role;
 import javax.swing.JFrame;
 
 /**
@@ -21,17 +22,17 @@ public class UserAccount {
     private String username;
     private String password;
     
-    private String role;
-    
+    private Role role;
+
     public UserAccount() {
-        this.accountId = "ACC" +count++;
+        this.accountId = "User" + this.count++;
         this.username = username;
         this.password = password;
         this.role = role;
     }
     
-    public UserAccount(String username, String password, String role) {
-        this.accountId = role+count++;
+    public UserAccount(String username, String password, Role role) {
+        this.accountId = "user" + this.count++;
         this.username = username;
         this.password = password;
         this.role = role;
@@ -69,29 +70,29 @@ public class UserAccount {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
    
     
-    public JFrame getWorkArea(String role, ApplicationSystem applicationSystem, UserAccount useraccount) {
+    /*public JFrame getWorkArea(String role, ApplicationSystem applicationSystem,Branch branch, UserAccount userAccount) {
         // the abstract class way
         if (role.equals("SYSAdmin")) {
-            return new AdminRole().getWorkArea(applicationSystem, useraccount);
+            return new AdminRole().getWorkArea(applicationSystem, branch, userAccount);
         }
         if (role.equals("Customer")) {
-            return new CustomerRole().getWorkArea(applicationSystem, useraccount);
+            return new CustomerRole().getWorkArea(applicationSystem, branch, userAccount);
         }
         if (role.equals("Librarian")) {
-            return new LibrarianRole().getWorkArea(applicationSystem, useraccount);
+            return new LibrarianRole().getWorkArea(applicationSystem, branch, userAccount);
         }
         if (role.equals("BranchManager")) {
-            return new BranchManagerRole().getWorkArea(applicationSystem, useraccount);
+            return new BranchManagerRole().getWorkArea(applicationSystem, branch, userAccount);
         }
         return null;
-    }
+    }*/
 }

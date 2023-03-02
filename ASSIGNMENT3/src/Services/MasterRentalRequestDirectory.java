@@ -12,11 +12,11 @@ import java.util.ArrayList;
  *
  * @author mrunalipawar
  */
-public class RentalRequestDirectory {
+public class MasterRentalRequestDirectory {
     
      ArrayList<RentalRequest> orderlist;
     
-    public RentalRequestDirectory (){
+    public MasterRentalRequestDirectory (){
         this.orderlist = new ArrayList<RentalRequest> ();
         
     }

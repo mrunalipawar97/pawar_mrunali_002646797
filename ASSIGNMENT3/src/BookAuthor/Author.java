@@ -10,22 +10,31 @@ package BookAuthor;
  */
 public class Author {
     
-    String name;
+    String authorName;
+    String authorBio;
     
     public Author() {
         
     }
 
-    public String getName() {
-        return name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
-    
+
+    public String getAuthorBio() {
+        return authorBio;
+    }
+
+    public void setAuthorBio(String authorBio) {
+        this.authorBio = authorBio;
+    }
+
     @Override
     public String toString(){
-        return name;
+        return authorName;
     }
 }

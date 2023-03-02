@@ -5,7 +5,6 @@
 package LibraryAppSystem;
 
 import Librarian.Librarian;
-import java.util.ArrayList;
 
 /**
  *
@@ -14,20 +13,13 @@ import java.util.ArrayList;
 public class Branch {
     
     String branchName;
-    ArrayList<Branch> branchLists;
     Librarian library;
-    UserAccountDirectory userAccountDirectory;
+    UserAccountDirectory branchuseraccountDirectory;
 
-    public Branch()  {
+    public Branch(String branchName)  {
         library = new Librarian();
-        branchLists = new ArrayList<Branch>();
-        userAccountDirectory = new UserAccountDirectory();
-    }
-
-    public Branch(String branchName, Librarian library, UserAccountDirectory userAccountDirectory) {
         this.branchName = branchName;
-        this.library = library;
-        this.userAccountDirectory = userAccountDirectory;
+        branchuseraccountDirectory = new UserAccountDirectory();
     }
 
     public String getBranchName() {
@@ -36,14 +28,6 @@ public class Branch {
 
     public void setBranchName(String branchName) {
         this.branchName = branchName;
-    }
-
-    public ArrayList<Branch> getBranchLists() {
-        return branchLists;
-    }
-
-    public void setBranchLists(ArrayList<Branch> branchLists) {
-        this.branchLists = branchLists;
     }
     
     public Librarian getLibrary() {
@@ -54,25 +38,17 @@ public class Branch {
         this.library = library;
     }
 
-    public UserAccountDirectory getUserAccountDirectory() {
-        return userAccountDirectory;
+    public UserAccountDirectory getBranchuseraccountDirectory() {
+        return branchuseraccountDirectory;
     }
 
-    public void setUserAccountDirectory(UserAccountDirectory userAccountDirectory) {
-        this.userAccountDirectory = userAccountDirectory;
+    public void setBranchuseraccountDirectory(UserAccountDirectory branchuseraccountDirectory) {
+        this.branchuseraccountDirectory = branchuseraccountDirectory;
     }
-    
+
     @Override
     public String toString(){
         return branchName;
     }
-    
-     public Branch findbyBranchName(String name) {
-        for(Branch b: this.branchLists) {
-            if(b.getBranchName().equals(name)) {
-                return b;
-            }
-        }
-        return null;
-    }
+   
 }

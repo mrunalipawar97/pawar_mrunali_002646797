@@ -4,12 +4,10 @@
  */
 package UI.AdminWorkArea;
 
-import Customer.Customer;
-import Employees.Employee;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
-import LibraryAppSystem.UserAccountDirectory;
+import Role.BranchManagerRole;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +22,10 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
      */
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
+    private Branch branch;
+
     DefaultTableModel tableModel;
+    
     public BranchManagementJPanel() {
         initComponents();
     }
@@ -39,17 +40,17 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
     
     public void populateBranchManagerCatelog() {
         tableModel.setRowCount(0);
-        for (Branch branch : this.applicationSystem.getBranchCatelog().getBranchLists()) {
+        for (Branch branch : this.applicationSystem.getBranchLists()) {
 
-            Employee e = this.applicationSystem.getEmployeeDirectory().findByEmployeeName(branch.getBranchName());
-            UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(e.getPersonId());
-            Object[] row = new Object[5];
-            row[0] = e;
-            row[1] = e.getExperience();
-            row[2] = e.getDesignation();
-            row[3] = u.getUsername();
-            row[4] = u.getPassword();
-     
+           // Employee e = this.applicationSystem.getEmployeeDirectory().findByEmployeeName(branch.getBranchName());
+            //UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(e.getPersonId());
+            Object[] row = new Object[6];
+            row[0] = employeeIdTextField.getText();
+            row[1] = Double.valueOf(experienceTextField.getText());
+            row[2] = designationTextField.getText();
+            row[3] = usernameTextField.getText();
+            row[4] = passwordTextField.getText();
+            row[5] = branchNameTextField.getText();
             tableModel.addRow(row);
             
         }
@@ -129,17 +130,17 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
 
         branchManagerJtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Emp ID", "Experience", "Designation", "USERNAME", "PASSWORD"
+                "Emp ID", "Experience", "Designation", "USERNAME", "PASSWORD", "Branch Name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -148,7 +149,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(branchManagerJtable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 570, 230));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 620, 230));
 
         deleteBranchButton.setText("Delete Branch");
         deleteBranchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -159,30 +160,42 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         add(deleteBranchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, -1, 30));
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("ADD BRANCH MANAGER");
+        AuthorHeaderjLabel.setText("BRANCH MANAGER CATELOG");
         add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteBranchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBranchButtonActionPerformed
         // TODO add your handling code here:
+        int selectedRow = branchManagerJtable.getSelectedRow();
+                
+         if(selectedRow >=0) {
+             //we will delete the object
+             Branch applicant  = (Branch) branchManagerJtable.getValueAt(selectedRow, 0);
+             this.applicationSystem.removeBranch(applicant.getBranchName());
+             populateBranchManagerCatelog();
+         }  
+         else {
+             
+         }
     }//GEN-LAST:event_deleteBranchButtonActionPerformed
 
     private void addBranchNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchNameButtonActionPerformed
         // TODO add your handling code here:
         
+        // check for unique branch name
+        this.branch = this.applicationSystem.createBranch(branchNameTextField.getText());
+        
     }//GEN-LAST:event_addBranchNameButtonActionPerformed
 
     private void addBranchManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchManagerButtonActionPerformed
         // TODO add your handling code here:
-        UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
-        if(ua.accountExists(usernameTextField.getText(), passwordTextField.getText(), "BranchManager")) {
-            JOptionPane.showMessageDialog(null, "Sorry  credentials are taken");
-            
-        }else {
-            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), "BranchManager");
-            this.applicationSystem.getEmployeeDirectory().createEmployee(user.getAccountId(), Integer.valueOf(employeeIdTextField.getText()), Double.valueOf(experienceTextField.getText()),designationTextField.getText());
-            populateBranchManagerCatelog();
-        }
+        
+            if (employeeIdTextField.getText() != "" || experienceTextField.getText() != "" || designationTextField.getText() != "") {
+                this.branch.getBranchuseraccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), new BranchManagerRole());
+                populateBranchManagerCatelog();
+            } else {
+                JOptionPane.showMessageDialog(null, "Create a new branch by filling the branch field to add it's branch manager.");
+            }
     }//GEN-LAST:event_addBranchManagerButtonActionPerformed
 
 

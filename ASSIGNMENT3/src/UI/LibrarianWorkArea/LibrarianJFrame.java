@@ -6,6 +6,7 @@ package UI.LibrarianWorkArea;
 
 import UI.AdminWorkArea.*;
 import LibraryAppSystem.ApplicationSystem;
+import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import UI.NewJFrame;
 
@@ -21,15 +22,17 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
+    private Branch branch;
     public LibrarianJFrame() {
         initComponents();
     }
     
-     public LibrarianJFrame(ApplicationSystem applicationSystem, UserAccount userAccount) {
+     public LibrarianJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
+        this.branch = branch;
                 
     }
 
@@ -127,32 +130,32 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.userAccount);
+        new NewJFrame(this.applicationSystem, this.branch, this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void AuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AuthorButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new AuthorManagementJPanel(applicationSystem, userAccount));
+        jSplitPane1.setRightComponent(new AuthorManagementJPanel(applicationSystem,this.branch, userAccount));
     }//GEN-LAST:event_AuthorButtonActionPerformed
 
     private void genreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new GenreManagementJPanel(applicationSystem, userAccount));
+        jSplitPane1.setRightComponent(new GenreManagementJPanel(applicationSystem,this.branch, userAccount));
     }//GEN-LAST:event_genreButtonActionPerformed
 
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new BookManagementJPanel(applicationSystem, userAccount));
+        jSplitPane1.setRightComponent(new BookManagementJPanel(applicationSystem, this.branch,userAccount));
     }//GEN-LAST:event_bookButtonActionPerformed
 
     private void OrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new OrderManagementJPanel(applicationSystem, userAccount));
+        jSplitPane1.setRightComponent(new OrderManagementJPanel(applicationSystem,this.branch, userAccount));
     }//GEN-LAST:event_OrderButtonActionPerformed
 
     private void magazineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_magazineButtonActionPerformed
         // TODO add your handling code here:
-         jSplitPane1.setRightComponent(new MagazineManagementJPanel(applicationSystem, userAccount));
+         jSplitPane1.setRightComponent(new MagazineManagementJPanel(applicationSystem, this.branch, userAccount));
     }//GEN-LAST:event_magazineButtonActionPerformed
 
     /**

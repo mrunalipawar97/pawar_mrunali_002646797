@@ -5,6 +5,7 @@
 package UI.AdminWorkArea;
 
 import LibraryAppSystem.ApplicationSystem;
+import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import UI.NewJFrame;
 
@@ -20,16 +21,17 @@ public class AdminJFrame extends javax.swing.JFrame {
     
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
+    private Branch branch;
     public AdminJFrame() {
         initComponents();
     }
     
-     public AdminJFrame(ApplicationSystem applicationSystem, UserAccount userAccount) {
+     public AdminJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
-                
+        this.branch = branch;        
     }
 
     /**
@@ -101,7 +103,7 @@ public class AdminJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.userAccount);
+        new NewJFrame(this.applicationSystem,this.branch, this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void customerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerButtonActionPerformed

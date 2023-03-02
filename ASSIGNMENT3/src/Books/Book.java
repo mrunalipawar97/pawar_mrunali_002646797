@@ -18,7 +18,9 @@ public class Book extends Material{
     String language;
     String typeOfBinding;
     Author author;
+    String authorname;
     Genre genre;
+    String genreName;
 
     public Book() {
         super();
@@ -75,6 +77,23 @@ public class Book extends Material{
         this.genre = genre;
     }
 
+    public String getAuthorname() {
+        return authorname;
+    }
+
+    public void setAuthorname(String authorname) {
+        this.authorname = authorname;
+    }
+
+    public String getGenreName() {
+        return genreName;
+    }
+
+    public void setGenreName(String genreName) {
+        this.genreName = genreName;
+    }
+
+    
    
     @Override
     public String toString(){

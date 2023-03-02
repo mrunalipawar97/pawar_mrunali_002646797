@@ -7,6 +7,7 @@ package UI.LibrarianWorkArea;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import BookAuthor.Author;
+import LibraryAppSystem.Branch;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,18 +22,20 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
     
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
+    private Branch branch;
     DefaultTableModel tableModel;
     public AuthorManagementJPanel() {
         initComponents();
     }
 
-    AuthorManagementJPanel(ApplicationSystem applicationSystem, UserAccount userAccount) {
+    AuthorManagementJPanel(ApplicationSystem applicationSystem, Branch branch,UserAccount userAccount) {
        
         initComponents();
         this.applicationSystem = applicationSystem;
+        this.branch = branch;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)Jtable.getModel();
-        //populate();
+        populateAuthorCatelog();
     }
 
     /**
@@ -96,22 +99,22 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 70, 30));
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - ADD AUTHORS ");
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - AUTHORS CATELOG");
         add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAuthorButtonActionPerformed
         // TODO add your handling code here:
-        Author g = this.applicationSystem.getAuthorDirectory().createAuthor(authorBioTextField.getText());
-        populate();
+        Author a = this.applicationSystem.getAuthorDirectory().createAuthor(authorNameTextField.getText(), authorBioTextField.getText());
+        populateAuthorCatelog();
     }//GEN-LAST:event_addAuthorButtonActionPerformed
 
-     public void populate() {
+     public void populateAuthorCatelog() {
         tableModel.setRowCount(0);
-        for (Author b : this.applicationSystem.getAuthorDirectory().getAuthorDirectory()) {
-            //UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(b.getBookName());
-            Object[] row = new Object[1];
-            row[0] = b.getName();
+        for (Author b : this.applicationSystem.getAuthorDirectory().getAuthorsList()) {
+            Object[] row = new Object[2];
+            row[0] = b.getAuthorName();
+            row[1] = b.getAuthorBio();
             tableModel.addRow(row);  
         }
     }

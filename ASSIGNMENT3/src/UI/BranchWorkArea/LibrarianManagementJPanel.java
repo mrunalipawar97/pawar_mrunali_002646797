@@ -9,6 +9,7 @@ import LibraryAppSystem.UserAccount;
 import LibraryAppSystem.UserAccountDirectory;
 import Customer.Customer;
 import Librarian.Librarian;
+import Role.LibrarianRole;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -77,6 +78,7 @@ public class LibrarianManagementJPanel extends javax.swing.JPanel {
         designationJLabel = new javax.swing.JLabel();
         usernameJLabel = new javax.swing.JLabel();
         passwordJLabel = new javax.swing.JLabel();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -131,17 +133,21 @@ public class LibrarianManagementJPanel extends javax.swing.JPanel {
 
         passwordJLabel.setText("Password");
         add(passwordJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 30));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARIAN CATELOG");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
 
         UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
-        if(ua.accountExists(usernameTextField.getText(), passwordTextField.getText(), "Librarian")) {
+        if(ua.accountExists(usernameTextField.getText(), passwordTextField.getText(), new LibrarianRole())) {
             JOptionPane.showMessageDialog(null, "Sorry  credentials are taken");
 
         }else {
-            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), "Librarian");
+            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(),new LibrarianRole());
            // this.applicationSystem.getLibrarian().createLibrarian(user.getAccountId(), ageTextField.getText(), ageTextField.getText());
             populate();
         }
@@ -149,6 +155,7 @@ public class LibrarianManagementJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JTable Jtable;
     private javax.swing.JButton addButton;
     private javax.swing.JLabel designationJLabel;

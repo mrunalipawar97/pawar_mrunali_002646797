@@ -5,6 +5,7 @@
 package UI.LibrarianWorkArea;
 
 import LibraryAppSystem.ApplicationSystem;
+import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import Services.RentalRequest;
 import javax.swing.table.DefaultTableModel;
@@ -20,14 +21,16 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
      */
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
+    private Branch branch;
     DefaultTableModel tableModel;
     public OrderManagementJPanel() {
         initComponents();
     }
 
-    OrderManagementJPanel(ApplicationSystem applicationSystem, UserAccount userAccount) {
+    OrderManagementJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.applicationSystem = applicationSystem;
+        this.branch = branch;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel) orderRequestTable.getModel();
         populateRentalRequestOrder();
@@ -36,12 +39,13 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
     public void populateRentalRequestOrder() {
         tableModel.setRowCount(0);
         for (RentalRequest o : this.applicationSystem.getRentalRequestDirectory().getOrderlist()){
-            Object [] row = new Object[3];
+  
+            Object [] row = new Object[4];
             
             row[0] = o;
             row[1] = o.getCustomer().getName();
-            row[2] = o.getStatus();
-            
+            row[2] = o.getLibrarian().getName();
+            row[3] = o.getStatus();
             tableModel.addRow(row);
         }
     }

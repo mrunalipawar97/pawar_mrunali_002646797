@@ -12,24 +12,25 @@ import java.util.ArrayList;
  */
 public class AuthorDirectory {
     
-     ArrayList<Author> authorDirectory;
+     ArrayList<Author> authorsList;
     
     public AuthorDirectory() {
-        this.authorDirectory = new ArrayList<Author> ();
+        this.authorsList = new ArrayList<Author> ();
     }
 
-    public ArrayList<Author> getAuthorDirectory() {
-        return authorDirectory;
+    public ArrayList<Author> getAuthorsList() {
+        return authorsList;
     }
 
-    public void setAuthorDirectory(ArrayList<Author> authorDirectory) {
-        this.authorDirectory = authorDirectory;
+    public void setAuthorsList(ArrayList<Author> authorsList) {
+        this.authorsList = authorsList;
     }
-    
-    public Author createAuthor(String name) {
+
+    public Author createAuthor(String authorName, String authorBio) {
         Author a = new Author();
-        a.setName(name);
-        this.authorDirectory.add(a);
+        a.setAuthorName(authorName);
+        a.setAuthorBio(authorBio);
+        this.authorsList.add(a);
         return a;
     }
 }

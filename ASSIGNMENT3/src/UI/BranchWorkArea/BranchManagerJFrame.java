@@ -4,9 +4,8 @@
  */
 package UI.BranchWorkArea;
 
-import UI.LibrarianWorkArea.*;
-import UI.AdminWorkArea.*;
 import LibraryAppSystem.ApplicationSystem;
+import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import UI.NewJFrame;
 
@@ -22,16 +21,17 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
     
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
+    private Branch branch;
     public BranchManagerJFrame() {
         initComponents();
     }
     
-     public BranchManagerJFrame(ApplicationSystem applicationSystem, UserAccount userAccount) {
+     public BranchManagerJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
-                
+         this.branch = branch;       
     }
 
     /**
@@ -93,7 +93,7 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.userAccount);
+        new NewJFrame(this.applicationSystem, this.branch ,this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void libraryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryButtonActionPerformed

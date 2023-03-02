@@ -13,24 +13,24 @@ import java.util.ArrayList;
  */
 public class GenreDirectory {
     
-    ArrayList<Genre> GenreDirectory;
+    ArrayList<Genre> GenreLists;
     
     public GenreDirectory() {
-        this.GenreDirectory = new ArrayList<Genre> ();
+        this.GenreLists = new ArrayList<Genre> ();
     }
 
-    public ArrayList<Genre> getGenreDirectory() {
-        return GenreDirectory;
+    public ArrayList<Genre> getGenreLists() {
+        return GenreLists;
     }
 
-    public void setGenreDirectory(ArrayList<Genre> GenreDirectory) {
-        this.GenreDirectory = GenreDirectory;
+    public void setGenreLists(ArrayList<Genre> GenreLists) {
+        this.GenreLists = GenreLists;
     }
 
     public Genre createGenre(String name) {
         Genre a = new Genre();
         a.setName(name);
-        this.GenreDirectory.add(a);
+        this.GenreLists.add(a);
         return a;
     }
 }

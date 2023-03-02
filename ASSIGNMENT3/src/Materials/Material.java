@@ -14,12 +14,12 @@ public class Material {
     int serialNumber;
     String name;
     String registeredDate;
-    boolean isAvailablityFlag;
+    String isAvailablityFlag;
     
     public Material() {
         
     }
-    public Material(int srNo, String name, String date, boolean isAvailable){
+    public Material(int srNo, String name, String date, String isAvailable){
         this.serialNumber = srNo;
         this.name = name;
         this.registeredDate = date;
@@ -50,11 +50,11 @@ public class Material {
         this.registeredDate = registeredDate;
     }
 
-    public boolean isIsAvailablityFlag() {
+    public String isIsAvailablityFlag() {
         return isAvailablityFlag;
     }
 
-    public void setIsAvailablityFlag(boolean isAvailablityFlag) {
+    public void setIsAvailablityFlag(String isAvailablityFlag) {
         this.isAvailablityFlag = isAvailablityFlag;
     }
     

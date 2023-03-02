@@ -9,6 +9,7 @@ import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import LibraryAppSystem.UserAccountDirectory;
 import Customer.Customer;
+import Role.CustomerRole;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -110,7 +111,7 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(customerRecordsJtable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 370, 270));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 370, 220));
 
         nameJLabel.setText("Name");
         add(nameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 80, 40, 30));
@@ -126,18 +127,18 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("CUSTOMERS CATELOG");
-        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 260, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         
         UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
-        if(ua.accountExists(usernameTextField.getText(), passTextField.getText(), "Customer")) {
+        if(ua.accountExists(usernameTextField.getText(), passTextField.getText(), new CustomerRole())) {
             JOptionPane.showMessageDialog(null, "Sorry  credentials are taken");
             
         }else {
-            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passTextField.getText(), "Customer");
+            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passTextField.getText(), new CustomerRole());
             this.applicationSystem.getCustomerDirectory().createCustomer(user.getAccountId(), ageTextField.getText(), ageTextField.getText());
             populate();
         }
