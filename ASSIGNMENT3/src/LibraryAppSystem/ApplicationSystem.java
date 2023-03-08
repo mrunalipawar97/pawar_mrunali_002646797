@@ -33,7 +33,7 @@ public class ApplicationSystem {
         this.branchLists = new ArrayList<Branch>();
        
      // create a restaurant manager here
-        UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", new AdminRole());
+        UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", "SYSAdmin");
     }
     
     public static ApplicationSystem getBusinessInstance() {

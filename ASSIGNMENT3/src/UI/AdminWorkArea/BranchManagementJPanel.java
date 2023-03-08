@@ -236,15 +236,15 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         
         UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
 
-        if(ua.accountExists(lusernameTextField.getText(), lpasswordTextField.getText(), new LibrarianRole())) {
+        if(ua.accountExists(lusernameTextField.getText(), lpasswordTextField.getText(),"Librarian")) {
             JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
         }
         else {
             ArrayList<Employee> empList = branchDetails.getLibrary().getEmployeeDirectory().getEmployeeist();
             System.out.println(empList.isEmpty());
             if(empList.isEmpty()){    
-                UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(lusernameTextField.getText(), lpasswordTextField.getText(), new LibrarianRole());
-                branchDetails.getLibrary().getEmployeeDirectory().createEmployee(libName, lusernameTextField.getText(),Integer.valueOf(libId), Double.valueOf(libExp), ldesignationjComboBox.getSelectedItem().toString());
+                UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(lusernameTextField.getText(), lpasswordTextField.getText(), "Librarian");
+                branchDetails.getLibrary().getEmployeeDirectory().createEmployee(libName, lusernameTextField.getText(),Integer.valueOf(libId), Double.valueOf(libExp), "Librarian");
                 JOptionPane.showMessageDialog(null,"Librarian Added");
                 populatEmployeeDetails();
             }
@@ -264,8 +264,8 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
                        JOptionPane.showMessageDialog(null,"Only one librarian can be added per branch"); 
                 }
                 else{
-                        branchDetails.getLibrary().getEmployeeDirectory().createEmployee(libName,lusernameTextField.getText(), Integer.valueOf(libId), Double.valueOf(libExp), ldesignationjComboBox.getSelectedItem().toString());
-                        UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(lusernameTextField.getText(), lpasswordTextField.getText(),new LibrarianRole());
+                        branchDetails.getLibrary().getEmployeeDirectory().createEmployee(libName,lusernameTextField.getText(), Integer.valueOf(libId), Double.valueOf(libExp), "Librarian");
+                        UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(lusernameTextField.getText(), lpasswordTextField.getText(), "Librarian");
                         JOptionPane.showMessageDialog(null,"Librarian Added");
                         populatEmployeeDetails();
                 }
@@ -287,14 +287,14 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         
         UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
 
-        if(ua.accountExists(usernameTextField.getText(), passwordTextField.getText(), new BranchManagerRole())) {
+        if(ua.accountExists(usernameTextField.getText(), passwordTextField.getText(), "BranchManager")) {
             JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
         }
         else {
             ArrayList<Employee> empList = branchDetails.getLibrary().getEmployeeDirectory().getEmployeeist();
             System.out.println(empList.isEmpty());
             if(empList.isEmpty()){
-                UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), new BranchManagerRole());
+                UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), "BranchManager");
                 branchDetails.getLibrary().getEmployeeDirectory().createEmployee(managerName, usernameTextField.getText(), Integer.valueOf(managerId), Double.valueOf(managerExp), designationjComboBox.getSelectedItem().toString());
                 JOptionPane.showMessageDialog(null,"Manager Added");
                 populatEmployeeDetails();
@@ -316,7 +316,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
                 }
                 else{
                         branchDetails.getLibrary().getEmployeeDirectory().createEmployee(managerName,usernameTextField.getText(), Integer.valueOf(managerId), Float.valueOf(managerExp), designationjComboBox.getSelectedItem().toString());
-                        UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), new BranchManagerRole());
+                        UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), "BranchManager");
                         JOptionPane.showMessageDialog(null,"Manager Added");
                         populatEmployeeDetails();
                 }

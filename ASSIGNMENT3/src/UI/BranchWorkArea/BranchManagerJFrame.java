@@ -124,13 +124,13 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.branch ,this.userAccount);
+        new NewJFrame(this.applicationSystem, this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.branch ,this.userAccount);
+        new NewJFrame(this.applicationSystem, this.userAccount);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void libraryCollectionjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryCollectionjButtonActionPerformed

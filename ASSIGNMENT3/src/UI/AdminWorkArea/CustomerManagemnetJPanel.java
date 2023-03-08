@@ -139,11 +139,11 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
-        if(ua.accountExists(usernameTextField.getText(), passTextField.getText(), new CustomerRole())) {
+        if(ua.accountExists(usernameTextField.getText(), passTextField.getText(), "Customer")) {
             JOptionPane.showMessageDialog(null, "Sorry  credentials are taken");
             
         }else {
-            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passTextField.getText(), new CustomerRole());
+            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passTextField.getText(), "Customer");
             this.applicationSystem.getCustomerDirectory().createCustomer(user.getAccountId(), ageTextField.getText(), ageTextField.getText());
             populate();
         }

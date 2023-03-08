@@ -114,7 +114,7 @@ public class AdminJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem,this.branch, this.userAccount);
+        new NewJFrame(this.applicationSystem,this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void branchlibrarianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchlibrarianButtonActionPerformed
