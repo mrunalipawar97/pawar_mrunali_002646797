@@ -32,6 +32,7 @@ public class LibrarianJFrame extends javax.swing.JFrame {
      public LibrarianJFrame(ApplicationSystem applicationSystem, UserAccount userAccount, Librarian librarian) {
         initComponents();
         this.setVisible(true);
+        this.branch = new Branch();
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
         this.librarian = librarian;

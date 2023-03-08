@@ -16,10 +16,13 @@ public class Branch {
     Librarian library;
     UserAccountDirectory branchuseraccountDirectory;
 
-    public Branch(String branchName)  {
+    public Branch () {
         this.library = new Librarian();
-        this.branchName = branchName;
         branchuseraccountDirectory = new UserAccountDirectory();
+    }
+    public Branch(String branchName)  {
+        this.branchName = branchName;
+      
     }
 
     public String getBranchName() {
