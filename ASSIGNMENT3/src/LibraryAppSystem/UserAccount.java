@@ -82,16 +82,16 @@ public class UserAccount {
     public JFrame getWorkArea(String role, ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         // the abstract class way
         if (role.equals("SYSAdmin")) {
-            return new AdminRole().getWorkArea(applicationSystem, branch, userAccount);
+            return new AdminRole().getWorkArea(applicationSystem, userAccount);
         }
         if (role.equals("Customer")) {
-            return new CustomerRole().getWorkArea(applicationSystem, branch, userAccount);
+            return new CustomerRole().getWorkArea(applicationSystem, userAccount);
         }
         if (role.equals("Librarian")) {
-            return new LibrarianRole().getWorkArea(applicationSystem, branch, userAccount);
+            return new LibrarianRole().getWorkArea(applicationSystem,  userAccount);
         }
         if (role.equals("BranchManager")) {
-            return new BranchManagerRole().getWorkArea(applicationSystem, branch, userAccount);
+            return new BranchManagerRole().getWorkArea(applicationSystem, userAccount);
         }
         return null;
     }

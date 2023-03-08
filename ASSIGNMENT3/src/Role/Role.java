@@ -25,6 +25,6 @@ public abstract class Role {
     }
     
     
-    public abstract JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount useraccount);
+    public abstract JFrame getWorkArea(ApplicationSystem applicationSystem, UserAccount useraccount);
     
 }

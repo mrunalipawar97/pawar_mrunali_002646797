@@ -4,6 +4,7 @@
  */
 package UI.LibrarianWorkArea;
 
+import Librarian.Librarian;
 import UI.AdminWorkArea.*;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
@@ -23,15 +24,17 @@ public class LibrarianJFrame extends javax.swing.JFrame {
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
     private Branch branch;
+    private Librarian librarian;
     public LibrarianJFrame() {
         initComponents();
     }
     
-     public LibrarianJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+     public LibrarianJFrame(ApplicationSystem applicationSystem, UserAccount userAccount, Librarian librarian) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
+        this.librarian = librarian;
         this.branch = branch;
                 
     }

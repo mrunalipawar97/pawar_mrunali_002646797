@@ -120,14 +120,14 @@ public class NewJFrame extends javax.swing.JFrame {
         if(this.applicationSystem.getUserAccountDirectory().authenticateUser(username, password) != null) {
             UserAccount user = this.applicationSystem.getUserAccountDirectory().authenticateUser(username, password);
             foundUser = true;
-            user.getRole().getWorkArea(applicationSystem, branch, userAccount);
+            user.getRole().getWorkArea(applicationSystem, userAccount);
             this.setVisible(false);
         } else {
             for(Branch branch: this.applicationSystem.getBranchLists()) {
                 if(branch.getBranchuseraccountDirectory().authenticateUser(username, password) != null) {
                     UserAccount branchUser = branch.getBranchuseraccountDirectory().authenticateUser(username, password);
                     foundUser = true;
-                    branchUser.getRole().getWorkArea(applicationSystem, branch, userAccount);
+                    branchUser.getRole().getWorkArea(applicationSystem,  userAccount);
                     this.setVisible(false);
                 }
             }

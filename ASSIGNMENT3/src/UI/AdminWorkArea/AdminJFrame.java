@@ -26,7 +26,7 @@ public class AdminJFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-     public AdminJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+     public AdminJFrame(ApplicationSystem applicationSystem,UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
