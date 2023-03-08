@@ -7,7 +7,7 @@ package UI.LibrarianWorkArea;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
-import Magazines.Magazine;
+import General.Magazine;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
@@ -41,7 +41,7 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
 
      public void populateMagazineCatelog() {
         tableModel.setRowCount(0);
-        for (Magazine m : this.applicationSystem.getMagazineDirectory().getMagazinelist()) {
+        for (Magazine m : this.branch.getLibrary().getMagazineDirectory().getMagazinelist()) {
             Object[] row = new Object[6];
             row[0] = m.getSerialNumber();
             row[1] = m.getName();
@@ -152,7 +152,7 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         String date = sdf.format(jDateChooser.getDate());
         
-        Magazine m = this.applicationSystem.getMagazineDirectory().createMagazine(Integer.valueOf(srNoTextField.getText()), magazineNameTextField.getText(), date, availibilityComboBox.getSelectedItem().toString(), companyNameTextField.getText(), availibilityComboBox.getSelectedItem().toString());
+        Magazine m = this.branch.getLibrary().getMagazineDirectory().createMagazine(Integer.valueOf(srNoTextField.getText()), magazineNameTextField.getText(), date, availibilityComboBox.getSelectedItem().toString(), companyNameTextField.getText(), issueTypeComboBox1.getSelectedItem().toString());
         populateMagazineCatelog();
     }//GEN-LAST:event_addMagazineButtonActionPerformed
 

@@ -9,7 +9,6 @@ import LibraryAppSystem.UserAccount;
 import BookAuthor.Author;
 import BookGenre.Genre;
 import Books.Book;
-import Books.BooksDirectory;
 import LibraryAppSystem.Branch;
 
 import javax.swing.table.DefaultTableModel;
@@ -48,14 +47,14 @@ public class BookManagementJPanel extends javax.swing.JPanel {
         
         authorComboBox.removeAllItems();
 
-        for(Author a: this.applicationSystem.getAuthorDirectory().getAuthorsList()){
+        for(Author a: this.branch.getLibrary().getAuthorDirectory().getAuthorsList()){
             authorComboBox.addItem(a);
         }
     }
     
     public void populateGenreDetails () {
         genreComboBox.removeAllItems();
-        for(Genre g : this.applicationSystem.getGenreDirectory().getGenreLists()){
+        for(Genre g : this.branch.getLibrary().getGenreDirectory().getGenreLists()){
            genreComboBox.addItem(g);
         }
     }
@@ -158,14 +157,14 @@ public class BookManagementJPanel extends javax.swing.JPanel {
         String language = languageTextField.getText();
         String typeOfBinding = typeOfBindingTextField.getText();
         
-        Book b = this.applicationSystem.getBookDirectory().createBook(bookName, Integer.valueOf(noOfPages), language, typeOfBinding,  authorComboBox.getSelectedItem().toString(), genreComboBox.getSelectedItem().toString());
+      //  Book b = this.branch.getLibrary().getBooksDirectory().createBook(bookName, Integer.valueOf(noOfPages), language, typeOfBinding,  authorComboBox.getSelectedItem().toString(), genreComboBox.getSelectedItem().toString());
         populateBookCatelog();
         
     }//GEN-LAST:event_addBookButtonActionPerformed
 
     public void populateBookCatelog() {
         tableModel.setRowCount(0);
-        for (Book b : this.applicationSystem.getBookDirectory().getBooklists()) {
+        for (Book b : this.branch.getLibrary().getBooksDirectory().getBooklists()) {
             
             Object[] row = new Object[6];
             row[0] = b.getName();

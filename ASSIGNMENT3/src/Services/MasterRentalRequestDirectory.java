@@ -6,6 +6,7 @@ package Services;
 
 import Customer.Customer;
 import Librarian.Librarian;
+import Materials.Material;
 import java.util.ArrayList;
 
 /**
@@ -29,21 +30,36 @@ public class MasterRentalRequestDirectory {
         this.orderlist = orderlist;
     }
     
-    public RentalRequest createOrder(Customer customer, Librarian RentalRequest) {
-        RentalRequest r = new RentalRequest(customer, RentalRequest);
+    //Create Customer book/magazine order
+    public RentalRequest createOrder(Customer customer, Material m,String status, String duration, String materialType, Librarian librarian) {
+        RentalRequest r = new RentalRequest(customer);
+        r.setMaterial(m);
+        r.setStatus(status);
+        r.setDuration(duration);
+        r.setMaterialType(materialType);
+        r.setLibrarian(librarian);
         this.orderlist.add(r);
         return r;
     }
     
     public RentalRequest requestOrder(Customer customer) {
-        RentalRequest o = new RentalRequest();
-        o.setCustomer(customer);
-        this.orderlist.add(o);
-        return o;
+        RentalRequest r = new RentalRequest();
+        r.setCustomer(customer);
+        this.orderlist.add(r);
+        return r;
     }
     
     public RentalRequest assignOrder(RentalRequest o, Librarian lib) {
         o.setLibrarian(lib);
         return o;
+    
+    }
+    
+    public int getSalesVolume() {
+        int sum = 0;
+        for(RentalRequest order: orderlist){
+           // sum = sum + order.get();
+        }
+        return sum;
     }
 }

@@ -101,16 +101,16 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         //GenreDirectory ua = this.applicationSystem.getGenreDirectory().getGenreDirectory();
         
-        Genre g = this.applicationSystem.getGenreDirectory().createGenre(nameTextField.getText());
+        Genre g = this.branch.getLibrary().getGenreDirectory().createGenre(nameTextField.getText());
         populateGenrecatelog();
     }//GEN-LAST:event_addGenreButtonActionPerformed
 
     public void populateGenrecatelog() {
         tableModel.setRowCount(0);
-        for (Genre b : this.applicationSystem.getGenreDirectory().getGenreLists()) {
+        for (Genre b : this.branch.getLibrary().getGenreDirectory().getGenreLists()) {
             //UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(b.getBookName());
             Object[] row = new Object[1];
-            row[0] = b.getName();
+            row[0] = b.getGenreName();
             tableModel.addRow(row);
             
         }

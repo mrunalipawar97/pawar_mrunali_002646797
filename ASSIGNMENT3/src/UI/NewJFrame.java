@@ -115,7 +115,7 @@ public class NewJFrame extends javax.swing.JFrame {
         String password = passwordTextField.getText();
         String role = (String) roleComboBox.getSelectedItem();
         
-         Boolean foundUser = false;
+        Boolean foundUser = false;
         
         if(this.applicationSystem.getUserAccountDirectory().authenticateUser(username, password) != null) {
             UserAccount user = this.applicationSystem.getUserAccountDirectory().authenticateUser(username, password);

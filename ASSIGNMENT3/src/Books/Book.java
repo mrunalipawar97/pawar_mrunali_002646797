@@ -12,15 +12,13 @@ import Materials.Material;
  *
  * @author mrunalipawar
  */
-public class Book extends Material{
+public class Book extends Material {
     
     int noOfPages;
     String language;
     String typeOfBinding;
-    Author author;
-    String authorname;
-    Genre genre;
-    String genreName;
+    private Author author;
+    private Genre genre;
 
     public Book() {
         super();
@@ -77,24 +75,6 @@ public class Book extends Material{
         this.genre = genre;
     }
 
-    public String getAuthorname() {
-        return authorname;
-    }
-
-    public void setAuthorname(String authorname) {
-        this.authorname = authorname;
-    }
-
-    public String getGenreName() {
-        return genreName;
-    }
-
-    public void setGenreName(String genreName) {
-        this.genreName = genreName;
-    }
-
-    
-   
     @Override
     public String toString(){
         return language;

@@ -8,20 +8,22 @@ package Personnel;
  *
  * @author mrunalipawar
  */
-public class Person {
+public class Profile {
     
+    private static int count;
     String personId;
     String name;
     String age;
     
-    public Person(){
-        
+    public Profile(){
+        this.count++;
+        this.personId = "Employee"+this.count;
     }
     
-    public Person (String personId, String name, String age) {
+    public Profile (String personId, String name, String age) {
         this.personId = personId;
         this.name = name;
-        this.age = age;
+        this.age = age;   
     }
 
     public String getPersonId() {
@@ -47,7 +49,15 @@ public class Person {
     public void setAge(String age) {
         this.age = age;
     }
-    
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Profile.count = count;
+    }
+
     @Override
     public String toString(){
         return this.personId;

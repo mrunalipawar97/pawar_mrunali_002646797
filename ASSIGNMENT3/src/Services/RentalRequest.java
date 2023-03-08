@@ -6,6 +6,7 @@ package Services;
 
 import Customer.Customer;
 import Librarian.Librarian;
+import Materials.Material;
 
 /**
  *
@@ -15,27 +16,33 @@ public class RentalRequest {
    
    Customer customer;
    Librarian librarian;
-
-   int ID;
-   private static int count;
-   Double price;
+   Material material;
+   private static int count = 0;
+   double orderTotal;
+   double price;
    String status;
-   int duration;
+   String duration;
+   String materialType;
    String requestId;
-   
+
    public RentalRequest() {
         this.customer = new Customer();
         this.librarian = new Librarian();
+        this.material = new Material();
         this.status = "Requested";
         this.count++;
+        this.price = 0;
         this.requestId = "ORDERED"+ this.count;
     }
+   
     
-    public RentalRequest (Customer customer, Librarian librarian) {
+    public RentalRequest(Customer customer) {
         this.customer = customer;
-        this.librarian = librarian;
+        this.librarian = new Librarian();
         this.status = "Requested";
+        this.material= new Material();
         this.count++;
+        this.price= 0;
         this.requestId = "ORDERED"+ this.count;
     }
 
@@ -55,14 +62,6 @@ public class RentalRequest {
         this.librarian = librarian;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
     public static int getCount() {
         return count;
     }
@@ -71,11 +70,11 @@ public class RentalRequest {
         RentalRequest.count = count;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -87,11 +86,11 @@ public class RentalRequest {
         this.status = status;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -102,9 +101,40 @@ public class RentalRequest {
     public void setRequestId(String requestId) {
         this.requestId = requestId;
     }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    public double getOrderTotal() {
+        return orderTotal;
+    }
+
+    public void setOrderTotal(double orderTotal) {
+        this.orderTotal = orderTotal;
+    }
+
+    public String getMaterialType() {
+        return materialType;
+    }
+
+    public void setMaterialType(String materialType) {
+        this.materialType = materialType;
+    }
+
     
+
      @Override
     public String toString() {
         return this.requestId;
     }
+    
+    public void CancelOrder() {
+         status = "Cancelled";
+    }
+   
 }

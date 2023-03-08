@@ -79,7 +79,7 @@ public class UserAccount {
     }
    
     
-    /*public JFrame getWorkArea(String role, ApplicationSystem applicationSystem,Branch branch, UserAccount userAccount) {
+    public JFrame getWorkArea(String role, ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         // the abstract class way
         if (role.equals("SYSAdmin")) {
             return new AdminRole().getWorkArea(applicationSystem, branch, userAccount);
@@ -94,5 +94,5 @@ public class UserAccount {
             return new BranchManagerRole().getWorkArea(applicationSystem, branch, userAccount);
         }
         return null;
-    }*/
+    }
 }

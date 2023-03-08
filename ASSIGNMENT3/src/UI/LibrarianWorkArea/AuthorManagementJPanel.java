@@ -105,13 +105,13 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
 
     private void addAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAuthorButtonActionPerformed
         // TODO add your handling code here:
-        Author a = this.applicationSystem.getAuthorDirectory().createAuthor(authorNameTextField.getText(), authorBioTextField.getText());
+        Author a = this.branch.getLibrary().getAuthorDirectory().createAuthor(authorNameTextField.getText(), authorBioTextField.getText());
         populateAuthorCatelog();
     }//GEN-LAST:event_addAuthorButtonActionPerformed
 
      public void populateAuthorCatelog() {
         tableModel.setRowCount(0);
-        for (Author b : this.applicationSystem.getAuthorDirectory().getAuthorsList()) {
+        for (Author b : this.branch.getLibrary().getAuthorDirectory().getAuthorsList()) {
             Object[] row = new Object[2];
             row[0] = b.getAuthorName();
             row[1] = b.getAuthorBio();

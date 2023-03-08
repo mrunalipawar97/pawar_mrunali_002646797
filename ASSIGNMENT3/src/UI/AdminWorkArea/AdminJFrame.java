@@ -47,9 +47,9 @@ public class AdminJFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         logoutButton = new javax.swing.JButton();
         customerButton = new javax.swing.JButton();
-        branchButton = new javax.swing.JButton();
-        AuthorHeaderjLabel = new javax.swing.JLabel();
+        branchlibrarianButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,25 +74,26 @@ public class AdminJFrame extends javax.swing.JFrame {
                 customerButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(customerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, -1, 40));
+        jPanel2.add(customerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, -1, 40));
 
-        branchButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
-        branchButton.setText("ADD BRANCH");
-        branchButton.addActionListener(new java.awt.event.ActionListener() {
+        branchlibrarianButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
+        branchlibrarianButton.setText("ADD EMPLOYEES");
+        branchlibrarianButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                branchButtonActionPerformed(evt);
+                branchlibrarianButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(branchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, 40));
-
-        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - ADMIN");
-        jPanel2.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+        jPanel2.add(branchlibrarianButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, -1, 40));
 
         jSplitPane1.setTopComponent(jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - ADMIN");
+        jPanel3.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+
         jSplitPane1.setRightComponent(jPanel3);
 
         getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
@@ -106,15 +107,15 @@ public class AdminJFrame extends javax.swing.JFrame {
         new NewJFrame(this.applicationSystem,this.branch, this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
+    private void branchlibrarianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchlibrarianButtonActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new BranchManagementJPanel(this.applicationSystem, this.branch, this.userAccount));
+    }//GEN-LAST:event_branchlibrarianButtonActionPerformed
+
     private void customerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new CustomerManagemnetJPanel(applicationSystem, userAccount));
+        jSplitPane1.setRightComponent(new CustomerManagemnetJPanel(this.applicationSystem, this.branch, this.userAccount));
     }//GEN-LAST:event_customerButtonActionPerformed
-
-    private void branchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchButtonActionPerformed
-        // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new BranchManagementJPanel(applicationSystem, userAccount));
-    }//GEN-LAST:event_branchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,7 +155,7 @@ public class AdminJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AuthorHeaderjLabel;
-    private javax.swing.JButton branchButton;
+    private javax.swing.JButton branchlibrarianButton;
     private javax.swing.JButton customerButton;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

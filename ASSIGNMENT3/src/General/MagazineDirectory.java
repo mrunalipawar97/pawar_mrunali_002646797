@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Magazines;
+package General;
 
 import java.util.ArrayList;
 
@@ -58,4 +58,5 @@ public class MagazineDirectory {
         this.magazinelist.add(m);
         return m;       
     }
+  
 }

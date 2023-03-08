@@ -10,22 +10,22 @@ package BookGenre;
  */
 public class Genre {
     
-    String name;
+    String genreName;
     
     public Genre() {
         
     }
 
-    public String getName() {
-        return name;
+    public String getGenreName() {
+        return genreName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGenreName(String genreName) {
+        this.genreName = genreName;
     }
-    
-      @Override
+
+    @Override
     public String toString(){
-        return name;
+        return genreName;
     }
 }

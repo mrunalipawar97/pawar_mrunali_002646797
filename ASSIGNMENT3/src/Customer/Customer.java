@@ -4,7 +4,8 @@
  */
 package Customer;
 
-import Personnel.Person;
+import Personnel.Profile;
+import Services.MasterRentalRequestDirectory;
 import Services.RentalRequest;
 import java.util.ArrayList;
 
@@ -12,34 +13,35 @@ import java.util.ArrayList;
  *
  * @author mrunalipawar
  */
-public class Customer extends Person {
+public class Customer extends Profile {
     
-    private int ordersTotal;
+    private int orderRequestsTotal;;
     
-    private ArrayList<RentalRequest> customerRequestlist;
+    MasterRentalRequestDirectory masterRentalRequestDirectory;
     
     public Customer() {
         super();
-        this.customerRequestlist = new ArrayList<RentalRequest> ();
+        this.masterRentalRequestDirectory = new MasterRentalRequestDirectory ();
     }
 
-    public int getOrdersTotal() {
-        return ordersTotal;
+    public int getOrderRequestsTotal() {
+        return orderRequestsTotal;
     }
 
-    public void setOrdersTotal(int ordersTotal) {
-        this.ordersTotal = ordersTotal;
+    public void setOrderRequestsTotal(int orderRequestsTotal) {
+        this.orderRequestsTotal = orderRequestsTotal;
     }
 
-    public ArrayList<RentalRequest> getCustomerOrderlist() {
-        return customerRequestlist;
+    public MasterRentalRequestDirectory getMasterRentalRequestDirectory() {
+        return masterRentalRequestDirectory;
     }
 
-    public void setCustomerOrderlist(ArrayList<RentalRequest> customerOrderlist) {
-        this.customerRequestlist = customerOrderlist;
+    public void setMasterRentalRequestDirectory(MasterRentalRequestDirectory masterRentalRequestDirectory) {
+        this.masterRentalRequestDirectory = masterRentalRequestDirectory;
     }
 
-    public void addCustomerRequest (RentalRequest order) {
-        this.customerRequestlist.add(order);
+    public void addMaterialRequestForCustomer(RentalRequest order) {
+        this.masterRentalRequestDirectory.createOrder(this,order.getMaterial(),order.getStatus(),order.getDuration(),order.getMaterialType(),order.getLibrarian());
     }
+   
 }

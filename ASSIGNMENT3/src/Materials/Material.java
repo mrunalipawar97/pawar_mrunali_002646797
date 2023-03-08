@@ -4,7 +4,6 @@
  */
 package Materials;
 
-
 /**
  *
  * @author mrunalipawar
@@ -12,12 +11,17 @@ package Materials;
 public class Material {
     
     int serialNumber;
+    String materialId;
     String name;
     String registeredDate;
     String isAvailablityFlag;
+    private static int count = 0;
+    
     
     public Material() {
-        
+        count++;
+        this.serialNumber = this.count;
+        this.materialId = "Material"+this.count; 
     }
     public Material(int srNo, String name, String date, String isAvailable){
         this.serialNumber = srNo;
@@ -57,7 +61,26 @@ public class Material {
     public void setIsAvailablityFlag(String isAvailablityFlag) {
         this.isAvailablityFlag = isAvailablityFlag;
     }
+
+    public String getMaterialId() {
+        return materialId;
+    }
+
+    public void setMaterialId(String materialId) {
+        this.materialId = materialId;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Material.count = count;
+    }
     
+    
+
+   
     @Override
     public String toString(){
         return String.valueOf(serialNumber);

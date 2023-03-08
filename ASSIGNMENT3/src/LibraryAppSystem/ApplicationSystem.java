@@ -4,13 +4,9 @@
  */
 package LibraryAppSystem;
 
-import BookAuthor.AuthorDirectory;
-import BookGenre.GenreDirectory;
-import Books.BooksDirectory;
 import Customer.CustomerDirectory;
 import Employees.EmployeeDirectory;
-import Librarian.Librarian;
-import Magazines.MagazineDirectory;
+
 import Role.AdminRole;
 import Services.MasterRentalRequestDirectory;
 import java.util.ArrayList;
@@ -22,28 +18,20 @@ import java.util.ArrayList;
 public class ApplicationSystem {
     
      private CustomerDirectory customerDirectory;
-     private BooksDirectory bookDirectory;
-     private Librarian librarian;
      private UserAccountDirectory userAccountDirectory;
      private MasterRentalRequestDirectory rentalRequestDirectory;
-     private AuthorDirectory authorDirectory;
-     private GenreDirectory genreDirectory;
      ArrayList<Branch> branchLists;
      private EmployeeDirectory employeeDirectory;
-     private MagazineDirectory magazineDirectory;
+     
     
     public ApplicationSystem () {
          
         this.customerDirectory = new CustomerDirectory();
-        this.librarian = new Librarian();
         this.rentalRequestDirectory = new MasterRentalRequestDirectory();
         this.userAccountDirectory = new UserAccountDirectory();
-        this.bookDirectory = new BooksDirectory();
-        this.authorDirectory = new AuthorDirectory();
-        this.genreDirectory = new GenreDirectory();
         this.employeeDirectory = new EmployeeDirectory();
         this.branchLists = new ArrayList<Branch>();
-        this.magazineDirectory = new MagazineDirectory();
+       
      // create a restaurant manager here
         UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", new AdminRole());
     }
@@ -60,15 +48,7 @@ public class ApplicationSystem {
     public void setCustomerDirectory(CustomerDirectory customerDirectory) {
         this.customerDirectory = customerDirectory;
     }
-
-    public Librarian getLibrarian() {
-        return librarian;
-    }
-
-    public void setLibrarian(Librarian librarian) {
-        this.librarian = librarian;
-    }
-
+    
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
     }
@@ -85,30 +65,6 @@ public class ApplicationSystem {
         this.rentalRequestDirectory = rentalRequestDirectory;
     }
 
-    public BooksDirectory getBookDirectory() {
-        return bookDirectory;
-    }
-
-    public void setBookDirectory(BooksDirectory bookDirectory) {
-        this.bookDirectory = bookDirectory;
-    }
-
-    public AuthorDirectory getAuthorDirectory() {
-        return authorDirectory;
-    }
-
-    public void setAuthorDirectory(AuthorDirectory authorDirectory) {
-        this.authorDirectory = authorDirectory;
-    }
-
-    public GenreDirectory getGenreDirectory() {
-        return genreDirectory;
-    }
-
-    public void setGenreDirectory(GenreDirectory genreDirectory) {
-        this.genreDirectory = genreDirectory;
-    }
-
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }
@@ -123,14 +79,6 @@ public class ApplicationSystem {
 
     public void setBranchLists(ArrayList<Branch> branchLists) {
         this.branchLists = branchLists;
-    }
-
-    public MagazineDirectory getMagazineDirectory() {
-        return magazineDirectory;
-    }
-
-    public void setMagazineDirectory(MagazineDirectory magazineDirectory) {
-        this.magazineDirectory = magazineDirectory;
     }
 
     public Branch findbyBranchName(String name) {
@@ -157,6 +105,15 @@ public class ApplicationSystem {
              }
          }
      }  
+
+    public Boolean branchExists(String branchName) {
+        for(Branch b: this.branchLists) {
+            if(b.getBranchName().equals(branchName)) {
+                return true;
+            }
+        }
+        return false;
+    }
      
     public static ApplicationSystem getInstance() {
         return new ApplicationSystem();

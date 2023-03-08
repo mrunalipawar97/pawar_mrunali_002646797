@@ -4,10 +4,12 @@
  */
 package UI.AdminWorkArea;
 
+import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import Role.BranchManagerRole;
+import Role.LibrarianRole;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,30 +32,29 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    BranchManagementJPanel(ApplicationSystem applicationSystem,UserAccount userAccount) {
+    BranchManagementJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.applicationSystem = applicationSystem;
+        this.branch = branch;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)branchManagerJtable.getModel();
         populateBranchManagerCatelog();
     }
     
     public void populateBranchManagerCatelog() {
-        tableModel.setRowCount(0);
+       /* tableModel.setRowCount(0);
         for (Branch branch : this.applicationSystem.getBranchLists()) {
 
-           // Employee e = this.applicationSystem.getEmployeeDirectory().findByEmployeeName(branch.getBranchName());
-            //UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(e.getPersonId());
             Object[] row = new Object[6];
-            row[0] = employeeIdTextField.getText();
-            row[1] = Double.valueOf(experienceTextField.getText());
-            row[2] = designationTextField.getText();
+            //row[0] = branch.get
+                    //employeeIdTextField.getText();
+            row[1] = experienceTextField.getText();
+            row[2] = designationjComboBox.getSelectedItem().toString();
             row[3] = usernameTextField.getText();
             row[4] = passwordTextField.getText();
             row[5] = branchNameTextField.getText();
             tableModel.addRow(row);
-            
-        }
+        }*/
     }
     
 
@@ -67,7 +68,6 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         employeeIdTextField = new javax.swing.JTextField();
-        designationTextField = new javax.swing.JTextField();
         addBranchManagerButton = new javax.swing.JButton();
         branchNameTextField = new javax.swing.JTextField();
         addBranchNameButton = new javax.swing.JButton();
@@ -80,24 +80,24 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         usernameJLabel = new javax.swing.JLabel();
         passwordJLabel = new javax.swing.JLabel();
         branchNameJLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        branchManagerJtable = new javax.swing.JTable();
         deleteBranchButton = new javax.swing.JButton();
         AuthorHeaderjLabel = new javax.swing.JLabel();
+        designationjComboBox = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        branchManagerJtable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(employeeIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 120, 30));
-        add(designationTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 120, 30));
+        add(employeeIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 140, 30));
 
-        addBranchManagerButton.setText("Add Branch Manager");
+        addBranchManagerButton.setText("Add Employee");
         addBranchManagerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBranchManagerButtonActionPerformed(evt);
             }
         });
-        add(addBranchManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, 30));
-        add(branchNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 120, 40));
+        add(addBranchManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 130, 30));
+        add(branchNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 150, 40));
 
         addBranchNameButton.setText("ADD BRANCH");
         addBranchNameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -105,13 +105,13 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
                 addBranchNameButtonActionPerformed(evt);
             }
         });
-        add(addBranchNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, 30));
-        add(experienceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 120, 30));
-        add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 120, 30));
-        add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 120, 30));
+        add(addBranchNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 150, 30));
+        add(experienceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 140, 30));
+        add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 140, 30));
+        add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 140, 30));
 
         empIdjLabel.setText("Employee ID");
-        add(empIdjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 207, -1, 20));
+        add(empIdjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 197, -1, 30));
 
         experiencejLabel.setText("Experience");
         add(experiencejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, 30));
@@ -128,6 +128,21 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         branchNameJLabel.setText("Branch Name");
         add(branchNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 30));
 
+        deleteBranchButton.setText("Delete Branch");
+        deleteBranchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBranchButtonActionPerformed(evt);
+            }
+        });
+        add(deleteBranchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, -1, 30));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("BRANCH CATELOG");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+
+        designationjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Branch Manager", "Librarian" }));
+        add(designationjComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 140, 30));
+
         branchManagerJtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -140,28 +155,16 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(branchManagerJtable);
+        jScrollPane2.setViewportView(branchManagerJtable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 620, 230));
-
-        deleteBranchButton.setText("Delete Branch");
-        deleteBranchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBranchButtonActionPerformed(evt);
-            }
-        });
-        add(deleteBranchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, -1, 30));
-
-        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("BRANCH MANAGER CATELOG");
-        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 620, 110));
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteBranchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBranchButtonActionPerformed
@@ -170,7 +173,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
                 
          if(selectedRow >=0) {
              //we will delete the object
-             Branch applicant  = (Branch) branchManagerJtable.getValueAt(selectedRow, 0);
+             Branch applicant  = (Branch) branchManagerJtable.getValueAt(selectedRow, 5);
              this.applicationSystem.removeBranch(applicant.getBranchName());
              populateBranchManagerCatelog();
          }  
@@ -181,23 +184,53 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
 
     private void addBranchNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchNameButtonActionPerformed
         // TODO add your handling code here:
-        
         // check for unique branch name
         this.branch = this.applicationSystem.createBranch(branchNameTextField.getText());
         
     }//GEN-LAST:event_addBranchNameButtonActionPerformed
 
     private void addBranchManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchManagerButtonActionPerformed
-        // TODO add your handling code here:
-        
-            if (employeeIdTextField.getText() != "" || experienceTextField.getText() != "" || designationTextField.getText() != "") {
+        //TODO add your handling code here:
+         
+        if(designationjComboBox.getSelectedItem().equals("Branch Manager")){
+            if (branchNameTextField.getText() != "") {
                 this.branch.getBranchuseraccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), new BranchManagerRole());
                 populateBranchManagerCatelog();
-            } else {
+            }
+            else {
                 JOptionPane.showMessageDialog(null, "Create a new branch by filling the branch field to add it's branch manager.");
             }
+        }else if (designationjComboBox.getSelectedItem().equals("Librarian")){
+             if (branchNameTextField.getText() != "") {
+                 this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(),new LibrarianRole());
+                 System.out.println("in librarian");
+                 populateBranchManagerCatelog();
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Create a new branch by filling the branch field to add it's branch LIBRARIAN.");
+            }
+           
+        }
     }//GEN-LAST:event_addBranchManagerButtonActionPerformed
 
+    
+    public void populateLibrarianCatelog() {
+        /*tableModel.setRowCount(0);
+        for (Librarian l : this.applicationSystem.ge) {
+
+           UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(l.getPersonId());
+            Object[] row = new Object[4];
+            System.out.println("c.getP id" + l.getPersonId());
+                    
+            row[0] = l.getPersonId();
+            row[1] =l.getName();
+            row[2] = u.getUsername();
+            row[3] = u.getPassword();
+     
+            tableModel.addRow(row);   
+        }*/
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AuthorHeaderjLabel;
@@ -208,12 +241,12 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField branchNameTextField;
     private javax.swing.JButton deleteBranchButton;
     private javax.swing.JLabel designationJLabel;
-    private javax.swing.JTextField designationTextField;
+    private javax.swing.JComboBox<String> designationjComboBox;
     private javax.swing.JLabel empIdjLabel;
     private javax.swing.JTextField employeeIdTextField;
     private javax.swing.JTextField experienceTextField;
     private javax.swing.JLabel experiencejLabel;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel passwordJLabel;
     private javax.swing.JTextField passwordTextField;
     private javax.swing.JLabel usernameJLabel;

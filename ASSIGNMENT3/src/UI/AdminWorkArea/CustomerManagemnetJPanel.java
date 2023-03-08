@@ -9,6 +9,7 @@ import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import LibraryAppSystem.UserAccountDirectory;
 import Customer.Customer;
+import LibraryAppSystem.Branch;
 import Role.CustomerRole;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,14 +25,16 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
      */
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
+    private Branch branch;
     DefaultTableModel tableModel;
     public CustomerManagemnetJPanel() {
         initComponents();
     }
 
-    CustomerManagemnetJPanel(ApplicationSystem applicationSystem, UserAccount userAccount) {
+    CustomerManagemnetJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.applicationSystem = applicationSystem;
+        this.branch = branch;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)customerRecordsJtable.getModel();
         populate();
@@ -44,6 +47,8 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
 
             UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(c.getPersonId());
             Object[] row = new Object[4];
+            System.out.println("c.getP id" + c.getPersonId());
+                    
             row[0] = c.getPersonId();
             row[1] =c.getName();
             row[2] = u.getUsername();

@@ -4,6 +4,7 @@
  */
 package BookAuthor;
 
+import Librarian.Librarian;
 import java.util.ArrayList;
 
 /**
@@ -12,10 +13,12 @@ import java.util.ArrayList;
  */
 public class AuthorDirectory {
     
-     ArrayList<Author> authorsList;
+    ArrayList<Author> authorsList;
+   
     
     public AuthorDirectory() {
         this.authorsList = new ArrayList<Author> ();
+       
     }
 
     public ArrayList<Author> getAuthorsList() {

@@ -4,17 +4,18 @@
  */
 package Employees;
 
-import Personnel.Person;
+import Personnel.Profile;
 
 /**
  *
  * @author mrunalipawar
  */
-public class Employee extends Person {
+public class Employee extends Profile {
     
     int employeeID;
     double experience;
     String designation;
+    String username;
     
     public Employee() {
         super();
@@ -48,6 +49,14 @@ public class Employee extends Person {
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     @Override

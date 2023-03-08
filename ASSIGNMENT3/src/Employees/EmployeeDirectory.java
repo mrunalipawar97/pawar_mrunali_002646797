@@ -46,14 +46,14 @@ public class EmployeeDirectory {
         return null;
     }
     
-    public Employee createEmployee(String id, int empId, double experience, String designation) {
+    public Employee createEmployee(String name,String username, int empId, double experience, String designation) {
         Employee e = new Employee();
-        e.setPersonId(id);
+        e.setName(name);
+        e.setUsername(username);
         e.setEmployeeID(empId);
         e.setExperience(experience);
         e.setDesignation(designation);
         this.employeelist.add(e);
         return e;       
     }
-
 }

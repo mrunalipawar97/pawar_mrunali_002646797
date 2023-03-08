@@ -45,6 +45,16 @@ public class Branch {
     public void setBranchuseraccountDirectory(UserAccountDirectory branchuseraccountDirectory) {
         this.branchuseraccountDirectory = branchuseraccountDirectory;
     }
+    
+     public Librarian createLibrary(String libraryName, String location, int buildingNo) {
+        Librarian l = new Librarian();
+        l.setLibraryName(libraryName);
+        l.setLocation(location);
+        l.setBuildingNo(buildingNo);
+        
+        this.library=l;
+        return l;
+    }
 
     @Override
     public String toString(){

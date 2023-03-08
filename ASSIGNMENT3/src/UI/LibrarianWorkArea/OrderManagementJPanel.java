@@ -7,7 +7,9 @@ package UI.LibrarianWorkArea;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
+import Services.MasterRentalRequestDirectory;
 import Services.RentalRequest;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,22 +31,27 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
 
     OrderManagementJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
+        this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.branch = branch;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel) orderRequestTable.getModel();
         populateRentalRequestOrder();
     }
+
+
     
     public void populateRentalRequestOrder() {
         tableModel.setRowCount(0);
+        // Retrieve the rental requests for the librarian's branch
+        //ArrayList<RentalRequest> requests = MasterRentalRequestDirectory.getRequestsForBranch(librarian.getBranch());
         for (RentalRequest o : this.applicationSystem.getRentalRequestDirectory().getOrderlist()){
-  
+
             Object [] row = new Object[4];
             
             row[0] = o;
             row[1] = o.getCustomer().getName();
-            row[2] = o.getLibrarian().getName();
+            row[2] = o.getLibrarian().getLibraryName();
             row[3] = o.getStatus();
             tableModel.addRow(row);
         }
@@ -64,6 +71,7 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
         rejectButton = new javax.swing.JButton();
         acceptButton = new javax.swing.JButton();
         AuthorHeaderjLabel = new javax.swing.JLabel();
+        revenuejButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -112,6 +120,9 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - LIBRARIAN ORDER PORTAL");
         add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        revenuejButton.setText("TOTAL REVENUE");
+        add(revenuejButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, -1, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void rejectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectButtonActionPerformed
@@ -140,5 +151,6 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable orderRequestTable;
     private javax.swing.JButton rejectButton;
+    private javax.swing.JButton revenuejButton;
     // End of variables declaration//GEN-END:variables
 }

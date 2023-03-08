@@ -5,6 +5,7 @@
 package BookGenre;
 
 
+import Librarian.Librarian;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +16,10 @@ public class GenreDirectory {
     
     ArrayList<Genre> GenreLists;
     
+    
     public GenreDirectory() {
         this.GenreLists = new ArrayList<Genre> ();
+       
     }
 
     public ArrayList<Genre> getGenreLists() {
@@ -29,7 +32,7 @@ public class GenreDirectory {
 
     public Genre createGenre(String name) {
         Genre a = new Genre();
-        a.setName(name);
+        a.setGenreName(name);
         this.GenreLists.add(a);
         return a;
     }

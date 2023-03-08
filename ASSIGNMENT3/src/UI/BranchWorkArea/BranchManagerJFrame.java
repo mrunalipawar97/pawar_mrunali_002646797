@@ -31,7 +31,8 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
-         this.branch = branch;       
+        this.branch = branch;      
+        branchManagerNamejLabel.setText(branch.getBranchName());
     }
 
     /**
@@ -46,9 +47,11 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         logoutButton = new javax.swing.JButton();
-        libraryButton = new javax.swing.JButton();
         AuthorHeaderjLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        backButton = new javax.swing.JButton();
+        welcomejLabel = new javax.swing.JLabel();
+        branchManagerNamejLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,15 +69,6 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         });
         jPanel2.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
-        libraryButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
-        libraryButton.setText("ADD LIBRARIAN");
-        libraryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libraryButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(libraryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, -1, 30));
-
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - BRANCH MANAGER");
         jPanel2.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
@@ -83,6 +77,22 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        backButton.setFont(new java.awt.Font("Kannada MN", 1, 14)); // NOI18N
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, 30));
+
+        welcomejLabel.setText("Welcome");
+        jPanel3.add(welcomejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        branchManagerNamejLabel.setText("jLabel2");
+        jPanel3.add(branchManagerNamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+
         jSplitPane1.setRightComponent(jPanel3);
 
         getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
@@ -96,10 +106,11 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         new NewJFrame(this.applicationSystem, this.branch ,this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
-    private void libraryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryButtonActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new LibrarianManagementJPanel(applicationSystem, userAccount));
-    }//GEN-LAST:event_libraryButtonActionPerformed
+        this.setVisible(false);
+        new NewJFrame(this.applicationSystem, this.branch ,this.userAccount);
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,10 +156,12 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AuthorHeaderjLabel;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel branchManagerNamejLabel;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JButton libraryButton;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JLabel welcomejLabel;
     // End of variables declaration//GEN-END:variables
 }
