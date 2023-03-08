@@ -192,8 +192,32 @@ public class BranchJPanel extends javax.swing.JPanel {
     private void addBranchNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchNameButtonActionPerformed
         // TODO add your handling code here:
         // check for unique branch name
-        this.branch = this.applicationSystem.createBranch(branchNameTextField.getText());
+        //this.branch = this.applicationSystem.createBranch(branchNameTextField.getText());
 
+        ArrayList<Branch> branchList= this.applicationSystem.getBranchLists();
+        if(this.applicationSystem.branchExists(branchNameTextField.getText())) {
+            JOptionPane.showMessageDialog(null, "Branch with this name already available");
+        }
+        else {
+            if(branchList.isEmpty()){
+                Branch br= this.applicationSystem.createBranch(branchNameTextField.getText());
+                br.createLibrary(LibraryNameTextField.getText(), libraryLocationTextField.getText(), Integer.valueOf(buildingNoTextField.getText()));
+                populateData();
+            }
+            else{
+              for(Branch b:branchList){
+                if(b.getLibrary().getLocation().equals(libraryLocationTextField.getText())){
+                   JOptionPane.showMessageDialog(null, "Branch in this location already available");
+                }
+                else{
+                    Branch br= this.applicationSystem.createBranch(branchNameTextField.getText());
+                    br.createLibrary(LibraryNameTextField.getText(), libraryLocationTextField.getText(), Integer.valueOf(buildingNoTextField.getText()));
+                    populateData();
+                }
+              }
+            }
+            
+        }
     }//GEN-LAST:event_addBranchNameButtonActionPerformed
 
 
