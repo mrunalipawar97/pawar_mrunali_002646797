@@ -47,10 +47,9 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
 
             UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(c.getPersonId());
             Object[] row = new Object[4];
-            System.out.println("c.getP id" + c.getPersonId());
-                    
+            System.out.println("c.getP id" + c.getPersonId());   
             row[0] = c.getPersonId();
-            row[1] =c.getName();
+            row[1] = c.getName();
             row[2] = u.getUsername();
             row[3] = u.getPassword();
      
@@ -139,12 +138,12 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
-        if(ua.accountExists(usernameTextField.getText(), passTextField.getText(), "Customer")) {
+        if(ua.accountExists(usernameTextField.getText(), passTextField.getText(), new CustomerRole())) {
             JOptionPane.showMessageDialog(null, "Sorry  credentials are taken");
             
         }else {
-            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passTextField.getText(), "Customer");
-            this.applicationSystem.getCustomerDirectory().createCustomer(user.getAccountId(), ageTextField.getText(), ageTextField.getText());
+            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passTextField.getText(), new CustomerRole());
+            this.applicationSystem.getCustomerDirectory().createCustomer(user.getAccountId(), nameTextField.getText(), ageTextField.getText());
             populate();
         }
     }//GEN-LAST:event_addButtonActionPerformed

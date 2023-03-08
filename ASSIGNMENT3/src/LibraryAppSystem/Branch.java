@@ -20,10 +20,10 @@ public class Branch {
         this.library = new Librarian();
         branchuseraccountDirectory = new UserAccountDirectory();
     }
-    public Branch(String branchName)  {
+    
+    /*public Branch(String branchName)  {
         this.branchName = branchName;
-      
-    }
+    }*/
 
     public String getBranchName() {
         return branchName;

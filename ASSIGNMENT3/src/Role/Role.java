@@ -23,8 +23,7 @@ public abstract class Role {
     public static String[] getRoles() {
         return roles;
     }
-    
-    
-    public abstract JFrame getWorkArea(ApplicationSystem applicationSystem, UserAccount useraccount);
+
+    public abstract JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount useraccount);
     
 }

@@ -11,6 +11,7 @@ import General.Magazine;
 import Librarian.Librarian;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,7 +32,7 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    MagazineManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian , UserAccount userAccount) {
+    MagazineManagementJPanel(ApplicationSystem applicationSystem, UserAccount userAccount,Librarian librarian) {
        
         initComponents();
         this.setVisible(true);
@@ -45,7 +46,7 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
 
      public void populateMagazineCatelog() {
         tableModel.setRowCount(0);
-        for (Magazine m : this.branch.getLibrary().getMagazineDirectory().getMagazinelist()) {
+        for (Magazine m : this.librarian.getMagazineDirectory().getMagazinelist()) {
             Object[] row = new Object[6];
             row[0] = m.getSerialNumber();
             row[1] = m.getName();
@@ -155,8 +156,9 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         String date = sdf.format(jDateChooser.getDate());
-        
-        Magazine m = this.branch.getLibrary().getMagazineDirectory().createMagazine(Integer.valueOf(srNoTextField.getText()), magazineNameTextField.getText(), date, availibilityComboBox.getSelectedItem().toString(), companyNameTextField.getText(), issueTypeComboBox1.getSelectedItem().toString());
+
+        this.librarian.getMagazineDirectory().createMagazine(Integer.valueOf(srNoTextField.getText()), magazineNameTextField.getText(), date, availibilityComboBox.getSelectedItem().toString(), companyNameTextField.getText(), issueTypeComboBox1.getSelectedItem().toString());
+        JOptionPane.showMessageDialog(null, "Magazine Created.");
         populateMagazineCatelog();
     }//GEN-LAST:event_addMagazineButtonActionPerformed
 

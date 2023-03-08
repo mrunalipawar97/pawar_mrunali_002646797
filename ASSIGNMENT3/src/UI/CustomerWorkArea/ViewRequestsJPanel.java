@@ -74,7 +74,7 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(viewRequestsTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 590, 250));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 590, 200));
 
         returnjButton.setText("RETURN");
         returnjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +82,7 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
                 returnjButtonActionPerformed(evt);
             }
         });
-        add(returnjButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
+        add(returnjButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - CUSTOMER REQUESTS");

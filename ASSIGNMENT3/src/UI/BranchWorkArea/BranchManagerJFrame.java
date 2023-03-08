@@ -28,13 +28,13 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-     public BranchManagerJFrame(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
+     public BranchManagerJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
         this.branch = branch;      
-        this.librarian = librarian;
+        this.librarian = new Librarian();
         jLabel2.setText(branch.getBranchName());
     }
 
@@ -110,8 +110,6 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Welcome");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
-
-        jLabel2.setText("jLabel2");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
         jSplitPane1.setRightComponent(jPanel3);
@@ -124,13 +122,13 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.userAccount);
+        new NewJFrame(this.applicationSystem, this.branch, this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.userAccount);
+        new NewJFrame(this.applicationSystem,this.branch, this.userAccount);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void libraryCollectionjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryCollectionjButtonActionPerformed

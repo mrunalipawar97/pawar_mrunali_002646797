@@ -21,8 +21,8 @@ public class CustomerRole extends Role {
 
     
     @Override
-    public JFrame getWorkArea(ApplicationSystem applicationSystem, UserAccount useraccount) {
-        return new CustomerJFrame(applicationSystem, useraccount);
+    public JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+        return new CustomerJFrame(applicationSystem, branch, userAccount);
     }
     
 }

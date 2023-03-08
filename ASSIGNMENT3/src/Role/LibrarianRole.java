@@ -23,26 +23,21 @@ public class LibrarianRole extends Role {
     }
 
     
-    /*@Override
-    public JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount useraccount) {
-        return new LibrarianJFrame(applicationSystem,useraccount);
-    }*/
-    
-     @Override
-    public JFrame getWorkArea(ApplicationSystem applicationSystem, UserAccount useraccount) {
-         Librarian lib= new Librarian();
-        ArrayList<Branch> branchList = applicationSystem.getBranchLists();
-        for(Branch branch: branchList){
+    @Override
+    public JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+        Librarian librarian = new Librarian();
+
+        for(Branch b : applicationSystem.getBranchLists()){
             ArrayList<Employee> empList=branch.getLibrary().getEmployeeDirectory().getEmployeeist();
             for(Employee emp: empList){
-                System.out.println(useraccount.getUsername());
+                System.out.println(userAccount.getUsername());
                 System.out.println(emp.getUsername());
-                if(useraccount.getUsername().equals(emp.getUsername())){        
-                  lib=branch.getLibrary();
+                if(userAccount.getUsername().equals(emp.getUsername())){        
+                  librarian = b.getLibrary();
                 }
             }
         }
-        return new LibrarianJFrame(applicationSystem, useraccount,lib);
+        return new LibrarianJFrame(applicationSystem, userAccount, librarian);
     }
     
 }

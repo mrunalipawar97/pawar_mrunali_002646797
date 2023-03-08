@@ -34,7 +34,7 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    OrderManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
+    OrderManagementJPanel(ApplicationSystem applicationSystem, UserAccount userAccount, Librarian librarian) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;

@@ -7,9 +7,10 @@ package UI.LibrarianWorkArea;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import BookGenre.Genre;
-import BookGenre.GenreDirectory;
 import Librarian.Librarian;
 import LibraryAppSystem.Branch;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,7 +32,7 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    GenreManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
+    GenreManagementJPanel(ApplicationSystem applicationSystem,  UserAccount userAccount, Librarian librarian) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
@@ -51,7 +52,7 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nameTextField = new javax.swing.JTextField();
+        genreNameTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Jtable = new javax.swing.JTable();
         addGenreButton = new javax.swing.JButton();
@@ -60,7 +61,7 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 204, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 120, 30));
+        add(genreNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 120, 30));
 
         Jtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,16 +104,25 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
 
     private void addGenreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGenreButtonActionPerformed
         // TODO add your handling code here:
-        //GenreDirectory ua = this.applicationSystem.getGenreDirectory().getGenreDirectory();
-        
-        Genre g = this.branch.getLibrary().getGenreDirectory().createGenre(nameTextField.getText());
-        populateGenrecatelog();
+      ArrayList<Genre> genreList=this.librarian.getGenreDirectory().getGenreLists();
+            if(genreList.isEmpty()){
+                    this.librarian.getGenreDirectory().createGenre(genreNameTextField.getText());
+                    JOptionPane.showMessageDialog(null, "Genre Added");
+                    populateGenrecatelog();  
+            }else{
+                for(Genre genre: genreList){
+                    if(genreNameTextField.getText()!= genre.getGenreName()){
+                       this.librarian.getGenreDirectory().createGenre(genreNameTextField.getText());
+                        JOptionPane.showMessageDialog(null, "Genre Added.");
+                        populateGenrecatelog();
+                    }
+                }
+            }
     }//GEN-LAST:event_addGenreButtonActionPerformed
 
     public void populateGenrecatelog() {
         tableModel.setRowCount(0);
-        for (Genre b : this.branch.getLibrary().getGenreDirectory().getGenreLists()) {
-            //UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(b.getBookName());
+        for (Genre b : this.librarian.getGenreDirectory().getGenreLists()) {
             Object[] row = new Object[1];
             row[0] = b.getGenreName();
             tableModel.addRow(row);
@@ -124,8 +134,8 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JTable Jtable;
     private javax.swing.JButton addGenreButton;
+    private javax.swing.JTextField genreNameTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nameTextField;
     // End of variables declaration//GEN-END:variables
 }

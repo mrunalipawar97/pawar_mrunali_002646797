@@ -9,6 +9,8 @@ import LibraryAppSystem.UserAccount;
 import BookAuthor.Author;
 import Librarian.Librarian;
 import LibraryAppSystem.Branch;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,7 +32,7 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    AuthorManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
+    AuthorManagementJPanel(ApplicationSystem applicationSystem,UserAccount userAccount, Librarian librarian) {
        
         initComponents();
         this.setVisible(true);
@@ -109,20 +111,32 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
 
     private void addAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAuthorButtonActionPerformed
         // TODO add your handling code here:
-        Author a = this.branch.getLibrary().getAuthorDirectory().createAuthor(authorNameTextField.getText(), authorBioTextField.getText());
-        populateAuthorCatelog();
+        ArrayList<Author> authors=this.librarian.getAuthorDirectory().getAuthorsList();
+            if(authors.isEmpty()){
+                    this.librarian.getAuthorDirectory().createAuthor(authorNameTextField.getText(),authorBioTextField.getText());
+                    JOptionPane.showMessageDialog(null, "Author Created.");
+                    populateAuthorCatelog();   
+            }else{
+               for(Author auth : authors){
+                 if(auth.getAuthorName()!=authorNameTextField.getText()){
+                    this.librarian.getAuthorDirectory().createAuthor(authorNameTextField.getText(),authorBioTextField.getText());
+                    JOptionPane.showMessageDialog(null, "Author Created.");
+                    populateAuthorCatelog(); 
+                 }
+               } 
+            }
     }//GEN-LAST:event_addAuthorButtonActionPerformed
 
      public void populateAuthorCatelog() {
         tableModel.setRowCount(0);
-        for (Author b : this.branch.getLibrary().getAuthorDirectory().getAuthorsList()) {
+        for (Author a : this.librarian.getAuthorDirectory().getAuthorsList()) {
             Object[] row = new Object[2];
-            row[0] = b.getAuthorName();
-            row[1] = b.getAuthorBio();
+            row[0] = a.getAuthorName();
+            row[1] = a.getAuthorBio();
             tableModel.addRow(row);  
         }
     }
-
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JTable Jtable;

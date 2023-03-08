@@ -51,9 +51,8 @@ public class BranchJPanel extends javax.swing.JPanel {
             row[0] = b;
             row[1] = librarian.getLibraryId();
             row[2] = librarian.getLibraryName();
-            row[3] = librarian.getLibraryName();
-            row[4] = librarian.getLocation();
-            
+            row[3] = librarian.getLocation();
+            row[4] = librarian.getBuildingNo();
             tableModel.addRow(row);
         }
     }

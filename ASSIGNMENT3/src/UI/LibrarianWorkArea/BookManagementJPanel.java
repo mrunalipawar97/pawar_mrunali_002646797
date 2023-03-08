@@ -11,6 +11,10 @@ import BookGenre.Genre;
 import Books.Book;
 import Librarian.Librarian;
 import LibraryAppSystem.Branch;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -34,7 +38,7 @@ public class BookManagementJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    BookManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian,UserAccount userAccount) {
+    BookManagementJPanel(ApplicationSystem applicationSystem,  UserAccount userAccount, Librarian librarian) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
@@ -48,17 +52,17 @@ public class BookManagementJPanel extends javax.swing.JPanel {
     }
     
     public void populateAuthorDetails () {
-        
+
         authorComboBox.removeAllItems();
 
-        for(Author a: this.branch.getLibrary().getAuthorDirectory().getAuthorsList()){
+        for(Author a: this.librarian.getAuthorDirectory().getAuthorsList()){
             authorComboBox.addItem(a);
         }
     }
     
     public void populateGenreDetails () {
         genreComboBox.removeAllItems();
-        for(Genre g : this.branch.getLibrary().getGenreDirectory().getGenreLists()){
+        for(Genre g : this.librarian.getGenreDirectory().getGenreLists()){
            genreComboBox.addItem(g);
         }
     }
@@ -166,25 +170,28 @@ public class BookManagementJPanel extends javax.swing.JPanel {
         String noOfPages = noOfPagesTextField.getText();
         String language = languageTextField.getText();
         String typeOfBinding = typeOfBindingTextField.getText();
-        
-      //  Book b = this.branch.getLibrary().getBooksDirectory().createBook(bookName, Integer.valueOf(noOfPages), language, typeOfBinding,  authorComboBox.getSelectedItem().toString(), genreComboBox.getSelectedItem().toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String registrationDate = sdf.format(jDateChooser.getDate());
+        Author author = (Author) authorComboBox.getSelectedItem();
+        Genre genre = (Genre) genreComboBox.getSelectedItem();
+        this.librarian.getBooksDirectory().createBook(bookName, Integer.valueOf(noOfPages),language, typeOfBinding, registrationDate,"Yes", author, genre);
+        JOptionPane.showMessageDialog(null, "Book Added.");
         populateBookCatelog();
         
     }//GEN-LAST:event_addBookButtonActionPerformed
 
     public void populateBookCatelog() {
         tableModel.setRowCount(0);
-        for (Book b : this.branch.getLibrary().getBooksDirectory().getBooklists()) {
+        for (Book b : this.librarian.getBooksDirectory().getBooklists()) {
             
             Object[] row = new Object[6];
             row[0] = b.getName();
             row[1] = b.getNoOfPages();
             row[2] = b.getLanguage();
             row[3] = b.getTypeOfBinding();
-            row[4] = b.getAuthor();
-            row[5] = b.getGenre();
+            row[4] = b.getAuthor().getAuthorName();
+            row[5] = b.getGenre().getGenreName();
             tableModel.addRow(row);
-            
         }
     }
 

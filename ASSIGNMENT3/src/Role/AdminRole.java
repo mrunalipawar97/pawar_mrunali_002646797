@@ -23,10 +23,10 @@ public class AdminRole extends Role {
     public AdminRole() {
     }
 
-    
+
     @Override
-    public JFrame getWorkArea(ApplicationSystem applicationSystem, UserAccount useraccount) {
-        return new AdminJFrame(applicationSystem, useraccount);
+    public JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount useraccount) {
+        return new AdminJFrame(applicationSystem, branch, useraccount);
     }
     
 }

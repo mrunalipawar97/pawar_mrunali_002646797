@@ -22,7 +22,7 @@ public class UserAccount {
     private String username;
     private String password;
     
-    private String role;
+    Role  role;
 
     public UserAccount() {
         this.accountId = "User" + this.count++;
@@ -31,7 +31,7 @@ public class UserAccount {
         this.role = role;
     }
     
-    public UserAccount(String username, String password, String role) {
+    public UserAccount(String username, String password, Role role) {
         this.accountId = "user" + this.count++;
         this.username = username;
         this.password = password;
@@ -70,29 +70,29 @@ public class UserAccount {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
    
     
-    public JFrame getWorkArea(String role, ApplicationSystem applicationSystem, UserAccount userAccount) {
+    /*public JFrame getWorkArea(String role, ApplicationSystem applicationSystem, UserAccount userAccount) {
         // the abstract class way
         if (role.equals("SYSAdmin")) {
-            return new AdminRole().getWorkArea(applicationSystem, userAccount);
+            return new AdminRole().getWorkArea(applicationSystem,  userAccount);
         }
         if (role.equals("Customer")) {
-            return new CustomerRole().getWorkArea(applicationSystem, userAccount);
+            return new CustomerRole().getWorkArea(applicationSystem,  userAccount);
         }
         if (role.equals("Librarian")) {
-            return new LibrarianRole().getWorkArea(applicationSystem,  userAccount);
+            return new LibrarianRole().getWorkArea(applicationSystem,   userAccount);
         }
         if (role.equals("BranchManager")) {
             return new BranchManagerRole().getWorkArea(applicationSystem, userAccount);
         }
         return null;
-    }
+    }*/
 }

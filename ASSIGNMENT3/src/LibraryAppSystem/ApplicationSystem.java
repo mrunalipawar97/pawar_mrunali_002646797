@@ -25,15 +25,14 @@ public class ApplicationSystem {
      
     
     public ApplicationSystem () {
-         
+        this.branchLists = new ArrayList<Branch>();
         this.customerDirectory = new CustomerDirectory();
         this.rentalRequestDirectory = new MasterRentalRequestDirectory();
         this.userAccountDirectory = new UserAccountDirectory();
         this.employeeDirectory = new EmployeeDirectory();
-        this.branchLists = new ArrayList<Branch>();
        
      // create a restaurant manager here
-        UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", "SYSAdmin");
+        UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", new AdminRole());
     }
     
     public static ApplicationSystem getBusinessInstance() {
@@ -91,7 +90,8 @@ public class ApplicationSystem {
     }
     
      public Branch createBranch(String name) {
-        Branch branch = new Branch(name);
+        Branch branch = new Branch();
+        branch.setBranchName(name);
         this.branchLists.add(branch);
         return branch;
     }

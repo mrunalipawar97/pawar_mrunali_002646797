@@ -23,26 +23,26 @@ public class BranchManagerRole extends Role {
     }
 
     
-    /*@Override
+    @Override
     public JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount useraccount) {
         return new BranchManagerJFrame(applicationSystem, branch ,useraccount);
-    }*/
+    }
     
-    @Override
-    public JFrame getWorkArea(ApplicationSystem applicationSystem, UserAccount useraccount) {
-        Librarian lib= new Librarian();
+    /*@Override
+    public JFrame getWorkArea(ApplicationSystem applicationSystem,Branch branch, UserAccount userAccount) {
+        Librarian librarian = new Librarian();
         ArrayList<Branch> branchList = applicationSystem.getBranchLists();
-        for(Branch branch: branchList){
+        for( Branch b : branchList){
             ArrayList<Employee> empList=branch.getLibrary().getEmployeeDirectory().getEmployeeist();
             for(Employee emp: empList){
-                System.out.println(useraccount.getUsername());
+                System.out.println(userAccount.getUsername());
                 System.out.println(emp.getUsername());
-                if(useraccount.getUsername().equals(emp.getUsername())){        
-                  lib=branch.getLibrary();
+                if(userAccount.getUsername().equals(emp.getUsername())){        
+                  librarian=branch.getLibrary();
                 }
             }
         }
-        return new BranchManagerJFrame(applicationSystem, lib, useraccount);
-    }
+        return new BranchManagerJFrame(applicationSystem, branch, librarian, userAccount);
+    }*/
     
 }
