@@ -9,7 +9,6 @@ import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
-import Services.MasterRentalRequestDirectory;
 import Services.RentalRequest;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

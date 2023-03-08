@@ -36,6 +36,7 @@ public class BookManagementJPanel extends javax.swing.JPanel {
 
     BookManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian,UserAccount userAccount) {
         initComponents();
+        this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.branch = branch;
         this.librarian = librarian;

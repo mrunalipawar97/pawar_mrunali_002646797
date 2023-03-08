@@ -17,7 +17,7 @@ public class Branch {
     UserAccountDirectory branchuseraccountDirectory;
 
     public Branch(String branchName)  {
-        library = new Librarian();
+        this.library = new Librarian();
         this.branchName = branchName;
         branchuseraccountDirectory = new UserAccountDirectory();
     }

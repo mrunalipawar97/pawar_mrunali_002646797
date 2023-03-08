@@ -33,6 +33,7 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
     AuthorManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
        
         initComponents();
+        this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.branch = branch;
         this.librarian = librarian;

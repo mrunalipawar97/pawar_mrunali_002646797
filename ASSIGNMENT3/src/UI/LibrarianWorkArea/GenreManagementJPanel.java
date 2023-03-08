@@ -33,6 +33,7 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
 
     GenreManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
         initComponents();
+        this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.branch = branch;
         this.librarian = librarian;
