@@ -4,12 +4,16 @@
  */
 package UI.AdminWorkArea;
 
+import Employees.Employee;
 import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
+import LibraryAppSystem.UserAccountDirectory;
 import Role.BranchManagerRole;
 import Role.LibrarianRole;
+import Role.Role;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,23 +42,33 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         this.branch = branch;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)branchManagerJtable.getModel();
-        populateBranchManagerCatelog();
+        populateBranchLocations();
+        populatEmployeeDetails();
     }
     
-    public void populateBranchManagerCatelog() {
-       /* tableModel.setRowCount(0);
-        for (Branch branch : this.applicationSystem.getBranchLists()) {
-
-            Object[] row = new Object[6];
-            //row[0] = branch.get
-                    //employeeIdTextField.getText();
-            row[1] = experienceTextField.getText();
-            row[2] = designationjComboBox.getSelectedItem().toString();
-            row[3] = usernameTextField.getText();
-            row[4] = passwordTextField.getText();
-            row[5] = branchNameTextField.getText();
+     public void populatEmployeeDetails() {
+        
+        tableModel.setRowCount(0);
+        for(Branch b: this.applicationSystem.getBranchLists()) {
+            ArrayList<Employee> employeeList= b.getLibrary().getEmployeeDirectory().getEmployeeist();
+            for(Employee emp: employeeList) {
+            Object[] row = new Object[5];
+            row[0] = b.getLibrary().getLibraryName();
+            row[1] = emp.getPersonId();
+            row[2] = emp.getName();
+            row[3] = emp.getExperience();
+            row[4] = designationjComboBox.getSelectedItem();
             tableModel.addRow(row);
-        }*/
+            }
+        }  
+    }
+    
+    public void populateBranchLocations(){
+        
+        ArrayList<Branch> branchDetail= this.applicationSystem.getBranchLists();
+        for(Branch b : branchDetail){
+            branchLocationjComboBox.addItem(b);
+        }
     }
     
 
@@ -68,9 +82,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         employeeIdTextField = new javax.swing.JTextField();
-        addBranchManagerButton = new javax.swing.JButton();
-        branchNameTextField = new javax.swing.JTextField();
-        addBranchNameButton = new javax.swing.JButton();
+        addLibrarianButton = new javax.swing.JButton();
         experienceTextField = new javax.swing.JTextField();
         passwordTextField = new javax.swing.JTextField();
         usernameTextField = new javax.swing.JTextField();
@@ -79,83 +91,80 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         designationJLabel = new javax.swing.JLabel();
         usernameJLabel = new javax.swing.JLabel();
         passwordJLabel = new javax.swing.JLabel();
-        branchNameJLabel = new javax.swing.JLabel();
-        deleteBranchButton = new javax.swing.JButton();
         AuthorHeaderjLabel = new javax.swing.JLabel();
         designationjComboBox = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         branchManagerJtable = new javax.swing.JTable();
+        branchLocationjComboBox = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        employeeNameTextField = new javax.swing.JTextField();
+        empNamejLabel = new javax.swing.JLabel();
+        librarianNameTextField = new javax.swing.JTextField();
+        empNamejLabel1 = new javax.swing.JLabel();
+        libIdTextField = new javax.swing.JTextField();
+        empIdjLabel1 = new javax.swing.JLabel();
+        librarianexperienceTextField = new javax.swing.JTextField();
+        experiencejLabel1 = new javax.swing.JLabel();
+        designationJLabel1 = new javax.swing.JLabel();
+        ldesignationjComboBox = new javax.swing.JComboBox<>();
+        lpasswordTextField = new javax.swing.JTextField();
+        lusernameTextField = new javax.swing.JTextField();
+        lusernameJLabel = new javax.swing.JLabel();
+        passwordJLabel1 = new javax.swing.JLabel();
+        addBranchEmployeeButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 204));
+        setBackground(new java.awt.Color(0, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(employeeIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 140, 30));
+        add(employeeIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 170, 30));
 
-        addBranchManagerButton.setText("Add Employee");
-        addBranchManagerButton.addActionListener(new java.awt.event.ActionListener() {
+        addLibrarianButton.setText("Add Librarian");
+        addLibrarianButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBranchManagerButtonActionPerformed(evt);
+                addLibrarianButtonActionPerformed(evt);
             }
         });
-        add(addBranchManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 130, 30));
-        add(branchNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 150, 40));
-
-        addBranchNameButton.setText("ADD BRANCH");
-        addBranchNameButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBranchNameButtonActionPerformed(evt);
-            }
-        });
-        add(addBranchNameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 150, 30));
-        add(experienceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 140, 30));
-        add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 140, 30));
-        add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 140, 30));
+        add(addLibrarianButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, 170, 30));
+        add(experienceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 170, 30));
+        add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 170, 30));
+        add(usernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 170, 30));
 
         empIdjLabel.setText("Employee ID");
-        add(empIdjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 197, -1, 30));
+        add(empIdjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 30));
 
         experiencejLabel.setText("Experience");
-        add(experiencejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, 30));
+        add(experiencejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, 30));
 
         designationJLabel.setText("Designation");
-        add(designationJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 307, -1, 20));
+        add(designationJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, 20));
 
         usernameJLabel.setText("Username");
-        add(usernameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 357, -1, 20));
+        add(usernameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, 30));
 
         passwordJLabel.setText("Password");
-        add(passwordJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 407, -1, 20));
-
-        branchNameJLabel.setText("Branch Name");
-        add(branchNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 30));
-
-        deleteBranchButton.setText("Delete Branch");
-        deleteBranchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBranchButtonActionPerformed(evt);
-            }
-        });
-        add(deleteBranchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, -1, 30));
+        add(passwordJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, 30));
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("BRANCH CATELOG");
-        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        AuthorHeaderjLabel.setText("BRANCH MANAGER CATELOG");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
-        designationjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Branch Manager", "Librarian" }));
-        add(designationjComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 140, 30));
+        designationjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Branch Manager" }));
+        add(designationjComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 170, 30));
 
         branchManagerJtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Emp ID", "Experience", "Designation", "USERNAME", "PASSWORD", "Branch Name"
+                "Branch Name", "Emp ID", "Emp Name", "Experience", "Designation"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -164,90 +173,190 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(branchManagerJtable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 620, 110));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 540, 620, 170));
+
+        add(branchLocationjComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 160, 30));
+
+        jLabel1.setText("Branch");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 60, 30));
+        add(employeeNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 170, 30));
+
+        empNamejLabel.setText("Employee Name");
+        add(empNamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
+        add(librarianNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 170, 30));
+
+        empNamejLabel1.setText("Employee Name");
+        add(empNamejLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, 30));
+        add(libIdTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 170, 30));
+
+        empIdjLabel1.setText("Employee ID");
+        add(empIdjLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, -1, 30));
+        add(librarianexperienceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 170, 30));
+
+        experiencejLabel1.setText("Experience");
+        add(experiencejLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, -1, 30));
+
+        designationJLabel1.setText("Designation");
+        add(designationJLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, 20));
+
+        ldesignationjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Librarian" }));
+        add(ldesignationjComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 170, 30));
+        add(lpasswordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, 170, 30));
+        add(lusernameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 170, 30));
+
+        lusernameJLabel.setText("Username");
+        add(lusernameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, -1, 30));
+
+        passwordJLabel1.setText("Password");
+        add(passwordJLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, -1, 30));
+
+        addBranchEmployeeButton1.setText("Add Branch Manager");
+        addBranchEmployeeButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBranchEmployeeButton1ActionPerformed(evt);
+            }
+        });
+        add(addBranchEmployeeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 170, 30));
+
+        jLabel2.setText("Branch Manager");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+
+        jLabel3.setText("Librarian");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 100, 40));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void deleteBranchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBranchButtonActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = branchManagerJtable.getSelectedRow();
-                
-         if(selectedRow >=0) {
-             //we will delete the object
-             Branch applicant  = (Branch) branchManagerJtable.getValueAt(selectedRow, 5);
-             this.applicationSystem.removeBranch(applicant.getBranchName());
-             populateBranchManagerCatelog();
-         }  
-         else {
-             
-         }
-    }//GEN-LAST:event_deleteBranchButtonActionPerformed
-
-    private void addBranchNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchNameButtonActionPerformed
-        // TODO add your handling code here:
-        // check for unique branch name
-        this.branch = this.applicationSystem.createBranch(branchNameTextField.getText());
-        
-    }//GEN-LAST:event_addBranchNameButtonActionPerformed
-
-    private void addBranchManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchManagerButtonActionPerformed
+    private void addLibrarianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLibrarianButtonActionPerformed
         //TODO add your handling code here:
-         
-        if(designationjComboBox.getSelectedItem().equals("Branch Manager")){
-            if (branchNameTextField.getText() != "") {
-                this.branch.getBranchuseraccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), new BranchManagerRole());
-                populateBranchManagerCatelog();
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Create a new branch by filling the branch field to add it's branch manager.");
-            }
-        }else if (designationjComboBox.getSelectedItem().equals("Librarian")){
-             if (branchNameTextField.getText() != "") {
-                 this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(),new LibrarianRole());
-                 System.out.println("in librarian");
-                 populateBranchManagerCatelog();
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Create a new branch by filling the branch field to add it's branch LIBRARIAN.");
-            }
-           
-        }
-    }//GEN-LAST:event_addBranchManagerButtonActionPerformed
-
-    
-    public void populateLibrarianCatelog() {
-        /*tableModel.setRowCount(0);
-        for (Librarian l : this.applicationSystem.ge) {
-
-           UserAccount u = this.applicationSystem.getUserAccountDirectory().findbyId(l.getPersonId());
-            Object[] row = new Object[4];
-            System.out.println("c.getP id" + l.getPersonId());
-                    
-            row[0] = l.getPersonId();
-            row[1] =l.getName();
-            row[2] = u.getUsername();
-            row[3] = u.getPassword();
-     
-            tableModel.addRow(row);   
-        }*/
+       
+        Branch branchDetails =(Branch) branchLocationjComboBox.getSelectedItem();
         
-    }
+        String libName = librarianNameTextField.getText();
+        String libId = libIdTextField.getText();
+        String libExp = librarianexperienceTextField.getText();
+        
+        UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
+
+        if(ua.accountExists(lusernameTextField.getText(), lpasswordTextField.getText(), new LibrarianRole())) {
+            JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+        }
+        else {
+            ArrayList<Employee> empList = branchDetails.getLibrary().getEmployeeDirectory().getEmployeeist();
+            System.out.println(empList.isEmpty());
+            if(empList.isEmpty()){    
+                UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(lusernameTextField.getText(), lpasswordTextField.getText(), new LibrarianRole());
+                branchDetails.getLibrary().getEmployeeDirectory().createEmployee(libName, lusernameTextField.getText(),Integer.valueOf(libId), Double.valueOf(libExp), ldesignationjComboBox.getSelectedItem().toString());
+                JOptionPane.showMessageDialog(null,"Librarian Added");
+                populatEmployeeDetails();
+            }
+            else{
+                boolean islibrarianPresent=false;
+                for(Employee emp:empList){
+                    System.out.println(emp.getDesignation());
+                    if(emp.getDesignation().equals("Librarian")){
+                       islibrarianPresent=true;
+                       break;
+                    }
+                    else{
+                        islibrarianPresent=false;
+                    }
+                }
+                if(islibrarianPresent){
+                       JOptionPane.showMessageDialog(null,"Only one librarian can be added per branch"); 
+                }
+                else{
+                        branchDetails.getLibrary().getEmployeeDirectory().createEmployee(libName,lusernameTextField.getText(), Integer.valueOf(libId), Double.valueOf(libExp), ldesignationjComboBox.getSelectedItem().toString());
+                        UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(lusernameTextField.getText(), lpasswordTextField.getText(),new LibrarianRole());
+                        JOptionPane.showMessageDialog(null,"Librarian Added");
+                        populatEmployeeDetails();
+                }
+
+            }
+            
+            
+        }
+        
+    }//GEN-LAST:event_addLibrarianButtonActionPerformed
+
+    private void addBranchEmployeeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchEmployeeButton1ActionPerformed
+        // TODO add your handling code here:
+        Branch branchDetails =(Branch) branchLocationjComboBox.getSelectedItem();
+        
+        String managerName=employeeNameTextField.getText();
+        String managerId=employeeIdTextField.getText();
+        String managerExp=experienceTextField.getText();
+        
+        UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
+
+        if(ua.accountExists(usernameTextField.getText(), passwordTextField.getText(), new BranchManagerRole())) {
+            JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+        }
+        else {
+            ArrayList<Employee> empList = branchDetails.getLibrary().getEmployeeDirectory().getEmployeeist();
+            System.out.println(empList.isEmpty());
+            if(empList.isEmpty()){
+                UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), new BranchManagerRole());
+                branchDetails.getLibrary().getEmployeeDirectory().createEmployee(managerName, usernameTextField.getText(), Integer.valueOf(managerId), Double.valueOf(managerExp), designationjComboBox.getSelectedItem().toString());
+                JOptionPane.showMessageDialog(null,"Manager Added");
+                populatEmployeeDetails();
+            }
+            else{
+                boolean ismanagerPresent=false;
+                for(Employee emp:empList){
+                    System.out.println(emp.getDesignation());
+                    if(emp.getDesignation().equals("Branch Manager")){
+                       ismanagerPresent=true;
+                       break;
+                    }
+                    else{
+                        ismanagerPresent=false;
+                    }
+                }
+                if(ismanagerPresent){
+                       JOptionPane.showMessageDialog(null,"Only one manager can be added per Branch"); 
+                }
+                else{
+                        branchDetails.getLibrary().getEmployeeDirectory().createEmployee(managerName,usernameTextField.getText(), Integer.valueOf(managerId), Float.valueOf(managerExp), designationjComboBox.getSelectedItem().toString());
+                        UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passwordTextField.getText(), new BranchManagerRole());
+                        JOptionPane.showMessageDialog(null,"Manager Added");
+                        populatEmployeeDetails();
+                }
+            } 
+        }
+        
+    }//GEN-LAST:event_addBranchEmployeeButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AuthorHeaderjLabel;
-    private javax.swing.JButton addBranchManagerButton;
-    private javax.swing.JButton addBranchNameButton;
+    private javax.swing.JButton addBranchEmployeeButton1;
+    private javax.swing.JButton addLibrarianButton;
+    private javax.swing.JComboBox branchLocationjComboBox;
     private javax.swing.JTable branchManagerJtable;
-    private javax.swing.JLabel branchNameJLabel;
-    private javax.swing.JTextField branchNameTextField;
-    private javax.swing.JButton deleteBranchButton;
     private javax.swing.JLabel designationJLabel;
+    private javax.swing.JLabel designationJLabel1;
     private javax.swing.JComboBox<String> designationjComboBox;
     private javax.swing.JLabel empIdjLabel;
+    private javax.swing.JLabel empIdjLabel1;
+    private javax.swing.JLabel empNamejLabel;
+    private javax.swing.JLabel empNamejLabel1;
     private javax.swing.JTextField employeeIdTextField;
+    private javax.swing.JTextField employeeNameTextField;
     private javax.swing.JTextField experienceTextField;
     private javax.swing.JLabel experiencejLabel;
+    private javax.swing.JLabel experiencejLabel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> ldesignationjComboBox;
+    private javax.swing.JTextField libIdTextField;
+    private javax.swing.JTextField librarianNameTextField;
+    private javax.swing.JTextField librarianexperienceTextField;
+    private javax.swing.JTextField lpasswordTextField;
+    private javax.swing.JLabel lusernameJLabel;
+    private javax.swing.JTextField lusernameTextField;
     private javax.swing.JLabel passwordJLabel;
+    private javax.swing.JLabel passwordJLabel1;
     private javax.swing.JTextField passwordTextField;
     private javax.swing.JLabel usernameJLabel;
     private javax.swing.JTextField usernameTextField;

@@ -8,7 +8,6 @@ import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import UI.BranchWorkArea.BranchManagerJFrame;
-import UI.LibrarianWorkArea.LibrarianJFrame;
 import javax.swing.JFrame;
 
 /**

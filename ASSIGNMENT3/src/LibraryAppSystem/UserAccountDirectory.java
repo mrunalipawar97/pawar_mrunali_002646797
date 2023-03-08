@@ -68,5 +68,18 @@ public class UserAccountDirectory {
         }
         return null;
     }
+    
+    public UserAccount findByUsername(String name) {
+        for(UserAccount u: this.userAccountlist) {
+            if(u.getUsername().equals(name)) {
+                return u;
+            }
+        }
+        return null;
+    }
+    
+    public void removeUser(UserAccount u){
+        this.userAccountlist.remove(u);
+    }
 
 }

@@ -126,9 +126,7 @@ public class RentalRequest {
         this.materialType = materialType;
     }
 
-    
-
-     @Override
+    @Override
     public String toString() {
         return this.requestId;
     }
