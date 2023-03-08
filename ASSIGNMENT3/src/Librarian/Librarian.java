@@ -10,7 +10,6 @@ import BookGenre.GenreDirectory;
 import Books.BooksDirectory;
 import Employees.EmployeeDirectory;
 import General.MagazineDirectory;
-import Personnel.Profile;
 import Services.RentalRequest;
 import java.util.ArrayList;
 
@@ -45,8 +44,7 @@ public class Librarian {
         this.genreDirectory = new GenreDirectory();
         this.booksDirectory = new BooksDirectory();
         this.magazineDirectory = new MagazineDirectory();
-        this.count++;
-        this.libraryId = "Library"+this.count;
+        this.libraryId = "Library"+this.count++;
      }
 
     public int getOrderCount() {
