@@ -9,6 +9,7 @@ import LibraryAppSystem.UserAccount;
 import BookAuthor.Author;
 import BookGenre.Genre;
 import Books.Book;
+import Librarian.Librarian;
 import LibraryAppSystem.Branch;
 
 import javax.swing.table.DefaultTableModel;
@@ -26,16 +27,18 @@ public class BookManagementJPanel extends javax.swing.JPanel {
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
     private Branch branch;
+    private Librarian librarian;
     DefaultTableModel tableModel;
     
     public BookManagementJPanel() {
         initComponents();
     }
 
-    BookManagementJPanel(ApplicationSystem applicationSystem, Branch branch ,UserAccount userAccount) {
+    BookManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian,UserAccount userAccount) {
         initComponents();
         this.applicationSystem = applicationSystem;
         this.branch = branch;
+        this.librarian = librarian;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)bookCatelogJtable.getModel();
         populateAuthorDetails();

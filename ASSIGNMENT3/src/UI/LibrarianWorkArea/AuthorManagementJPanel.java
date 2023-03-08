@@ -7,6 +7,7 @@ package UI.LibrarianWorkArea;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import BookAuthor.Author;
+import Librarian.Librarian;
 import LibraryAppSystem.Branch;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,16 +24,18 @@ public class AuthorManagementJPanel extends javax.swing.JPanel {
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
     private Branch branch;
+    private Librarian librarian;
     DefaultTableModel tableModel;
     public AuthorManagementJPanel() {
         initComponents();
     }
 
-    AuthorManagementJPanel(ApplicationSystem applicationSystem, Branch branch,UserAccount userAccount) {
+    AuthorManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
        
         initComponents();
         this.applicationSystem = applicationSystem;
         this.branch = branch;
+        this.librarian = librarian;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)Jtable.getModel();
         populateAuthorCatelog();

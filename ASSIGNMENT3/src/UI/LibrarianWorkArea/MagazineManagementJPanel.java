@@ -8,6 +8,7 @@ import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import General.Magazine;
+import Librarian.Librarian;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
@@ -25,15 +26,17 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private Branch branch;
     DefaultTableModel tableModel;
+    private Librarian librarian;
     public MagazineManagementJPanel() {
         initComponents();
     }
 
-    MagazineManagementJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+    MagazineManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian , UserAccount userAccount) {
        
         initComponents();
         this.applicationSystem = applicationSystem;
         this.branch = branch;
+        this.librarian = librarian;     
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)magazineTable.getModel();
         populateMagazineCatelog();

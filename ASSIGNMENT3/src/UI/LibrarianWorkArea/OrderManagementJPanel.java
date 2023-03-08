@@ -27,21 +27,21 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
     private Branch branch;
-    DefaultTableModel tableModel;
     private Librarian librarian;
+    DefaultTableModel tableModel;
     private RentalRequest selectedRequest;
         
     public OrderManagementJPanel() {
         initComponents();
     }
 
-    OrderManagementJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+    OrderManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.branch = branch;
-        this.userAccount= userAccount;
         this.librarian = librarian;
+        this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel) orderRequestTable.getModel();
         populateRentalRequestOrder();
     }

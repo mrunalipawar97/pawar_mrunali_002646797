@@ -5,14 +5,10 @@
 package UI.AdminWorkArea;
 
 import Employees.Employee;
-import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import LibraryAppSystem.UserAccountDirectory;
-import Role.BranchManagerRole;
-import Role.LibrarianRole;
-import Role.Role;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -57,7 +53,7 @@ public class BranchManagementJPanel extends javax.swing.JPanel {
             row[1] = emp.getPersonId();
             row[2] = emp.getName();
             row[3] = emp.getExperience();
-            row[4] = designationjComboBox.getSelectedItem();
+            row[4] = emp.getDesignation();
             tableModel.addRow(row);
             }
         }  

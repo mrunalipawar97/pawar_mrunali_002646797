@@ -8,6 +8,7 @@ import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import BookGenre.Genre;
 import BookGenre.GenreDirectory;
+import Librarian.Librarian;
 import LibraryAppSystem.Branch;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,15 +25,17 @@ public class GenreManagementJPanel extends javax.swing.JPanel {
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
     private Branch branch;
+    private Librarian librarian;
     DefaultTableModel tableModel;
     public GenreManagementJPanel() {
         initComponents();
     }
 
-    GenreManagementJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+    GenreManagementJPanel(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
         initComponents();
         this.applicationSystem = applicationSystem;
         this.branch = branch;
+        this.librarian = librarian;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)Jtable.getModel();
         populateGenrecatelog();
