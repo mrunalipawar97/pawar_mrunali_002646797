@@ -122,7 +122,7 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(magazineTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 570, 340));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 620, 260));
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - MAGAZINE CATELOG");

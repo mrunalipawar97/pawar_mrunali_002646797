@@ -84,6 +84,8 @@ public class BookManagementJPanel extends javax.swing.JPanel {
         typeOfBindingjLabel = new javax.swing.JLabel();
         languageTextField = new javax.swing.JTextField();
         AuthorHeaderjLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(204, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,7 +120,7 @@ public class BookManagementJPanel extends javax.swing.JPanel {
                 addBookButtonActionPerformed(evt);
             }
         });
-        add(addBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, -1, 30));
+        add(addBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, 30));
 
         add(authorComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 170, 30));
 
@@ -148,6 +150,10 @@ public class BookManagementJPanel extends javax.swing.JPanel {
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - BOOK CATELOG ");
         add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        jLabel3.setText("Date");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 90, 30));
+        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 170, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
@@ -188,6 +194,8 @@ public class BookManagementJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel bookNamejLabel;
     private javax.swing.JComboBox genreComboBox;
     private javax.swing.JLabel genreNameLabel;
+    private com.toedter.calendar.JDateChooser jDateChooser;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField languageTextField;
     private javax.swing.JLabel languagejLabel;

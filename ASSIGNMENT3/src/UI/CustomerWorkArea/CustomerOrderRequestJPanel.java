@@ -6,13 +6,15 @@ package UI.CustomerWorkArea;
 
 import Books.Book;
 import Customer.Customer;
+import General.Magazine;
 import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
+import Materials.Material;
 import Services.RentalRequest;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,7 +29,7 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
     private Branch branch;
-    DefaultTableModel booksTableModel, magazinesTableModel, orderItemTableModel;
+   
 
     public CustomerOrderRequestJPanel() {
         initComponents();
@@ -39,41 +41,70 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
         this.applicationSystem = applicationSystem;
         this.branch = branch;
         this.userAccount = userAccount;
-        this.booksTableModel = (DefaultTableModel)booksJTable.getModel();
-        this.magazinesTableModel = (DefaultTableModel)magazineJTable.getModel();
-        this.orderItemTableModel = (DefaultTableModel)orderjTable.getModel();
+      
         selectBranchJLabel.setText(userAccount.getUsername());
         populateBranchLocations();
-        populateBooksCatelog();
-        populateMagazinesCatelog();
         populateBranchLibrary();
-        populateDropDown();
+        populateMaterialName();
+        populateData();
     }
    
-    public void populateBranchLocations() {
-        ArrayList<Branch> branchlists = this.applicationSystem.getBranchLists();
-        for(Branch b : branchlists) {
+
+
+    public void populateBranchLocations(){
+        ArrayList<Branch> branchList= this.applicationSystem.getBranchLists();
+        for(Branch b:branchList){
             branchLocationComboBox.addItem(b.getLibrary().getLocation());
         }
+        
     }
     
-    public void populateBranchLibrary() {
+    public void populateBranchLibrary(){
         libraryComboBox.removeAllItems();
-        ArrayList<Branch> branchlists = this.applicationSystem.getBranchLists();
-        String branchSelected = (String) branchLocationComboBox.getSelectedItem();
-        for(Branch b : branchlists) {
-            if(b.getLibrary().getLocation().equals(branchSelected))
-            libraryComboBox.addItem(b.getLibrary());
+        ArrayList<Branch> branchList= this.applicationSystem.getBranchLists();
+        String locSelected =(String) branchLocationComboBox.getSelectedItem();
+        for(Branch b:branchList){
+            if(b.getLibrary().getLocation().equals(locSelected)){
+                libraryComboBox.addItem(b.getLibrary());
+            }
         }
+        
     }
     
-    public void populateDropDown() {
-        Librarian librarian = (Librarian) libraryComboBox.getSelectedItem();
-        int bookSelected =  booksJTable.getSelectedRow();
-        Book b = (Book) booksTableModel.getValueAt(bookSelected, 1);
-               
+    
+    public void populateData(){
+        Librarian lib = (Librarian) libraryComboBox.getSelectedItem();
+        String materialSelected = (String) chooseComboBox.getSelectedItem();
+        ArrayList<Book> bookList= lib.getBooksDirectory().getBooklists();
+        ArrayList<Magazine> magList= lib.getMagazineDirectory().getMagazinelist();
+        if(materialSelected.equals("Book")){
+            materialsComboBox.removeAllItems();
+            for(Book b:bookList){
+                if(b.isIsAvailablityFlag().equalsIgnoreCase("Yes")){
+                  materialsComboBox.addItem(b);
+                }
+            }    
+        }
+        else{
+            materialsComboBox.removeAllItems();
+            for(Magazine m:magList){
+                if(m.isIsAvailablityFlag().equalsIgnoreCase("Yes")){
+                  materialsComboBox.addItem(m);
+                }
+            }
+        }
+        
     }
-
+    public void populateMaterialName(){
+        Material materialSelected =(Material) materialsComboBox.getSelectedItem();
+        if(materialSelected!=null){
+            materialNameField.setText(materialSelected.getName());
+        }
+        else{
+            materialNameField.setText("");
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,119 +114,23 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane3 = new javax.swing.JScrollPane();
-        booksJTable = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        addBookRequestButton1 = new javax.swing.JButton();
-        addMagazineRequestButton = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        magazineJTable = new javax.swing.JTable();
-        jLabel10 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        orderjTable = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
         bookOrderButton = new javax.swing.JButton();
         selectBranchJLabel = new javax.swing.JLabel();
         branchLocationComboBox = new javax.swing.JComboBox<>();
         selectBranchJLabel1 = new javax.swing.JLabel();
         libraryComboBox = new javax.swing.JComboBox();
+        chooseComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        materialsComboBox = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        materialNameField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        durationComboBox = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        booksJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Item ID", "Item Name", "Price", "Availability"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(booksJTable);
-
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 550, 140));
-
-        jLabel9.setText("Books Catelogs");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, 20));
-
-        addBookRequestButton1.setText("ADD BOOK");
-        addBookRequestButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBookRequestButton1ActionPerformed(evt);
-            }
-        });
-        add(addBookRequestButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 120, 30));
-
-        addMagazineRequestButton.setText("ADD MAGAZINE");
-        addMagazineRequestButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addMagazineRequestButtonActionPerformed(evt);
-            }
-        });
-        add(addMagazineRequestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, -1, 30));
-
-        magazineJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Item ID", "Item Name", "Price", "Availability"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(magazineJTable);
-
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 550, 140));
-
-        jLabel10.setText("Magazine Catelogs");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, 20));
-
-        orderjTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Item ID", "Item Name", "Price"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(orderjTable);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, 560, 130));
-
-        jLabel8.setText("Order Item");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, 20));
 
         bookOrderButton.setText("SUBMIT ORDER");
         bookOrderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -203,73 +138,118 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
                 bookOrderButtonActionPerformed(evt);
             }
         });
-        add(bookOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 540, 130, 33));
+        add(bookOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 130, 33));
 
         selectBranchJLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         selectBranchJLabel.setText("Select Branch");
-        add(selectBranchJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 100, 30));
+        add(selectBranchJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 100, 30));
 
-        add(branchLocationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 140, 30));
+        branchLocationComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                branchLocationComboBoxItemStateChanged(evt);
+            }
+        });
+        add(branchLocationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 140, 30));
 
         selectBranchJLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         selectBranchJLabel1.setText("Select Library");
-        add(selectBranchJLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 100, 30));
+        add(selectBranchJLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, 30));
 
-        add(libraryComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 140, 30));
+        add(libraryComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 140, 30));
+
+        chooseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Book", "Magazine" }));
+        chooseComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chooseComboBoxItemStateChanged(evt);
+            }
+        });
+        chooseComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseComboBoxActionPerformed(evt);
+            }
+        });
+        add(chooseComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 180, 30));
+
+        jLabel1.setText("Material Type");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+
+        materialsComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                materialsComboBoxItemStateChanged(evt);
+            }
+        });
+        add(materialsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 180, 30));
+
+        jLabel2.setText("Material Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+        add(materialNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 180, 30));
+
+        jLabel3.setText("Choose material:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        durationComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "weekly", "monthly", "quaterly" }));
+        add(durationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 180, 30));
+
+        jLabel4.setText("Duration");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 30));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - CUSTOMER ORDER PORTAL");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void addBookRequestButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookRequestButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addBookRequestButton1ActionPerformed
-
-    private void addMagazineRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMagazineRequestButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addMagazineRequestButtonActionPerformed
 
     private void bookOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookOrderButtonActionPerformed
         // TODO add your handling code here:
+        
+        Librarian lib= (Librarian) libraryComboBox.getSelectedItem();
+        String materialSelected =(String) chooseComboBox.getSelectedItem();
+        Material mat =(Material) materialsComboBox.getSelectedItem();
+        String duration= (String) durationComboBox.getSelectedItem();
+        mat.setIsAvailablityFlag("No");
         Customer c = this.applicationSystem.getCustomerDirectory().findById(userAccount.getAccountId());
-        Librarian l = null; //= this.branch.getLibrary().getLibrarianlist();
-       // RentalRequest o = this.applicationSystem.getRentalRequestDirectory().createOrder(c, l);
-        //c.addCustomerRequest(o);
+        RentalRequest request = c.getMasterRentalRequestDirectory().createOrder(c, mat, "Requested", duration, materialSelected,lib);
+        JOptionPane.showMessageDialog(null, "Request Created.");
+        
+        populateData();
+        populateMaterialName();
     }//GEN-LAST:event_bookOrderButtonActionPerformed
 
-    
-    public void populateBooksCatelog() {
-        booksTableModel.setRowCount(0);
-        /*for (Material c: this.applicationSystem.getLibraryMaterial().getBooksCatelog().getBooklists()) {
-          
-            Object[] row = new Object[4];
-           // System.out.println("c.getP id" + c.getPersonId());
-                    
-            row[0] = c.getSerialNumber();
-            row[1] =c.getName();
-            row[2] = c.isIsAvailablityFlag();
-            row[3] = c.getRegisteredDate();
-     
-            itemsTableModel.addRow(row);
-        }*/
-    }
-    
-    public void populateMagazinesCatelog() {
-        
-    }
+    private void chooseComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chooseComboBoxItemStateChanged
+        // TODO add your handling code here:
+        populateData();
+    }//GEN-LAST:event_chooseComboBoxItemStateChanged
+
+    private void chooseComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chooseComboBoxActionPerformed
+
+    private void materialsComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_materialsComboBoxItemStateChanged
+        // TODO add your handling code here:
+        populateMaterialName();
+    }//GEN-LAST:event_materialsComboBoxItemStateChanged
+
+    private void branchLocationComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_branchLocationComboBoxItemStateChanged
+        // TODO add your handling code here:
+        populateBranchLibrary();
+        populateMaterialName();
+        populateData();
+    }//GEN-LAST:event_branchLocationComboBoxItemStateChanged
+
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBookRequestButton1;
-    private javax.swing.JButton addMagazineRequestButton;
+    private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JButton bookOrderButton;
-    private javax.swing.JTable booksJTable;
     private javax.swing.JComboBox<String> branchLocationComboBox;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JComboBox<String> chooseComboBox;
+    private javax.swing.JComboBox durationComboBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JComboBox libraryComboBox;
-    private javax.swing.JTable magazineJTable;
-    private javax.swing.JTable orderjTable;
+    private javax.swing.JTextField materialNameField;
+    private javax.swing.JComboBox materialsComboBox;
     private javax.swing.JLabel selectBranchJLabel;
     private javax.swing.JLabel selectBranchJLabel1;
     // End of variables declaration//GEN-END:variables

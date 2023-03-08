@@ -4,6 +4,7 @@
  */
 package UI.BranchWorkArea;
 
+import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
@@ -22,17 +23,19 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
     private ApplicationSystem applicationSystem;
     private UserAccount userAccount;
     private Branch branch;
+    private Librarian librarian;
     public BranchManagerJFrame() {
         initComponents();
     }
     
-     public BranchManagerJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+     public BranchManagerJFrame(ApplicationSystem applicationSystem, Librarian librarian, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
         this.branch = branch;      
-        branchManagerNamejLabel.setText(branch.getBranchName());
+        this.librarian = librarian;
+        jLabel2.setText(branch.getBranchName());
     }
 
     /**
@@ -48,10 +51,12 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         logoutButton = new javax.swing.JButton();
         AuthorHeaderjLabel = new javax.swing.JLabel();
+        libraryCollectionjButton = new javax.swing.JButton();
+        rentalRequestsjButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
-        welcomejLabel = new javax.swing.JLabel();
-        branchManagerNamejLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +78,22 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - BRANCH MANAGER");
         jPanel2.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
+        libraryCollectionjButton.setText("Library Collection");
+        libraryCollectionjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                libraryCollectionjButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(libraryCollectionjButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, 30));
+
+        rentalRequestsjButton.setText("Rental Requests ");
+        rentalRequestsjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rentalRequestsjButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rentalRequestsjButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, 30));
+
         jSplitPane1.setTopComponent(jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
@@ -87,11 +108,11 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         });
         jPanel3.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, 30));
 
-        welcomejLabel.setText("Welcome");
-        jPanel3.add(welcomejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jLabel1.setText("Welcome");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
-        branchManagerNamejLabel.setText("jLabel2");
-        jPanel3.add(branchManagerNamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        jLabel2.setText("jLabel2");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
         jSplitPane1.setRightComponent(jPanel3);
 
@@ -111,6 +132,18 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         this.setVisible(false);
         new NewJFrame(this.applicationSystem, this.branch ,this.userAccount);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void libraryCollectionjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryCollectionjButtonActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new LibraryCollectionJPanel(this.applicationSystem, this.librarian, this.userAccount));
+
+    }//GEN-LAST:event_libraryCollectionjButtonActionPerformed
+
+    private void rentalRequestsjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentalRequestsjButtonActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new ViewRentalRequestJPanel(this.applicationSystem, this.librarian, this.userAccount));
+
+    }//GEN-LAST:event_rentalRequestsjButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,11 +190,13 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JButton backButton;
-    private javax.swing.JLabel branchManagerNamejLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton libraryCollectionjButton;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JLabel welcomejLabel;
+    private javax.swing.JButton rentalRequestsjButton;
     // End of variables declaration//GEN-END:variables
 }

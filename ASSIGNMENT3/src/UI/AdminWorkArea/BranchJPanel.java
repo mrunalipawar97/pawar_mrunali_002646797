@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author nishipancholi
+ * @author mrunalipawar
  */
 public class BranchJPanel extends javax.swing.JPanel {
 

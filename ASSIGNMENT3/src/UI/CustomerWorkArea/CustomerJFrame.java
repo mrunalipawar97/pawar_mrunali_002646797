@@ -56,9 +56,10 @@ public class CustomerJFrame extends javax.swing.JFrame {
         AuthorHeaderjLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         welcomejLabel = new javax.swing.JLabel();
-        pastRequestHistoryButton = new javax.swing.JButton();
-        orderRequestjButton = new javax.swing.JButton();
         selectCustNameJLabel = new javax.swing.JLabel();
+        orderRequestjButton = new javax.swing.JButton();
+        pastRequestHistoryButton = new javax.swing.JButton();
+        viewCollectionjButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +79,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - CUSTOMER");
-        jPanel2.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        jPanel2.add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,13 +88,10 @@ public class CustomerJFrame extends javax.swing.JFrame {
         welcomejLabel.setText("Welcome ");
         jPanel3.add(welcomejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 19, 101, 33));
 
-        pastRequestHistoryButton.setText("PAST REQUEST HISTORY");
-        pastRequestHistoryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pastRequestHistoryButtonActionPerformed(evt);
-            }
-        });
-        jPanel3.add(pastRequestHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, 40));
+        selectCustNameJLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jPanel3.add(selectCustNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 17, 100, 30));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 960, 677));
 
         orderRequestjButton.setText("PLACE ORDER");
         orderRequestjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -101,12 +99,23 @@ public class CustomerJFrame extends javax.swing.JFrame {
                 orderRequestjButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(orderRequestjButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 160, 40));
+        jPanel2.add(orderRequestjButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 120, 40));
 
-        selectCustNameJLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jPanel3.add(selectCustNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 17, 100, 30));
+        pastRequestHistoryButton.setText("REQUEST HISTORY");
+        pastRequestHistoryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pastRequestHistoryButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(pastRequestHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, 150, 40));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 860, 677));
+        viewCollectionjButton.setText("COLLECTION");
+        viewCollectionjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewCollectionjButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(viewCollectionjButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, 40));
 
         jSplitPane1.setTopComponent(jPanel2);
 
@@ -131,6 +140,12 @@ public class CustomerJFrame extends javax.swing.JFrame {
         jSplitPane1.setRightComponent(new CustomerOrderRequestJPanel(this.applicationSystem, this.branch, this.userAccount));
 
     }//GEN-LAST:event_orderRequestjButtonActionPerformed
+
+    private void viewCollectionjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCollectionjButtonActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new LibraryCollectionJPanel(this.applicationSystem, this.branch, this.userAccount));
+
+    }//GEN-LAST:event_viewCollectionjButtonActionPerformed
 
     
   
@@ -180,6 +195,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
     private javax.swing.JButton orderRequestjButton;
     private javax.swing.JButton pastRequestHistoryButton;
     private javax.swing.JLabel selectCustNameJLabel;
+    private javax.swing.JButton viewCollectionjButton;
     private javax.swing.JLabel welcomejLabel;
     // End of variables declaration//GEN-END:variables
 }
