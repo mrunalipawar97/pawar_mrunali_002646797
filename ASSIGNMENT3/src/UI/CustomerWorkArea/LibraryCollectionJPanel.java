@@ -8,7 +8,7 @@ package UI.CustomerWorkArea;
 import Books.Book;
 import General.Magazine;
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,11 +32,11 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    LibraryCollectionJPanel(ApplicationSystem applicationSystem,Branch branch, UserAccount useraccount) {
+    LibraryCollectionJPanel(ApplicationSystem applicationSystem, UserAccount useraccount) {
        initComponents();
        this.applicationSystem = applicationSystem;
        this.useraccount = useraccount;
-       this.branch = branch;
+      // this.branch = branch;
        this.bookTableModel = (DefaultTableModel) bookTable.getModel();
        this.magazineTableModel = (DefaultTableModel) magazineTable.getModel();
        
@@ -46,23 +46,21 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
     
     public void populateBookCatelog() {
         bookTableModel.setRowCount(0);
-
+        
         for(Branch br:this.applicationSystem.getBranchLists()){
-            ArrayList<Book> books=br.getLibrary().getBooksDirectory().getBooklists();
+            ArrayList<Book> books=br.getLibrarian().getBooksDirectory().getBooklists();
             for(Book b: books) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String date = sdf.format(b.getRegisteredDate());
-                Object[] row = new Object[9];
+               
+                Object[] row = new Object[8];
                 
                 row[0] = b.getSerialNumber();
                 row[1] = b.getName();
-                row[2] = date;
-                row[3] = b.getNoOfPages();
-                row[4] = b.getTypeOfBinding();
-                row[5] = b.getLanguage();
-                row[6] = b.getAuthor().getAuthorName();
-                row[7] = b.getGenre().getGenreName();
-                row[8] = b.isIsAvailablityFlag();
+                row[2] = b.getNoOfPages();
+                row[3] = b.getTypeOfBinding();
+                row[4] = b.getLanguage();
+                row[5] = b.getAuthor().getAuthorName();
+                row[6] = b.getGenre().getGenreName();
+                row[7] = b.isIsAvailablityFlag();
                 
                 bookTableModel.addRow(row);
             }
@@ -72,16 +70,17 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
     
     public void populateMagazineCatelog() {
         magazineTableModel.setRowCount(0);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
          for(Branch br:this.applicationSystem.getBranchLists()) {
-            ArrayList<Magazine> magazineList=br.getLibrary().getMagazineDirectory().getMagazinelist();
+            ArrayList<Magazine> magazineList=br.getLibrarian().getMagazineDirectory().getMagazinelist();
             for(Magazine mag: magazineList) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String date = sdf.format(mag.getRegisteredDate());
+                
+                //String date = sdf.format(mag.getRegisteredDate());
                 Object[] row = new Object[6];
             
                 row[0] = mag.getSerialNumber();
                 row[1] = mag.getName();
-                row[2] = date;
+                row[2] = mag.getMaterialId();
                 row[3] = mag.getCompanyName();
                 row[4] = mag.getIssueType();
                 row[5] = mag.isIsAvailablityFlag();
@@ -116,11 +115,11 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Serial Number", "Book Name", "Registraion Date", "Page No", "Binding Type", "Language", "Author", "Genre", "isAvailable"
+                "Serial Number", "Book Name", "Page No", "Binding Type", "Language", "Author", "Genre", "isAvailable"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -136,7 +135,7 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Serial Number", "Magazine Name", "Registration Date", "Company Name", "Issue Type", "isAvailable"
+                "Serial Number", "Magazine Name", "Material Type", "Company Name", "Issue Type", "isAvailable"
             }
         ) {
             Class[] types = new Class [] {

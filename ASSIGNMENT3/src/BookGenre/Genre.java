@@ -12,9 +12,9 @@ public class Genre {
     
     String genreName;
     
-    public Genre() {
+    /*public Genre() {
         
-    }
+    }*/
 
     public String getGenreName() {
         return genreName;

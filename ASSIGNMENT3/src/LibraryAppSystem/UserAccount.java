@@ -22,17 +22,11 @@ public class UserAccount {
     private String username;
     private String password;
     
-    Role  role;
+    String  role;
 
-    public UserAccount() {
-        this.accountId = "User" + this.count++;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
     
-    public UserAccount(String username, String password, Role role) {
-        this.accountId = "user" + this.count++;
+    public UserAccount(String username, String password, String role) {
+        this.accountId = "User-ID-" + this.count++;
         this.username = username;
         this.password = password;
         this.role = role;
@@ -70,16 +64,15 @@ public class UserAccount {
         this.password = password;
     }
 
-    public Role getRole() {
+     public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
    
-    
-    /*public JFrame getWorkArea(String role, ApplicationSystem applicationSystem, UserAccount userAccount) {
+    public JFrame getWorkArea(String role, ApplicationSystem applicationSystem, UserAccount userAccount) {
         // the abstract class way
         if (role.equals("SYSAdmin")) {
             return new AdminRole().getWorkArea(applicationSystem,  userAccount);
@@ -94,5 +87,11 @@ public class UserAccount {
             return new BranchManagerRole().getWorkArea(applicationSystem, userAccount);
         }
         return null;
-    }*/
+    }
+    
+  
+    @Override
+    public String toString() {
+       return this.accountId;
+    }
 }

@@ -7,7 +7,6 @@ package Books;
 import BookAuthor.Author;
 import BookGenre.Genre;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -51,7 +50,7 @@ public class BooksDirectory {
         return null;
     }
    
-    public Book createBook(String name, int noOfPages, String language, String typeOfBind, String regDate, String isAvailable, Author author, Genre genre) {
+    public Book createBook(String name, int noOfPages, String language, String typeOfBind, String regDate, boolean isAvailable, Author author, Genre genre) {
         Book b = new Book();
        
         b.setName(name);

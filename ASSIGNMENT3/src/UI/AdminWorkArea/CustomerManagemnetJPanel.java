@@ -9,7 +9,7 @@ import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import LibraryAppSystem.UserAccountDirectory;
 import Customer.Customer;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import Role.CustomerRole;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -31,17 +31,17 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    CustomerManagemnetJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+    CustomerManagemnetJPanel(ApplicationSystem applicationSystem, UserAccount userAccount) {
         initComponents();
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)customerRecordsJtable.getModel();
-        populate();
+        populateCustomerDetails();
     }
     
 
-    public void populate() {
+    public void populateCustomerDetails() {
         tableModel.setRowCount(0);
         for (Customer c : this.applicationSystem.getCustomerDirectory().getCustomerlist()) {
 
@@ -71,13 +71,13 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
         usernameTextField = new javax.swing.JTextField();
         passTextField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        customerRecordsJtable = new javax.swing.JTable();
         nameJLabel = new javax.swing.JLabel();
         ageJLabel = new javax.swing.JLabel();
         usernamejLabel = new javax.swing.JLabel();
         passwordJLabel = new javax.swing.JLabel();
         AuthorHeaderjLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        customerRecordsJtable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(0, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,6 +93,22 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
             }
         });
         add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, 30));
+
+        nameJLabel.setText("Name");
+        add(nameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 80, 40, 30));
+
+        ageJLabel.setText("Age");
+        add(ageJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 60, 30));
+
+        usernamejLabel.setText("Username");
+        add(usernamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 20));
+
+        passwordJLabel.setText("Password");
+        add(passwordJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("CUSTOMERS CATELOG");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 260, -1));
 
         customerRecordsJtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,36 +131,21 @@ public class CustomerManagemnetJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(customerRecordsJtable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 370, 220));
-
-        nameJLabel.setText("Name");
-        add(nameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 80, 40, 30));
-
-        ageJLabel.setText("Age");
-        add(ageJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 60, 30));
-
-        usernamejLabel.setText("Username");
-        add(usernamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 20));
-
-        passwordJLabel.setText("Password");
-        add(passwordJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-
-        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("CUSTOMERS CATELOG");
-        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 260, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 390, 210));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         
-        UserAccountDirectory ua = this.applicationSystem.getUserAccountDirectory();
-        if(ua.accountExists(usernameTextField.getText(), passTextField.getText(), new CustomerRole())) {
-            JOptionPane.showMessageDialog(null, "Sorry  credentials are taken");
+        UserAccountDirectory userAccountDirectory = this.applicationSystem.getUserAccountDirectory();
+        if(userAccountDirectory.accountExists(usernameTextField.getText(), passTextField.getText(), "Customer")) {
+            JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+        }
+        else {
             
-        }else {
-            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passTextField.getText(), new CustomerRole());
+            UserAccount user = this.applicationSystem.getUserAccountDirectory().createUserAccount(usernameTextField.getText(), passTextField.getText(), "Customer");
             this.applicationSystem.getCustomerDirectory().createCustomer(user.getAccountId(), nameTextField.getText(), ageTextField.getText());
-            populate();
+            populateCustomerDetails();
         }
     }//GEN-LAST:event_addButtonActionPerformed
 

@@ -6,7 +6,7 @@ package UI.CustomerWorkArea;
 
 import Customer.Customer;
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import Services.RentalRequest;
 import java.util.ArrayList;
@@ -29,11 +29,11 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
     DefaultTableModel tableModel;
     
   
-    ViewRequestsJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+    ViewRequestsJPanel(ApplicationSystem applicationSystem, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)viewRequestsTable.getModel();
         populateData();
@@ -97,7 +97,7 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
             String status=reqDetails.getStatus();
             if(status == "Rented"){
                 reqDetails.setStatus("Returned");
-                reqDetails.getMaterial().setIsAvailablityFlag("Yes");
+                reqDetails.getMaterial().setIsAvailablityFlag(true);
                 JOptionPane.showMessageDialog(null,"Material Returned");
                 populateData();
             }

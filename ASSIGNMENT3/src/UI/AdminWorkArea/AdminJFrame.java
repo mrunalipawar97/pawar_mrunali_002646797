@@ -5,7 +5,7 @@
 package UI.AdminWorkArea;
 
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import UI.NewJFrame;
 
@@ -26,11 +26,11 @@ public class AdminJFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-     public AdminJFrame(ApplicationSystem applicationSystem,Branch branch, UserAccount userAccount) {
+     public AdminJFrame(ApplicationSystem applicationSystem,UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
-        this.branch = branch;  
+        //this.branch = branch;  
         this.userAccount = userAccount;
              
     }
@@ -115,22 +115,22 @@ public class AdminJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.branch, this.userAccount);
+        new NewJFrame(this.applicationSystem,  this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void branchlibrarianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchlibrarianButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new BranchManagementJPanel(this.applicationSystem, this.branch, this.userAccount));
+        jSplitPane1.setRightComponent(new BranchManagementJPanel(this.applicationSystem, this.userAccount));
     }//GEN-LAST:event_branchlibrarianButtonActionPerformed
 
     private void customerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new CustomerManagemnetJPanel(this.applicationSystem, this.branch, this.userAccount));
+        jSplitPane1.setRightComponent(new CustomerManagemnetJPanel(this.applicationSystem, this.userAccount));
     }//GEN-LAST:event_customerButtonActionPerformed
 
     private void addBranchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchjButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new BranchJPanel(this.applicationSystem, this.branch, this.userAccount));
+        jSplitPane1.setRightComponent(new BranchJPanel(this.applicationSystem, this.userAccount));
     }//GEN-LAST:event_addBranchjButtonActionPerformed
 
     /**

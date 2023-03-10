@@ -19,9 +19,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewRentalRequestJPanel extends javax.swing.JPanel {
 
-    private UserAccount useraccount;
-    private ApplicationSystem system;
-    private Librarian lib;
+    private UserAccount userAccount;
+    private ApplicationSystem applicationSystem;
+    private Librarian librarian;
     DefaultTableModel requestTableModel;
     private double sum = 0;
     /**
@@ -31,11 +31,11 @@ public class ViewRentalRequestJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    ViewRentalRequestJPanel(ApplicationSystem system, Librarian lib , UserAccount useraccount) {
+    ViewRentalRequestJPanel(ApplicationSystem applicationSystem, UserAccount userAccount, Librarian librarian ) {
        initComponents();
-       this.system = system;
-       this.useraccount = useraccount;
-       this.lib=lib;
+       this.applicationSystem = applicationSystem;
+       this.userAccount = userAccount;
+       this.librarian=librarian;
        this.requestTableModel = (DefaultTableModel) requestTable.getModel();
        populateData();
     }
@@ -43,11 +43,11 @@ public class ViewRentalRequestJPanel extends javax.swing.JPanel {
     public void populateData() {
         requestTableModel.setRowCount(0);
             
-            ArrayList<Customer> custList=this.system.getCustomerDirectory().getCustomerlist();
+            ArrayList<Customer> custList=this.applicationSystem.getCustomerDirectory().getCustomerlist();
             for(Customer c: custList){
                     ArrayList<RentalRequest> reqList= c.getMasterRentalRequestDirectory().getOrderlist();
                     for(RentalRequest req: reqList){
-                        if(req.getLibrarian()==this.lib){
+                        if(req.getLibrarian() == this.librarian){
                             Object[] row = new Object[8];
 
                             row[0] = req;
@@ -103,13 +103,13 @@ public class ViewRentalRequestJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(requestTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 870, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 870, 220));
 
         revenueTextField.setEnabled(false);
-        add(revenueTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 200, 40));
+        add(revenueTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 200, 40));
 
         jLabel2.setText("Total Revenue ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 40));
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - RENTAL REQUESTS");

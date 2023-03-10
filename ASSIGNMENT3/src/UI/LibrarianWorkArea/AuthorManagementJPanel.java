@@ -8,7 +8,7 @@ import LibraryAppSystem.ApplicationSystem;
 import LibraryAppSystem.UserAccount;
 import BookAuthor.Author;
 import Librarian.Librarian;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

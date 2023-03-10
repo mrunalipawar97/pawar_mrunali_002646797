@@ -5,10 +5,9 @@
 package UI;
 
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import LibraryAppSystem.UserAccountDirectory;
-import Role.Role;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,12 +33,12 @@ public class NewJFrame extends javax.swing.JFrame {
         populateDropdown();
     }
 
-    public NewJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+    public NewJFrame(ApplicationSystem applicationSystem,UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
-
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
+        this.userAccountDirectory = applicationSystem.getUserAccountDirectory();
         this.userAccount = userAccount;
         populateDropdown();
     }
@@ -115,20 +114,29 @@ public class NewJFrame extends javax.swing.JFrame {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         String role = (String) roleComboBox.getSelectedItem();
+
+        if (this.userAccountDirectory.accountExists(username, password, role)) {
+
+            UserAccount user = this.userAccountDirectory.getUserAccount(username, password, role);
+            this.setVisible(false);
+            user.getWorkArea(role, applicationSystem, user);
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid credentials");
+        }
         
-        Boolean foundUser = false;
+        /*Boolean foundUser = false;
         
         if(this.applicationSystem.getUserAccountDirectory().authenticateUser(username, password) != null) {
             UserAccount user = this.applicationSystem.getUserAccountDirectory().authenticateUser(username, password);
             foundUser = true;
-            user.getRole().getWorkArea(applicationSystem, branch,userAccount);
+            user.getRole().getWorkArea(applicationSystem,userAccount);
             this.setVisible(false);
         } else {
             for(Branch branch: this.applicationSystem.getBranchLists()) {
-                if(branch.getBranchuseraccountDirectory().authenticateUser(username, password) != null) {
-                    UserAccount branchUser = branch.getBranchuseraccountDirectory().authenticateUser(username, password);
+                if(branch.getBranchUserAccountDirectory().authenticateUser(username, password) != null) {
+                    UserAccount branchUser = branch.getBranchUserAccountDirectory().authenticateUser(username, password);
                     foundUser = true;
-                    branchUser.getRole().getWorkArea(applicationSystem, branch, userAccount);
+                    branchUser.getRole().getWorkArea(applicationSystem, userAccount);
                     this.setVisible(false);
                 }
             }
@@ -136,7 +144,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // if user not found
         if(!foundUser) {
             JOptionPane.showMessageDialog(null, "Invalid Credentials");
-        }
+        }*/
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**

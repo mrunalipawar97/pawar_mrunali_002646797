@@ -19,7 +19,6 @@ public class GenreDirectory {
     
     public GenreDirectory() {
         this.GenreLists = new ArrayList<Genre> ();
-       
     }
 
     public ArrayList<Genre> getGenreLists() {

@@ -7,7 +7,7 @@ package UI.LibrarianWorkArea;
 import Customer.Customer;
 import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import Services.RentalRequest;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
         this.librarian = librarian;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel) orderRequestTable.getModel();
@@ -55,11 +55,11 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
                 if(req.getLibrarian()==this.librarian){
                     Object[] row = new Object[6];
                     row[0] = req;
-                    row[1] = req.getStatus();
-                    row[2] = req.getDuration();
-                    row[3] = req.getMaterialType();
-                    row[4] = req.getMaterial().getName();
-                    row[5]= req.getCustomer().getName();
+                    row[1] = req.getDuration();
+                    row[2] = req.getMaterialType(); 
+                    row[3] = req.getCustomer().getName();
+                    row[4]=  req.getLibrarian().getLibraryName();
+                    row[5] = req.getStatus();
 
                     tableModel.addRow(row);
                 }
@@ -76,14 +76,36 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        orderRequestTable = new javax.swing.JTable();
         rejectButton = new javax.swing.JButton();
         acceptButton = new javax.swing.JButton();
         AuthorHeaderjLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        orderRequestTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rejectButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        rejectButton.setText("REJECT REQUEST");
+        rejectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rejectButtonActionPerformed(evt);
+            }
+        });
+        add(rejectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 160, 40));
+
+        acceptButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        acceptButton.setText("ACCEPT REQUEST");
+        acceptButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceptButtonActionPerformed(evt);
+            }
+        });
+        add(acceptButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 160, 40));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - LIBRARIAN ORDER PORTAL");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         orderRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,7 +115,7 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Request ID", "Customer", "Material", "Status", "Customer Name", "Library Name"
+                "Request ID", "Duration", "Material Type", "Customer Name", "Library Name", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -106,29 +128,7 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(orderRequestTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 640, 180));
-
-        rejectButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        rejectButton.setText("REJECT REQUEST");
-        rejectButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rejectButtonActionPerformed(evt);
-            }
-        });
-        add(rejectButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 160, 40));
-
-        acceptButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        acceptButton.setText("ACCEPT REQUEST");
-        acceptButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                acceptButtonActionPerformed(evt);
-            }
-        });
-        add(acceptButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 160, 40));
-
-        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - LIBRARIAN ORDER PORTAL");
-        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 640, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void rejectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectButtonActionPerformed
@@ -138,7 +138,7 @@ public class OrderManagementJPanel extends javax.swing.JPanel {
         RentalRequest o = (RentalRequest) orderRequestTable.getValueAt(selectedRow, 0);
         this.selectedRequest = o;
         selectedRequest.setStatus("REJECTED");
-        this.selectedRequest.getMaterial().setIsAvailablityFlag("Yes");
+        this.selectedRequest.getMaterial().setIsAvailablityFlag(true);
         populateRentalRequestOrder();
 
     }//GEN-LAST:event_rejectButtonActionPerformed

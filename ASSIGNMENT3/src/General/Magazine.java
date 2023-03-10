@@ -19,10 +19,10 @@ public class Magazine extends Material{
          super();
     }
     
-    public Magazine(String companyName, String issueType) {
+    /*public Magazine(String companyName, String issueType) {
         this.companyName = companyName;
         this.issueType = issueType;
-    }
+    }*/
 
     public String getCompanyName() {
         return companyName;

@@ -8,7 +8,7 @@ import Books.Book;
 import Customer.Customer;
 import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import Services.RentalRequest;
 import java.util.ArrayList;
@@ -33,11 +33,11 @@ public class CustomerOrderRequestJPanel1 extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CustomerOrderRequestJPanel1(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+    public CustomerOrderRequestJPanel1(ApplicationSystem applicationSystem,  UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
         this.userAccount = userAccount;
         this.booksTableModel = (DefaultTableModel)booksJTable.getModel();
         this.magazinesTableModel = (DefaultTableModel)magazineJTable.getModel();
@@ -53,7 +53,7 @@ public class CustomerOrderRequestJPanel1 extends javax.swing.JPanel {
     public void populateBranchLocations() {
         ArrayList<Branch> branchlists = this.applicationSystem.getBranchLists();
         for(Branch b : branchlists) {
-            branchLocationComboBox.addItem(b.getLibrary().getLocation());
+            branchLocationComboBox.addItem(b.getLibrarian().getLocation());
         }
     }
     
@@ -62,8 +62,8 @@ public class CustomerOrderRequestJPanel1 extends javax.swing.JPanel {
         ArrayList<Branch> branchlists = this.applicationSystem.getBranchLists();
         String branchSelected = (String) branchLocationComboBox.getSelectedItem();
         for(Branch b : branchlists) {
-            if(b.getLibrary().getLocation().equals(branchSelected))
-            libraryComboBox.addItem(b.getLibrary());
+            if(b.getLibrarian().getLocation().equals(branchSelected))
+            libraryComboBox.addItem(b.getLibrarian());
         }
     }
     

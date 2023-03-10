@@ -6,7 +6,7 @@ package UI.AdminWorkArea;
 import Employees.Employee;
 import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import LibraryAppSystem.UserAccountDirectory;
 import java.util.ArrayList;
@@ -30,11 +30,11 @@ public class BranchJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    BranchJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+    BranchJPanel(ApplicationSystem applicationSystem, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
         this.userAccount = userAccount;
         this.tableModel = (DefaultTableModel) branchJTable.getModel();
         populateData();
@@ -44,15 +44,16 @@ public class BranchJPanel extends javax.swing.JPanel {
         
         tableModel.setRowCount(0);
         for(Branch b: this.applicationSystem.getBranchLists()) {
-            Librarian librarian = b.getLibrary();
+            Librarian librarian = b.getLibrarian();
             
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             
             row[0] = b;
-            row[1] = librarian.getLibraryId();
-            row[2] = librarian.getLibraryName();
-            row[3] = librarian.getLocation();
-            row[4] = librarian.getBuildingNo();
+            row[1] = b.getBranchID();
+            row[2] = librarian.getLibraryId();
+            row[3] = librarian.getLibraryName();
+            row[4] = librarian.getLocation();
+            row[5] = librarian.getBuildingNo();
             tableModel.addRow(row);
         }
     }
@@ -68,8 +69,6 @@ public class BranchJPanel extends javax.swing.JPanel {
         branchNameTextField = new javax.swing.JTextField();
         LibraryNameTextField = new javax.swing.JTextField();
         buildingNoTextField = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        branchJTable = new javax.swing.JTable();
         locationjLabel = new javax.swing.JLabel();
         branchNamejLabel = new javax.swing.JLabel();
         libraryNamejLabel = new javax.swing.JLabel();
@@ -78,6 +77,8 @@ public class BranchJPanel extends javax.swing.JPanel {
         deleteBranchButton = new javax.swing.JButton();
         addBranchNameButton = new javax.swing.JButton();
         AuthorHeaderjLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        branchJTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 204, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,26 +97,6 @@ public class BranchJPanel extends javax.swing.JPanel {
             }
         });
         add(buildingNoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 120, 30));
-
-        branchJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Branch Name", "Library Id", "Library Name", "Location", "Building No"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(branchJTable);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 550, 180));
 
         locationjLabel.setText("Location");
         add(locationjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 197, 60, 30));
@@ -155,6 +136,26 @@ public class BranchJPanel extends javax.swing.JPanel {
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("BRANCH CATELOG");
         add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 20, 210, 40));
+
+        branchJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Branch Name", "Branch Id", "Library Id", "Library Name", "Location", "Building No"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(branchJTable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 550, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buildingNoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildingNoTextFieldActionPerformed
@@ -171,11 +172,9 @@ public class BranchJPanel extends javax.swing.JPanel {
         if(selectedRow >= 0){
             Branch b = (Branch) branchJTable.getValueAt(selectedRow, 0);
             UserAccountDirectory userAccountDirectory = this.applicationSystem.getUserAccountDirectory();
-            ArrayList<Employee> employeeList = b.getLibrary().getEmployeeDirectory().getEmployeeist();
-            for(Employee e : employeeList){
-                System.out.println(e.getUsername() + "empusername");
+            ArrayList<Employee> employeeList = b.getLibrarian().getEmployeeDirectory().getEmployeeist();
+            for(Employee e : employeeList){ 
                 UserAccount u=userAccountDirectory.findByUsername(e.getUsername());
-                System.out.println(u.getUsername()+"user");
                 userAccountDirectory.removeUser(u);
             }
             this.applicationSystem.removeBranch(b.getBranchName());
@@ -205,7 +204,7 @@ public class BranchJPanel extends javax.swing.JPanel {
             }
             else{
               for(Branch b:branchList){
-                if(b.getLibrary().getLocation().equals(libraryLocationTextField.getText())){
+                if(b.getLibrarian().getLocation().equals(libraryLocationTextField.getText())){
                    JOptionPane.showMessageDialog(null, "Branch in this location already available");
                 }
                 else{

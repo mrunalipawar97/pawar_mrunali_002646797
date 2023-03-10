@@ -4,6 +4,7 @@
  */
 package LibraryAppSystem;
 
+import Librarian.Branch;
 import Customer.CustomerDirectory;
 import Employees.EmployeeDirectory;
 
@@ -21,7 +22,6 @@ public class ApplicationSystem {
      private UserAccountDirectory userAccountDirectory;
      private MasterRentalRequestDirectory rentalRequestDirectory;
      ArrayList<Branch> branchLists;
-     private EmployeeDirectory employeeDirectory;
      
     
     public ApplicationSystem () {
@@ -29,10 +29,9 @@ public class ApplicationSystem {
         this.customerDirectory = new CustomerDirectory();
         this.rentalRequestDirectory = new MasterRentalRequestDirectory();
         this.userAccountDirectory = new UserAccountDirectory();
-        this.employeeDirectory = new EmployeeDirectory();
        
      // create a restaurant manager here
-        UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", new AdminRole());
+        UserAccount user = this.userAccountDirectory.createUserAccount("admin", "admin", "SYSAdmin");
     }
     
     public static ApplicationSystem getBusinessInstance() {
@@ -62,14 +61,6 @@ public class ApplicationSystem {
 
     public void setRentalRequestDirectory(MasterRentalRequestDirectory rentalRequestDirectory) {
         this.rentalRequestDirectory = rentalRequestDirectory;
-    }
-
-    public EmployeeDirectory getEmployeeDirectory() {
-        return employeeDirectory;
-    }
-
-    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
-        this.employeeDirectory = employeeDirectory;
     }
 
     public ArrayList<Branch> getBranchLists() {
@@ -114,8 +105,5 @@ public class ApplicationSystem {
         }
         return false;
     }
-     
-    public static ApplicationSystem getInstance() {
-        return new ApplicationSystem();
-    }
+    
 }

@@ -10,10 +10,9 @@ import BookAuthor.Author;
 import BookGenre.Genre;
 import Books.Book;
 import Librarian.Librarian;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+
 import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
@@ -42,7 +41,7 @@ public class BookManagementJPanel extends javax.swing.JPanel {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
         this.librarian = librarian;
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)bookCatelogJtable.getModel();
@@ -174,7 +173,7 @@ public class BookManagementJPanel extends javax.swing.JPanel {
         String registrationDate = sdf.format(jDateChooser.getDate());
         Author author = (Author) authorComboBox.getSelectedItem();
         Genre genre = (Genre) genreComboBox.getSelectedItem();
-        this.librarian.getBooksDirectory().createBook(bookName, Integer.valueOf(noOfPages),language, typeOfBinding, registrationDate,"Yes", author, genre);
+        this.librarian.getBooksDirectory().createBook(bookName, Integer.valueOf(noOfPages),language, typeOfBinding, registrationDate,true, author, genre);
         JOptionPane.showMessageDialog(null, "Book Added.");
         populateBookCatelog();
         

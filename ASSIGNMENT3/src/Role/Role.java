@@ -3,7 +3,6 @@ package Role;
 
 
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
 import LibraryAppSystem.UserAccount;
 import javax.swing.JFrame;
 
@@ -15,7 +14,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Nidhi Raghavendra
+ * @author mrunalipawar
  */
 public abstract class Role {
     static String[] roles = {"SYSAdmin","BranchManager", "Customer", "Librarian" };
@@ -24,6 +23,6 @@ public abstract class Role {
         return roles;
     }
 
-    public abstract JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount useraccount);
+    public abstract JFrame getWorkArea(ApplicationSystem applicationSystem, UserAccount useraccount);
     
 }

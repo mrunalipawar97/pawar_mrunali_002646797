@@ -24,7 +24,7 @@ public class UserAccountDirectory {
        return Role.getRoles();
     }
     
-    public UserAccount createUserAccount(String username, String password, Role role){
+    public UserAccount createUserAccount(String username, String password, String role){
         UserAccount user = new UserAccount(username, password, role);
         userAccountlist.add(user);
         return user;
@@ -41,7 +41,7 @@ public class UserAccountDirectory {
     }
    
     
-    public UserAccount getUserAccount(String username, String password, Role role) {
+    public UserAccount getUserAccount(String username, String password, String role) {
         for (UserAccount u : this.userAccountlist) {
             if(u.getUsername().equals(username) && u.getPassword().equals(password) && u.getRole().equals(role)){
                 return u;
@@ -50,7 +50,7 @@ public class UserAccountDirectory {
         return null;
     }
     
-    public Boolean accountExists(String username, String password, Role role) {
+    public Boolean accountExists(String username, String password, String role) {
         
         for (UserAccount u : this.userAccountlist) {
             if(u.getUsername().equals(username) && u.getPassword().equals(password) && u.getRole().equals(role)){

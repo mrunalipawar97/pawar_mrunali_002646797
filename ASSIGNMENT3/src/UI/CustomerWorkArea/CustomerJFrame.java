@@ -6,7 +6,7 @@ package UI.CustomerWorkArea;
 
 
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import UI.NewJFrame;
 
@@ -23,11 +23,11 @@ public class CustomerJFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    public CustomerJFrame(ApplicationSystem applicationSystem,Branch branch, UserAccount userAccount) {
+    public CustomerJFrame(ApplicationSystem applicationSystem, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
         this.userAccount = userAccount;
         selectCustNameJLabel.setText(userAccount.getUsername());
     }
@@ -86,7 +86,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
                 viewCollectionjButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(viewCollectionjButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, -1, 40));
+        jPanel1.add(viewCollectionjButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, 40));
 
         pastRequestHistoryButton.setText("REQUEST HISTORY");
         pastRequestHistoryButton.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +94,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
                 pastRequestHistoryButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(pastRequestHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 150, 40));
+        jPanel1.add(pastRequestHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, 150, 40));
 
         jSplitPane1.setTopComponent(jPanel1);
 
@@ -118,22 +118,22 @@ public class CustomerJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.branch, this.userAccount);
+        new NewJFrame(this.applicationSystem,this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void orderRequestjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderRequestjButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new CustomerOrderRequestJPanel(this.applicationSystem, this.branch, this.userAccount));
+        jSplitPane1.setRightComponent(new CustomerOrderRequestJPanel(applicationSystem, userAccount));
     }//GEN-LAST:event_orderRequestjButtonActionPerformed
 
     private void viewCollectionjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCollectionjButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new LibraryCollectionJPanel(this.applicationSystem, this.branch, this.userAccount));
+        jSplitPane1.setRightComponent(new LibraryCollectionJPanel(applicationSystem, userAccount));
     }//GEN-LAST:event_viewCollectionjButtonActionPerformed
 
     private void pastRequestHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pastRequestHistoryButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new ViewRequestsJPanel(this.applicationSystem, this.branch, this.userAccount));
+        jSplitPane1.setRightComponent(new ViewRequestsJPanel(applicationSystem, userAccount));
     }//GEN-LAST:event_pastRequestHistoryButtonActionPerformed
 
     /**

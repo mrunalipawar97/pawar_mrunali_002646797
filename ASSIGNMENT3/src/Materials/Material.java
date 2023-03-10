@@ -14,21 +14,21 @@ public class Material {
     String materialId;
     String name;
     String registeredDate;
-    String isAvailablityFlag;
+    boolean isAvailablityFlag;
     private static int count = 0;
-    
-    
+ 
     public Material() {
         count++;
         this.serialNumber = this.count;
-        this.materialId = "Material"+this.count; 
+        this.materialId = "Material-ID-"+this.count; 
     }
-    public Material(int srNo, String name, String date, String isAvailable){
+    
+    /*public Material(int srNo, String name, String date, boolean isAvailable){
         this.serialNumber = srNo;
         this.name = name;
         this.registeredDate = date;
         this.isAvailablityFlag = isAvailable;
-    }
+    }*/
 
     public int getSerialNumber() {
         return serialNumber;
@@ -54,13 +54,14 @@ public class Material {
         this.registeredDate = registeredDate;
     }
 
-    public String isIsAvailablityFlag() {
+    public boolean isIsAvailablityFlag() {
         return isAvailablityFlag;
     }
 
-    public void setIsAvailablityFlag(String isAvailablityFlag) {
+    public void setIsAvailablityFlag(boolean isAvailablityFlag) {
         this.isAvailablityFlag = isAvailablityFlag;
     }
+
 
     public String getMaterialId() {
         return materialId;
@@ -77,13 +78,10 @@ public class Material {
     public static void setCount(int count) {
         Material.count = count;
     }
-    
-    
 
-   
     @Override
     public String toString(){
-        return String.valueOf(serialNumber);
+        return String.valueOf(materialId);
     }
 
 }

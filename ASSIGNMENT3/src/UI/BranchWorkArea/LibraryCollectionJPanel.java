@@ -21,7 +21,7 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
 
     private UserAccount useraccount;
     private ApplicationSystem system;
-    private Librarian lib;
+    private Librarian librarian;
     DefaultTableModel bookTableModel;
     DefaultTableModel magazineTableModel;
     /**
@@ -31,11 +31,11 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    LibraryCollectionJPanel(ApplicationSystem system, Librarian lib, UserAccount useraccount) {
+    LibraryCollectionJPanel(ApplicationSystem system, UserAccount useraccount, Librarian librarian) {
        initComponents();
        this.system = system;
        this.useraccount = useraccount;
-       this.lib=lib;
+       this.librarian = librarian;
        this.bookTableModel = (DefaultTableModel) bookTable.getModel();
        this.magazineTableModel = (DefaultTableModel) magTable.getModel();
        populateBookCatelog();
@@ -44,46 +44,46 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
     
     public void populateBookCatelog() {
         bookTableModel.setRowCount(0);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        
+        ArrayList<Book> books = this.librarian.getBooksDirectory().getBooklists();
+        for(Book b: books) {
+            Object[] row = new Object[8];
             
-            ArrayList<Book> books=this.lib.getBooksDirectory().getBooklists();
-            for(Book b: books){
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String date = sdf.format(b.getRegisteredDate());
-                Object[] row = new Object[9];
-            
+                //String date = sdf.format(b.getRegisteredDate());
                 row[0] = b.getSerialNumber();
                 row[1] = b.getName();
-                row[2] = date;
-                row[3] = b.getNoOfPages();
-                row[4] = b.getTypeOfBinding();
-                row[5] = b.getLanguage();
-                row[6] = b.getAuthor().getAuthorName();
-                row[7] = b.getGenre().getGenreName();
-                row[8] = b.isIsAvailablityFlag();
+                row[2] = b.getNoOfPages();
+                row[3] = b.getTypeOfBinding();
+                row[4] = b.getLanguage();
+                row[5] = b.getAuthor().getAuthorName();
+                row[6] = b.getGenre().getGenreName();
+                row[7] = b.isIsAvailablityFlag();
                 
                 bookTableModel.addRow(row);
-            }
+        }
         
     }
     
     public void populateMagazineCatelog() {
         magazineTableModel.setRowCount(0);
-            ArrayList<Magazine> magazineList=this.lib.getMagazineDirectory().getMagazinelist();
-            for(Magazine mag: magazineList){
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        ArrayList<Magazine> magazineList=this.librarian.getMagazineDirectory().getMagazinelist();
+        for(Magazine mag: magazineList){
+
                 String date = sdf.format(mag.getRegisteredDate());
                 Object[] row = new Object[6];
             
                 row[0] = mag.getSerialNumber();
                 row[1] = mag.getName();
-                row[2] = date;
+                row[2] = mag.getMaterialId();
                 row[3] = mag.getCompanyName();
                 row[4] = mag.getIssueType();
                 row[5] = mag.isIsAvailablityFlag();
                 
                 magazineTableModel.addRow(row);
             }
-               
+     
     }
 
     /**
@@ -95,27 +95,37 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        AuthorHeaderjLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         bookTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         magTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        AuthorHeaderjLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("MAGAZINE CATELOG");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        jLabel2.setText("BOOK CATELOG");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - COLLECTION");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 500, 40));
 
         bookTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Serial Number", "Book Name", "Registraion Date", "Page No", "Binding Type", "Language", "Author", "Genre", "isAvailable"
+                "Serial Number", "Book Name", "Page No", "Binding Type", "Language", "Author", "Genre", "isAvailable"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -131,7 +141,7 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Serial Number", "Magazine Name", "Registration Date", "Company Name", "Issue Type", "isAvailable"
+                "Serial Number", "Magazine Name", "Material type", "Company Name", "Issue Type", "isAvailable"
             }
         ) {
             Class[] types = new Class [] {
@@ -145,16 +155,6 @@ public class LibraryCollectionJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(magTable);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 800, 200));
-
-        jLabel1.setText("MAGAZINE CATELOG");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
-
-        jLabel2.setText("BOOK CATELOG");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
-
-        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - COLLECTION");
-        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 500, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 

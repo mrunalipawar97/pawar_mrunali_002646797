@@ -26,13 +26,13 @@ public class Book extends Material {
         genre = new Genre();
     }
 
-    public Book(int noOfPages, String language, String typeOfBind, Author author, Genre genre) {
+    /*public Book(int noOfPages, String language, String typeOfBind, Author author, Genre genre) {
        this.noOfPages = noOfPages;
        this.language = language;
        this.typeOfBinding = typeOfBind;
        this.author = author;
        this.genre = genre;
-    }
+    }*/
     
     
     public int getNoOfPages() {
@@ -77,6 +77,6 @@ public class Book extends Material {
 
     @Override
     public String toString(){
-        return language;
+        return String.valueOf(noOfPages);
     }
 }

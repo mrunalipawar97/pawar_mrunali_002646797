@@ -13,9 +13,9 @@ public class Author {
     String authorName;
     String authorBio;
     
-    public Author() {
+    /*public Author() {
         
-    }
+    }*/
 
     public String getAuthorName() {
         return authorName;

@@ -10,7 +10,7 @@ package Personnel;
  */
 public class Profile {
     
-    private static int count;
+    private static int count = 0;
     String personId;
     String name;
     String age;

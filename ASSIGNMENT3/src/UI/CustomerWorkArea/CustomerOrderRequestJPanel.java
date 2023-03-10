@@ -9,7 +9,7 @@ import Customer.Customer;
 import General.Magazine;
 import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import Materials.Material;
 import Services.RentalRequest;
@@ -30,16 +30,15 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private Branch branch;
    
-
     public CustomerOrderRequestJPanel() {
         initComponents();
     }
     
-    public CustomerOrderRequestJPanel(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+    public CustomerOrderRequestJPanel(ApplicationSystem applicationSystem, UserAccount userAccount) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
         this.userAccount = userAccount;
       
         selectBranchJLabel.setText(userAccount.getUsername());
@@ -54,7 +53,7 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
     public void populateBranchLocations(){
         ArrayList<Branch> branchList= this.applicationSystem.getBranchLists();
         for(Branch b:branchList){
-            branchLocationComboBox.addItem(b.getLibrary().getLocation());
+            branchLocationComboBox.addItem(b.getLibrarian().getLocation());
         }
         
     }
@@ -64,23 +63,21 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
         ArrayList<Branch> branchList= this.applicationSystem.getBranchLists();
         String locSelected =(String) branchLocationComboBox.getSelectedItem();
         for(Branch b:branchList){
-            if(b.getLibrary().getLocation().equals(locSelected)){
-                libraryComboBox.addItem(b.getLibrary());
+            if(b.getLibrarian().getLocation().equals(locSelected)){
+                libraryComboBox.addItem(b.getLibrarian());
             }
-        }
-        
+        } 
     }
-    
     
     public void populateData(){
         Librarian lib = (Librarian) libraryComboBox.getSelectedItem();
         String materialSelected = (String) chooseComboBox.getSelectedItem();
         ArrayList<Book> bookList= lib.getBooksDirectory().getBooklists();
         ArrayList<Magazine> magList= lib.getMagazineDirectory().getMagazinelist();
-        if(materialSelected.equals("Book")){
+         if(materialSelected.equals("Book")){
             materialsComboBox.removeAllItems();
             for(Book b:bookList){
-                if(b.isIsAvailablityFlag().equalsIgnoreCase("Yes")){
+                if(b.isIsAvailablityFlag()){
                   materialsComboBox.addItem(b);
                 }
             }    
@@ -88,7 +85,7 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
         else{
             materialsComboBox.removeAllItems();
             for(Magazine m:magList){
-                if(m.isIsAvailablityFlag().equalsIgnoreCase("Yes")){
+                if(m.isIsAvailablityFlag()){
                   materialsComboBox.addItem(m);
                 }
             }
@@ -138,24 +135,24 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
                 bookOrderButtonActionPerformed(evt);
             }
         });
-        add(bookOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 130, 33));
+        add(bookOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 130, 33));
 
         selectBranchJLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         selectBranchJLabel.setText("Select Branch");
-        add(selectBranchJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 100, 30));
+        add(selectBranchJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 100, 30));
 
         branchLocationComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 branchLocationComboBoxItemStateChanged(evt);
             }
         });
-        add(branchLocationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 140, 30));
+        add(branchLocationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, 30));
 
         selectBranchJLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         selectBranchJLabel1.setText("Select Library");
-        add(selectBranchJLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, 30));
+        add(selectBranchJLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 100, 30));
 
-        add(libraryComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 140, 30));
+        add(libraryComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 140, 30));
 
         chooseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Book", "Magazine" }));
         chooseComboBox.addItemListener(new java.awt.event.ItemListener() {
@@ -168,30 +165,30 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
                 chooseComboBoxActionPerformed(evt);
             }
         });
-        add(chooseComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 180, 30));
+        add(chooseComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 180, 30));
 
         jLabel1.setText("Material Type");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         materialsComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 materialsComboBoxItemStateChanged(evt);
             }
         });
-        add(materialsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 180, 30));
+        add(materialsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 180, 30));
 
         jLabel2.setText("Material Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
-        add(materialNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 180, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        add(materialNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 180, 30));
 
         jLabel3.setText("Choose material:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         durationComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "weekly", "monthly", "quaterly" }));
-        add(durationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 180, 30));
+        add(durationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 180, 30));
 
         jLabel4.setText("Duration");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, 30));
 
         AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
         AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - CUSTOMER ORDER PORTAL");
@@ -201,11 +198,11 @@ public class CustomerOrderRequestJPanel extends javax.swing.JPanel {
     private void bookOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookOrderButtonActionPerformed
         // TODO add your handling code here:
         
-        Librarian lib= (Librarian) libraryComboBox.getSelectedItem();
+        Librarian lib = (Librarian) libraryComboBox.getSelectedItem();
         String materialSelected =(String) chooseComboBox.getSelectedItem();
         Material mat =(Material) materialsComboBox.getSelectedItem();
         String duration= (String) durationComboBox.getSelectedItem();
-        mat.setIsAvailablityFlag("No");
+        mat.setIsAvailablityFlag(false);
         Customer c = this.applicationSystem.getCustomerDirectory().findById(userAccount.getAccountId());
         RentalRequest request = c.getMasterRentalRequestDirectory().createOrder(c, mat, "Requested", duration, materialSelected,lib);
         JOptionPane.showMessageDialog(null, "Request Created.");

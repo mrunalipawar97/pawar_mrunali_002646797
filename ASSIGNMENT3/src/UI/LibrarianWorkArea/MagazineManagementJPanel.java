@@ -5,7 +5,7 @@
 package UI.LibrarianWorkArea;
 
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import General.Magazine;
 import Librarian.Librarian;
@@ -37,7 +37,7 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
-        this.branch = branch;
+        //this.branch = branch;
         this.librarian = librarian;     
         this.userAccount= userAccount;
         this.tableModel = (DefaultTableModel)magazineTable.getModel();
@@ -50,10 +50,11 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
             Object[] row = new Object[6];
             row[0] = m.getSerialNumber();
             row[1] = m.getName();
-            row[2] = m.getRegisteredDate();
-            row[3] = m.isIsAvailablityFlag();
-            row[4] = m.getCompanyName();
-            row[5] = m.getIssueType();
+            row[2] = m.getRegisteredDate();   
+            row[3] = m.getCompanyName();
+            row[4] = m.getIssueType();
+            row[5] = m.isIsAvailablityFlag();
+            
             tableModel.addRow(row);  
         }
     }
@@ -71,10 +72,7 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         comapnyNamejLabel = new javax.swing.JLabel();
         issueTypejLabel = new javax.swing.JLabel();
         companyNameTextField = new javax.swing.JTextField();
-        availibilityComboBox = new javax.swing.JComboBox<>();
         addMagazineButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        magazineTable = new javax.swing.JTable();
         AuthorHeaderjLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -82,21 +80,19 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         srNoTextField = new javax.swing.JTextField();
         magazineNameTextField = new javax.swing.JTextField();
         jDateChooser = new com.toedter.calendar.JDateChooser();
-        isAvailableJLabel = new javax.swing.JLabel();
         issueTypeComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        magazineTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(153, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         comapnyNamejLabel.setText("Company Name");
-        add(comapnyNamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, 30));
+        add(comapnyNamejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 30));
 
         issueTypejLabel.setText("Issue Type");
         add(issueTypejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 80, 30));
-        add(companyNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 130, 30));
-
-        availibilityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
-        add(availibilityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 130, 30));
+        add(companyNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 130, 30));
 
         addMagazineButton.setText("ADD MAGAZINE");
         addMagazineButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +102,25 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         });
         add(addMagazineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, 30));
 
+        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
+        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - MAGAZINE CATELOG");
+        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 30, 580, -1));
+
+        jLabel1.setText("Serial No");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 30));
+
+        jLabel2.setText("Magazine Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 30));
+
+        jLabel3.setText("Date");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 50, 30));
+        add(srNoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 130, 30));
+        add(magazineNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 130, 30));
+        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 130, 30));
+
+        issueTypeComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Weekly", "Fortnightly" }));
+        add(issueTypeComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 130, 30));
+
         magazineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -114,11 +129,11 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "SR NO", "Magazine Name", "Date", "Availibility", "Company Name", "IssueType"
+                "SR NO", "Magazine Name", "Date", "Company Name", "IssueType", "Availibility"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -127,29 +142,7 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(magazineTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 620, 260));
-
-        AuthorHeaderjLabel.setFont(new java.awt.Font("Kannada MN", 1, 18)); // NOI18N
-        AuthorHeaderjLabel.setText("LIBRARY MANAGEMENT SYSTEM - MAGAZINE CATELOG");
-        add(AuthorHeaderjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 30, 580, -1));
-
-        jLabel1.setText("Serial No");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 30));
-
-        jLabel2.setText("Magazine Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 30));
-
-        jLabel3.setText("Date");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 50, 30));
-        add(srNoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 130, 30));
-        add(magazineNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 163, 130, 30));
-        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 130, 30));
-
-        isAvailableJLabel.setText("Availibility");
-        add(isAvailableJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, 30));
-
-        issueTypeComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Weekly", "Fortnightly" }));
-        add(issueTypeComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 130, 30));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 620, 260));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addMagazineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMagazineButtonActionPerformed
@@ -157,8 +150,8 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         String date = sdf.format(jDateChooser.getDate());
 
-        this.librarian.getMagazineDirectory().createMagazine(Integer.valueOf(srNoTextField.getText()), magazineNameTextField.getText(), date, availibilityComboBox.getSelectedItem().toString(), companyNameTextField.getText(), issueTypeComboBox1.getSelectedItem().toString());
-        JOptionPane.showMessageDialog(null, "Magazine Created.");
+        this.librarian.getMagazineDirectory().createMagazine(Integer.valueOf(srNoTextField.getText()), magazineNameTextField.getText(), date, true, companyNameTextField.getText(), issueTypeComboBox1.getSelectedItem().toString());
+        JOptionPane.showMessageDialog(null, "Magazine Added Successfully.");
         populateMagazineCatelog();
     }//GEN-LAST:event_addMagazineButtonActionPerformed
 
@@ -166,10 +159,8 @@ public class MagazineManagementJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AuthorHeaderjLabel;
     private javax.swing.JButton addMagazineButton;
-    private javax.swing.JComboBox<String> availibilityComboBox;
     private javax.swing.JLabel comapnyNamejLabel;
     private javax.swing.JTextField companyNameTextField;
-    private javax.swing.JLabel isAvailableJLabel;
     private javax.swing.JComboBox<String> issueTypeComboBox1;
     private javax.swing.JLabel issueTypejLabel;
     private com.toedter.calendar.JDateChooser jDateChooser;

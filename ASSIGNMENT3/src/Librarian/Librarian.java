@@ -26,6 +26,7 @@ public class Librarian {
     GenreDirectory genreDirectory;
     BooksDirectory booksDirectory;
     MagazineDirectory magazineDirectory;
+    
     String libraryId;
     String libraryName;
     String location; 
@@ -44,7 +45,7 @@ public class Librarian {
         this.genreDirectory = new GenreDirectory();
         this.booksDirectory = new BooksDirectory();
         this.magazineDirectory = new MagazineDirectory();
-        this.libraryId = "Library"+this.count++;
+        this.libraryId = "Library-ID"+this.count++;
      }
 
     public int getOrderCount() {
@@ -151,13 +152,9 @@ public class Librarian {
         Librarian.count = count;
     }
 
-    /*public Librarian createLibrarian(String name,int buildingNo) {
-        Librarian l = new Librarian();
-        //l.setName(name);
-        l.setBuildingNo(buildingNo);
-        this.librarianlist.add(l);
-        return l;       
-    }*/
-    
+    @Override
+    public String toString() {
+       return this.libraryId;
+    }
 
 }

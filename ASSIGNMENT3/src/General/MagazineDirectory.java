@@ -46,7 +46,7 @@ public class MagazineDirectory {
         return null;
     }
     
-    public Magazine createMagazine(int serialNo, String name, String date, String isAvaialable, String CompanyName, String issueType) {
+    public Magazine createMagazine(int serialNo, String name, String date, boolean isAvaialable, String CompanyName, String issueType) {
         Magazine m = new Magazine();
         m.setSerialNumber(serialNo);
         m.setName(name);

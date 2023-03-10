@@ -21,11 +21,11 @@ public class Employee extends Profile {
         super();
     }
     
-    public Employee(int empId, double experience,String designation) {
+    /*public Employee(int empId, double experience,String designation) {
         this.employeeID = empId;
         this.experience = experience;
         this.designation = designation;
-    }
+    }*/
 
     public int getEmployeeID() {
         return employeeID;

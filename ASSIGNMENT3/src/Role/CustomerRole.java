@@ -5,7 +5,7 @@
 package Role;
 
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import UI.CustomerWorkArea.CustomerJFrame;
 import javax.swing.JFrame;
@@ -21,8 +21,8 @@ public class CustomerRole extends Role {
 
     
     @Override
-    public JFrame getWorkArea(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
-        return new CustomerJFrame(applicationSystem, branch, userAccount);
+    public JFrame getWorkArea(ApplicationSystem applicationSystem, UserAccount userAccount) {
+        return new CustomerJFrame(applicationSystem, userAccount);
     }
     
 }

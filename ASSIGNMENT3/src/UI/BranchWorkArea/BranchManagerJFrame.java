@@ -6,7 +6,7 @@ package UI.BranchWorkArea;
 
 import Librarian.Librarian;
 import LibraryAppSystem.ApplicationSystem;
-import LibraryAppSystem.Branch;
+import Librarian.Branch;
 import LibraryAppSystem.UserAccount;
 import UI.NewJFrame;
 
@@ -28,13 +28,14 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-     public BranchManagerJFrame(ApplicationSystem applicationSystem, Branch branch, UserAccount userAccount) {
+     public BranchManagerJFrame(ApplicationSystem applicationSystem, UserAccount userAccount, Librarian librarian) {
         initComponents();
         this.setVisible(true);
         this.applicationSystem = applicationSystem;
         this.userAccount = userAccount;
-        this.branch = branch;      
-        this.librarian = new Librarian();
+        //this.branch = branch;     
+        this.librarian = librarian;
+        System.out.println("username : " + "role = "+ userAccount.getUsername()+ userAccount.getRole());
         jLabel2.setText(branch.getBranchName());
     }
 
@@ -122,24 +123,24 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem, this.branch, this.userAccount);
+        new NewJFrame(this.applicationSystem,this.userAccount);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new NewJFrame(this.applicationSystem,this.branch, this.userAccount);
+        new NewJFrame(this.applicationSystem, this.userAccount);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void libraryCollectionjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryCollectionjButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new LibraryCollectionJPanel(this.applicationSystem, this.librarian, this.userAccount));
+        jSplitPane1.setRightComponent(new LibraryCollectionJPanel(applicationSystem,  userAccount, this.librarian));
 
     }//GEN-LAST:event_libraryCollectionjButtonActionPerformed
 
     private void rentalRequestsjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentalRequestsjButtonActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new ViewRentalRequestJPanel(this.applicationSystem, this.librarian, this.userAccount));
+        jSplitPane1.setRightComponent(new ViewRentalRequestJPanel(applicationSystem, userAccount, this.librarian));
 
     }//GEN-LAST:event_rentalRequestsjButtonActionPerformed
 
